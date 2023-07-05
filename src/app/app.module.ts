@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations"; // this is needed!
 import { RouterModule } from "@angular/router";
-import { HttpModule } from "@angular/http";
-import { APP_BASE_HREF } from "@angular/common";
 import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { BrowserModule } from "@angular/platform-browser";
 
 import { AppComponent } from "./app.component";
 
@@ -20,11 +20,12 @@ import { RentComponent } from "./rent/rent.component";
 @NgModule({
   imports: [
     BrowserAnimationsModule,
+    BrowserModule,
+    HttpClientModule,
     FormsModule,
     RouterModule.forRoot(AppRoutes, {
       useHash: true,
     }),
-    HttpModule,
     SidebarModule,
     NavbarModule,
     FooterModule,

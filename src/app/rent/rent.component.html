@@ -1,1 +1,80 @@
-<div class="main-content"><h1>AAAAAAAAAAAA</h1></div>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12"></div>
+      <div class="col-md-12">
+        <div class="card" style="padding: 0.5rem">
+          <div class="header">
+            <h4 class="title">Aluguel</h4>
+            <form role="search" style="padding-top: 1rem">
+              <div class="input-group">
+                <input
+                  type="text"
+                  value=""
+                  class="form-control w-100"
+                  placeholder="Search..."
+                />
+                <span class="input-group-addon">
+                  <i class="fa fa-search"></i>
+                </span>
+              </div>
+            </form>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center">{{ headerRow[0] }}</th>
+                  <th class="text-center">{{ headerRow[1] }}</th>
+                  <th class="text-center">{{ headerRow[2] }}</th>
+                  <th class="text-center">{{ headerRow[3] }}</th>
+                  <th class="text-center">{{ headerRow[4] }}</th>
+                  <th class="text-center">{{ headerRow[5] }}</th>
+                  <th class="text-center">{{ headerRow[6] }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of rentList">
+                  <td class="text-center">{{ row._id }}</td>
+                  <td class="text-center">{{ row._id }}</td>
+                  <td class="text-center">{{ row._id }}</td>
+                  <td class="text-center">{{ row._id }}</td>
+                  <td class="text-center">{{ row._id }}</td>
+                  <td class="text-center">{{ row._id }}</td>
+                  <!-- <td>{{ row.clientId }}</td>
+                  <td>{{ row.vehicleId }}</td>
+                  <td>{{ row.endDate }}</td>
+                  <td>{{ row. }}</td> -->
+                  <!-- <td class="text-right">&euro; {{ row.freeKm }}</td> -->
+                  <td class="td-actions text-center">
+                    <a
+                      rel="tooltip"
+                      title="View Profile"
+                      class="btn btn-info btn-simple btn-xs"
+                    >
+                      <i class="fa fa-user"></i>
+                    </a>
+                    <a
+                      rel="tooltip"
+                      title="Edit Profile"
+                      class="btn btn-success btn-simple btn-xs"
+                    >
+                      <i class="fa fa-edit"></i>
+                    </a>
+                    <a
+                      rel="tooltip"
+                      title="Remove"
+                      class="btn btn-danger btn-simple btn-xs"
+                    >
+                      <i class="fa fa-times"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
