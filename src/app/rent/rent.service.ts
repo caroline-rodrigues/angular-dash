@@ -12,4 +12,10 @@ export class RentService {
   getAll() {
     return this.http.get<any>(`${environment.api}/rent/findAll`);
   }
+
+  delete(id: string) {
+    console.log("opa", id);
+    return this.http.delete<any>(`${environment.api}/rent/delete/${id}
+    `);
+  }
 }

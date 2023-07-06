@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { Rent } from "./rent";
 import { RentService } from "./rent.service";
 import { map } from "rxjs/operators";
@@ -24,21 +24,13 @@ export class RentComponent implements OnInit {
     "Situação",
     "Ações",
   ];
-  public tableData2: TableData;
-  public tableData1: TableData;
+
+  @Output()
+  onDeleteRent = new EventEmitter();
+
   constructor(private rentService: RentService) {}
 
   ngOnInit() {
-    this.tableData1 = {
-      headerRow: ["#", "Name", "Job Position", "Since", "Salary", "Actions"],
-      dataRows: [
-        ["1", "Andrew Mike", "Develop", "2013", "99,225", ""],
-        ["2", "John Doe", "Design", "2012", "89,241", ""],
-        ["3", "Alex Mike", "Design", "2010", "92,144", ""],
-        ["4", "Mike Monday", "Marketing", "2013", "49,990", ""],
-        ["5", "Paul Dickens", "Communication", "2015", "69,201", ""],
-      ],
-    };
     // this.rentService.getAll().subscribe((rent) => {
     //   this.rentList = rent;
     // });
@@ -55,11 +47,12 @@ export class RentComponent implements OnInit {
 
     this.rentService
       .getAll()
-      .pipe(map((rentResponse) => rentResponse.results as Rent[]))
+      .pipe(map((rentResponse) => rentResponse.filteredEntityResults))
       .subscribe((rent) => {
-        this.rentList = rent;
-        // console.log("sub", this.rentList);
+        this.rentList.push(...rent);
+        // this.rentList = this.rentList.flat()
       });
+    console.log("sub", this.rentList);
     // console.log(this.rentList);
 
     // this.rentTable.dataRows.
@@ -75,5 +68,23 @@ export class RentComponent implements OnInit {
     // this.rentList.forEach((rent) => {
     //   this.rentTable.dataRows.push(rent);
     // });
+  }
+
+  delete(id: string) {
+    this.rentService.delete(id).subscribe(() => {
+      this.onDeleteRent.emit(id);
+      console.log("delete", id);
+    });
+  }
+
+  onDeletedRent(id: string) {
+    console.log("id", id);
+    if (id) {
+      console.log("opaaa");
+      const index = this.rentList.findIndex(
+        (rentItem) => rentItem.rent._id == id
+      );
+      this.rentList.splice(index, 1);
+    }
   }
 }

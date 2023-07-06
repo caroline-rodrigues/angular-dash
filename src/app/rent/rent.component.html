@@ -21,7 +21,7 @@
             </form>
           </div>
           <div class="content table-responsive table-full-width">
-            <table class="table">
+            <table class="table" (onDeleteRent)="onDeletedRent($event)">
               <thead>
                 <tr>
                   <th class="text-center">{{ headerRow[0] }}</th>
@@ -35,39 +35,28 @@
               </thead>
               <tbody>
                 <tr *ngFor="let row of rentList">
-                  <td class="text-center">{{ row._id }}</td>
-                  <td class="text-center">{{ row._id }}</td>
-                  <td class="text-center">{{ row._id }}</td>
-                  <td class="text-center">{{ row._id }}</td>
-                  <td class="text-center">{{ row._id }}</td>
-                  <td class="text-center">{{ row._id }}</td>
-                  <!-- <td>{{ row.clientId }}</td>
-                  <td>{{ row.vehicleId }}</td>
-                  <td>{{ row.endDate }}</td>
-                  <td>{{ row. }}</td> -->
-                  <!-- <td class="text-right">&euro; {{ row.freeKm }}</td> -->
+                  <td class="text-center">{{ row?.rent?._id }}</td>
+                  <td class="text-center">{{ row?.client?.name }}</td>
+                  <td class="text-center">{{ row?.client?.cpf }}</td>
+                  <td class="text-center">{{ row?.rent?.endDate }}</td>
+                  <td class="text-center">{{ row?.vehicle?.brand }}</td>
+                  <td class="text-center">{{ row?.rent?.situation }}</td>
                   <td class="td-actions text-center">
-                    <a
-                      rel="tooltip"
-                      title="View Profile"
-                      class="btn btn-info btn-simple btn-xs"
-                    >
-                      <i class="fa fa-user"></i>
-                    </a>
-                    <a
+                    <button
                       rel="tooltip"
                       title="Edit Profile"
                       class="btn btn-success btn-simple btn-xs"
                     >
                       <i class="fa fa-edit"></i>
-                    </a>
-                    <a
+                    </button>
+                    <button
                       rel="tooltip"
                       title="Remove"
                       class="btn btn-danger btn-simple btn-xs"
+                      (click)="delete(row?.rent?._id)"
                     >
                       <i class="fa fa-times"></i>
-                    </a>
+                    </button>
                   </td>
                 </tr>
               </tbody>
