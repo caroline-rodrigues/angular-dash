@@ -1,12 +1,12 @@
-import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import { RentRoutes } from "./rent.routing";
 import { RentComponent } from "./rent.component";
-import { LbdModule } from "../lbd/lbd.module";
+import { RentRoutes } from "./rent.routing";
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(RentRoutes)],
+  imports: [CommonModule, RouterModule.forChild(RentRoutes), FormsModule],
 
   declarations: [RentComponent],
 })

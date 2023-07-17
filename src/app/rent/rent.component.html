@@ -1,11 +1,15 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12"></div>
       <div class="col-md-12">
         <div class="card" style="padding: 0.5rem">
           <div class="header">
-            <h4 class="title">Aluguel</h4>
+            <div style="display: flex; justify-content: space-between">
+              <h4 class="title">Aluguel</h4>
+              <button class="btn btn-success btn-fill btn-wd">
+                Novo Aluguel
+              </button>
+            </div>
             <form role="search" style="padding-top: 1rem">
               <div class="input-group">
                 <input
@@ -13,6 +17,8 @@
                   value=""
                   class="form-control w-100"
                   placeholder="Search..."
+                  [(ngModel)]="searchQuery"
+                  name="search"
                 />
                 <span class="input-group-addon">
                   <i class="fa fa-search"></i>
@@ -34,7 +40,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let row of rentList">
+                <tr *ngFor="let row of rows">
                   <td class="text-center">{{ row?.rent?._id }}</td>
                   <td class="text-center">{{ row?.client?.name }}</td>
                   <td class="text-center">{{ row?.client?.cpf }}</td>

@@ -1,5 +1,11 @@
-import {Component, Input, OnInit, AfterViewInit, ChangeDetectionStrategy} from '@angular/core';
-import * as Chartist from 'chartist';
+import {
+  Component,
+  Input,
+  OnInit,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+} from "@angular/core";
+import * as Chartist from "chartist";
 
 export interface LegendItem {
   title: string;
@@ -9,13 +15,13 @@ export interface LegendItem {
 export enum ChartType {
   Pie,
   Line,
-  Bar
+  Bar,
 }
 
 @Component({
-  selector: 'lbd-chart',
-  templateUrl: './lbd-chart.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: "lbd-chart",
+  templateUrl: "./lbd-chart.component.html",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LbdChartComponent implements OnInit, AfterViewInit {
   static currentId = 1;
@@ -55,24 +61,37 @@ export class LbdChartComponent implements OnInit, AfterViewInit {
 
   public chartId: string;
 
-  constructor() {
-  }
+  constructor() {}
 
   public ngOnInit(): void {
     this.chartId = `lbd-chart-${LbdChartComponent.currentId++}`;
   }
 
   public ngAfterViewInit(): void {
-
     switch (this.chartType) {
       case ChartType.Pie:
-        new Chartist.Pie(`#${this.chartId}`, this.chartData, this.chartOptions, this.chartResponsive);
+        new Chartist.Pie(
+          `#${this.chartId}`,
+          this.chartData,
+          this.chartOptions,
+          this.chartResponsive
+        );
         break;
       case ChartType.Line:
-        new Chartist.Line(`#${this.chartId}`, this.chartData, this.chartOptions, this.chartResponsive);
+        new Chartist.Line(
+          `#${this.chartId}`,
+          this.chartData,
+          this.chartOptions,
+          this.chartResponsive
+        );
         break;
       case ChartType.Bar:
-        new Chartist.Bar(`#${this.chartId}`, this.chartData, this.chartOptions, this.chartResponsive);
+        new Chartist.Bar(
+          `#${this.chartId}`,
+          this.chartData,
+          this.chartOptions,
+          this.chartResponsive
+        );
         break;
     }
   }

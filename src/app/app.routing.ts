@@ -46,6 +46,10 @@ export const AppRoutes: Routes = [
         loadChildren: "./calendar/calendar.module#CalendarModule",
       },
       {
+        path: "client",
+        loadChildren: "./client/client.module#ClientModule",
+      },
+      {
         path: "",
         loadChildren: "./userpage/user.module#UserModule",
       },

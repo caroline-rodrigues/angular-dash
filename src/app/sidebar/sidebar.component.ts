@@ -28,7 +28,7 @@ export interface ChildrenItems {
 export const ROUTES: RouteInfo[] = [
   {
     path: "/dashboard",
-    title: "Dashboard",
+    title: "Painel",
     type: "link",
     icontype: "pe-7s-graph",
   },

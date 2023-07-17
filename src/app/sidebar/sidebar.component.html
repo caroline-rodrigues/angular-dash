@@ -5,7 +5,7 @@
     </div>
   </a>
   <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-    Creative Tim
+    Creative Tim (logo)
   </a>
 </div>
 
@@ -153,7 +153,7 @@
       <!--If is a single link-->
       <a [routerLink]="[menuitem.path]" *ngIf="menuitem.type === 'link'">
         <i class="{{ menuitem.icontype }}"></i>
-        <p>{{ menuitem.title }}</p>
+        <p style="text-transform: capitalize">{{ menuitem.title }}</p>
       </a>
       <!--If it have a submenu-->
       <a

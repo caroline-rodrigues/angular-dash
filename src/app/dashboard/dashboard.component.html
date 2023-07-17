@@ -1,87 +1,131 @@
 <div class="main-content">
-    <div class="container-fluid">
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card ">
-                    <div class="header">
-                        <h4 class="title">Global Sales by Top Locations</h4>
-                        <p class="category">All products that were shipped</p>
-                    </div>
-                    <div class="content">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <lbd-table
-                                  [data]="tableData">
-                              </lbd-table>
-                            </div>
-                            <div class="col-md-6 col-md-offset-1">
-                                <div id="worldMap" style="height: 300px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="tab-content">
+          <div class="tab-pane active" id="description-logo">
+            <div class="card">
+              <div class="header">
+                <h4 class="title">Aluguéis ativos</h4>
+              </div>
+              <div
+                class="content"
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <p>06</p>
+                <i class="pe-7s-note2" style="font-size: 3rem"></i>
+              </div>
             </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-4" >
-            <lbd-chart
-              [title]="'Email Statistics'"
-              [subtitle]="'Last Campaign Performance'"
-              [chartClass]="'ct-perfect-fourth'"
-              [chartType]="emailChartType"
-              [chartData]="emailChartData"
-              [legendItems]="emailChartLegendItems"
-              [withHr]="true"
-              [footerIconClass]="'fa fa-clock-o'"
-              [footerText]="'Campaign sent 2 days ago'">
-            </lbd-chart>
-          </div>
-
-          <div class="col-md-8" >
-            <lbd-chart
-              [title]="'Users Behavior'"
-              [subtitle]="'24 Hours performance'"
-              [chartType]="hoursChartType"
-              [chartData]="hoursChartData"
-              [chartOptions]="hoursChartOptions"
-              [chartResponsive]="hoursChartResponsive"
-              [legendItems]="hoursChartLegendItems"
-              [withHr]="true"
-              [footerIconClass]="'fa fa-history'"
-              [footerText]="'Updated 3 minutes ago'">
-            </lbd-chart>
           </div>
         </div>
-
-        <div class="row">
-          <div class="col-md-6">
-            <lbd-chart
-              [title]="'2014 Sales'"
-              [subtitle]="'All products including Taxes'"
-              [chartType]="activityChartType"
-              [chartData]="activityChartData"
-              [chartOptions]="activityChartOptions"
-              [chartResponsive]="activityChartResponsive"
-              [legendItems]="activityChartLegendItems"
-              [withHr]="true"
-              [footerIconClass]="'fa fa-check'"
-              [footerText]="'Data information certified'">
-            </lbd-chart>
-          </div>
-
-          <div class="col-md-6" >
-            <lbd-task-list
-              [title]="'Tasks'"
-              [subtitle]="'Backend development'"
-              [tasks]="tasks"
-              [withHr]="true"
-              [footerIconClass]="'fa fa-history'"
-              [footerText]="'Updated 3 minutes ago'">
-            </lbd-task-list>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="tab-content">
+          <div class="tab-pane active" id="description-logo">
+            <div class="card">
+              <div class="header">
+                <h4 class="title">Aluguéis em atraso</h4>
+              </div>
+              <div
+                class="content"
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <p>06</p>
+                <i class="pe-7s-diskette" style="font-size: 3rem"></i>
+              </div>
+            </div>
           </div>
         </div>
-
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="tab-content">
+          <div class="tab-pane active" id="description-logo">
+            <div class="card">
+              <div class="header">
+                <h4 class="title">Clientes cadastrados</h4>
+              </div>
+              <div
+                class="content"
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                <p>06</p>
+                <i class="pe-7s-users" style="font-size: 3rem"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="content table-responsive table-full-width">
+          <table class="table" (onDeleteRent)="onDeletedRent($event)">
+            <thead>
+              <tr>
+                <th class="text-center">{{ headerRow[0] }}</th>
+                <th class="text-center">{{ headerRow[1] }}</th>
+                <th class="text-center">{{ headerRow[2] }}</th>
+                <th class="text-center">{{ headerRow[3] }}</th>
+                <th class="text-center">{{ headerRow[4] }}</th>
+                <th class="text-center">{{ headerRow[5] }}</th>
+                <th class="text-center">{{ headerRow[6] }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of rows">
+                <td class="text-center">{{ row?.rent?._id }}</td>
+                <td class="text-center">{{ row?.client?.name }}</td>
+                <td class="text-center">{{ row?.client?.cpf }}</td>
+                <td class="text-center">{{ row?.rent?.endDate }}</td>
+                <td class="text-center">{{ row?.vehicle?.brand }}</td>
+                <td class="text-center">{{ row?.rent?.situation }}</td>
+                <td class="td-actions text-center">
+                  <button
+                    rel="tooltip"
+                    title="Edit Profile"
+                    class="btn btn-success btn-simple btn-xs"
+                  >
+                    <i class="fa fa-edit"></i>
+                  </button>
+                  <button
+                    rel="tooltip"
+                    title="Remove"
+                    class="btn btn-danger btn-simple btn-xs"
+                    (click)="delete(row?.rent?._id)"
+                  >
+                    <i class="fa fa-times"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <lbd-chart
+          [title]="'Carros'"
+          [chartType]="graphType"
+          [chartData]="dataGraph"
+          [legendItems]="emailChartLegendItems"
+          [withHr]="true"
+          [footerIconClass]="'fa fa-clock-o'"
+          [footerText]="'Campaign sent 2 days ago'"
+        >
+        </lbd-chart>
+      </div>
+    </div>
+  </div>
 </div>
