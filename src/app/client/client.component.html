@@ -1,3 +1,100 @@
-<p>
-  client works!
-</p>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card" style="padding: 0.5rem">
+          <div class="header">
+            <div style="display: flex; justify-content: space-between">
+              <h4 class="title">Clientes</h4>
+              <button
+                class="btn btn-success btn-fill btn-wd"
+                routerLink="/components/new-client"
+              >
+                Novo Cliente
+              </button>
+            </div>
+            <form role="search" style="padding-top: 1rem">
+              <div class="input-group">
+                <input
+                  type="text"
+                  value=""
+                  class="form-control w-100"
+                  placeholder="Search..."
+                  [(ngModel)]="searchQuery"
+                  name="search"
+                />
+                <span class="input-group-addon">
+                  <i class="fa fa-search"></i>
+                </span>
+              </div>
+            </form>
+          </div>
+          <div class="content table-responsive table-full-width">
+            <table class="table" (onDeleteRent)="onDeletedRent($event)">
+              <thead>
+                <tr>
+                  <th class="text-center">{{ headerRow[0] }}</th>
+                  <th class="text-center">{{ headerRow[1] }}</th>
+                  <th class="text-center">{{ headerRow[2] }}</th>
+                  <th class="text-center">{{ headerRow[3] }}</th>
+                  <th class="text-center">{{ headerRow[4] }}</th>
+                  <th class="text-center">{{ headerRow[5] }}</th>
+                  <th class="text-center">{{ headerRow[6] }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let client of filteredRows">
+                  <td class="text-center">{{ client?._id }}</td>
+                  <td class="text-center">{{ client?.name }}</td>
+                  <td class="text-center">{{ client?.cpf }}</td>
+                  <td class="text-center">{{ client?.createdAt }}</td>
+                  <td class="text-center">{{ client?.birthDate }}</td>
+                  <td class="text-center">{{ client?.rent?.situation }}</td>
+                  <td class="td-actions text-center">
+                    <button
+                      rel="tooltip"
+                      title="Edit Profile"
+                      class="btn btn-success btn-simple btn-xs"
+                    >
+                      <i class="fa fa-edit"></i>
+                    </button>
+                    <button
+                      rel="tooltip"
+                      title="Remove"
+                      class="btn btn-danger btn-simple btn-xs"
+                      (click)="delete(row?.rent?._id)"
+                    >
+                      <i class="fa fa-times"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="display: flex; justify-content: center">
+            <ul class="pagination">
+              <li
+                [class.disabled]="currentPage === 1"
+                (click)="changePage(currentPage - 1)"
+              >
+                <a><<</a>
+              </li>
+              <li
+                [class.active]="currentPage === page"
+                *ngFor="let page of totalPagesArray"
+              >
+                <a (click)="changePage(page)">{{ page }}</a>
+              </li>
+              <li
+                [class.disabled]="currentPage === totalPages"
+                (click)="changePage(currentPage + 1)"
+              >
+                <a>>></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

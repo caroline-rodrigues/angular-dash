@@ -30,8 +30,13 @@ interface Row {
   templateUrl: "./rent.component.html",
 })
 export class RentComponent implements OnInit {
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+  pagesToShow: number = 3;
   searchQuery: string;
+  totalPages: number;
   filteredRows: Row[];
+  totalPagesArray: any[] = [];
   rows: Row[];
   rentList: any[] = [];
   headerRow: string[] = [
@@ -52,126 +57,27 @@ export class RentComponent implements OnInit {
   constructor(private rentService: RentService) {}
 
   ngOnInit() {
-    this.rows = [
-      {
-        rent: {
-          _id: "1",
-          endDate: "2023-07-20",
-          situation: "active",
-        },
-        client: {
-          name: "John Doe",
-          cpf: "12345678901",
-        },
-        vehicle: {
-          brand: "Toyota",
-        },
-      },
-      {
-        rent: {
-          _id: "2",
-          endDate: "2023-07-22",
-          situation: "inactive",
-        },
-        client: {
-          name: "Jane Smith",
-          cpf: "98765432109",
-        },
-        vehicle: {
-          brand: "Honda",
-        },
-      },
-      {
-        rent: {
-          _id: "3",
-          endDate: "2023-07-25",
-          situation: "active",
-        },
-        client: {
-          name: "Michael Johnson",
-          cpf: "45678912304",
-        },
-        vehicle: {
-          brand: "Ford",
-        },
-      },
-      {
-        rent: {
-          _id: "4",
-          endDate: "2023-07-30",
-          situation: "inactive",
-        },
-        client: {
-          name: "Emily Davis",
-          cpf: "65432198706",
-        },
-        vehicle: {
-          brand: "Chevrolet",
-        },
-      },
-      {
-        rent: {
-          _id: "5",
-          endDate: "2023-08-02",
-          situation: "active",
-        },
-        client: {
-          name: "Daniel Wilson",
-          cpf: "78912345603",
-        },
-        vehicle: {
-          brand: "Volkswagen",
-        },
-      },
-    ];
-    this.filteredRows = this.rows;
+    this.findAllRent();
     this.searchQueryChanged
       .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe((query) => {
         this.search(query);
       });
-    // this.rentService.getAll().subscribe((rent) => {
-    //   this.rentList = rent;
-    // });
-    // this.rentService
-    //   .getAll()
-    //   .pipe(
-    //     map((rentResponse) => {
-    //       rentResponse?.results;
-    //     })
-    //   )
-    //   .subscribe((rent) => {
-    //     this.rentList = rent;
-    //   });
 
-    this.rentService
-      .getAll()
-      .pipe(map((rentResponse) => rentResponse.filteredEntityResults))
-      .subscribe((rent) => {
-        this.rentList.push(...rent);
-        // this.rentList = this.rentList.flat()
-      });
-    console.log("sub", this.rentList);
-    // console.log(this.rentList);
-
-    // this.rentTable.dataRows.
-
-    // this.rentTable.headerRow = [
-    //   "#",
-    //   "Name",
-    //   "Job Position",
-    //   "Since",
-    //   "Salary",
-    //   "Actions",
-    // ];
-    // this.rentList.forEach((rent) => {
-    //   this.rentTable.dataRows.push(rent);
-    // });
+    for (let i = 1; i <= 4; i++) {
+      this.totalPagesArray.push(i);
+    }
+  }
+  paginate(data: any[]): any[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return data.slice(startIndex, endIndex);
   }
 
   search(query: string): void {
     if (query) {
-      this.filteredRows = this.rows.filter((row) => {
+      this.currentPage = 1;
+      this.filteredRows = this.rentList.filter((row) => {
         return (
           row.client.name.toLowerCase().includes(query.toLowerCase()) ||
           row.client.cpf.includes(query.toLowerCase()) ||
@@ -182,8 +88,30 @@ export class RentComponent implements OnInit {
         );
       });
     } else {
-      this.filteredRows = this.rows;
+      this.filteredRows = this.paginate(this.rentList);
     }
+  }
+
+  findAllRent() {
+    this.rentService
+      .getAll()
+      .pipe(map((rentResponse) => rentResponse.filteredEntityResults))
+      .subscribe((rent) => {
+        this.rentList = rent;
+        this.filteredRows = this.paginate(this.rentList);
+        this.totalPages = Math.ceil(this.rentList.length / this.itemsPerPage);
+      });
+  }
+
+  calculateTotalPagesArray(currentPage: number, totalPages: number): number[] {
+    const pagesArray: number[] = [];
+    const startPage = Math.max(1, currentPage - this.pagesToShow);
+    const endPage = Math.min(totalPages, currentPage + this.pagesToShow);
+
+    for (let i = startPage; i <= endPage; i++) {
+      pagesArray.push(i);
+    }
+    return pagesArray;
   }
 
   delete(id: string) {
@@ -193,14 +121,24 @@ export class RentComponent implements OnInit {
     });
   }
 
+  changePage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.filteredRows = this.paginate(this.rentList);
+      this.totalPagesArray = this.calculateTotalPagesArray(
+        this.currentPage,
+        this.totalPages
+      );
+    }
+  }
+
   onDeletedRent(id: string) {
-    console.log("id", id);
     if (id) {
-      console.log("opaaa");
       const index = this.rentList.findIndex(
         (rentItem) => rentItem.rent._id == id
       );
       this.rentList.splice(index, 1);
+      this.findAllRent();
     }
   }
 }

@@ -6,7 +6,10 @@
           <div class="header">
             <div style="display: flex; justify-content: space-between">
               <h4 class="title">Aluguel</h4>
-              <button class="btn btn-success btn-fill btn-wd">
+              <button
+                class="btn btn-success btn-fill btn-wd"
+                routerLink="/components/new-rent"
+              >
                 Novo Aluguel
               </button>
             </div>
@@ -40,7 +43,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let row of rows">
+                <tr *ngFor="let row of filteredRows">
                   <td class="text-center">{{ row?.rent?._id }}</td>
                   <td class="text-center">{{ row?.client?.name }}</td>
                   <td class="text-center">{{ row?.client?.cpf }}</td>
@@ -67,6 +70,28 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+          <div style="display: flex; justify-content: center">
+            <ul class="pagination">
+              <li
+                [class.disabled]="currentPage === 1"
+                (click)="changePage(currentPage - 1)"
+              >
+                <a><<</a>
+              </li>
+              <li
+                [class.active]="currentPage === page"
+                *ngFor="let page of totalPagesArray"
+              >
+                <a (click)="changePage(page)">{{ page }}</a>
+              </li>
+              <li
+                [class.disabled]="currentPage === totalPages"
+                (click)="changePage(currentPage + 1)"
+              >
+                <a>>></a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

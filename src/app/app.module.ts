@@ -15,6 +15,7 @@ import { FooterModule } from "./shared/footer/footer.module";
 import { NavbarModule } from "./shared/navbar/navbar.module";
 import { PagesnavbarModule } from "./shared/pagesnavbar/pagesnavbar.module";
 import { SidebarModule } from "./sidebar/sidebar.module";
+import { VehicleComponent } from "./vehicle/vehicle.component";
 
 @NgModule({
   imports: [
@@ -31,7 +32,12 @@ import { SidebarModule } from "./sidebar/sidebar.module";
     FixedPluginModule,
     PagesnavbarModule,
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
+  declarations: [
+    AppComponent,
+    AdminLayoutComponent,
+    AuthLayoutComponent,
+    VehicleComponent,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

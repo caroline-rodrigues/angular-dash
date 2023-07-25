@@ -21,7 +21,7 @@ export class NewClientComponent implements OnInit {
   ngOnInit() {
     this.clienteForm = this.formBuilder.group({
       name: ["", Validators.required],
-      dateBirth: ["", Validators.required],
+      birthDate: ["", Validators.required],
       cpf: ["", Validators.required],
       rg: [""],
       qualification: [""],
@@ -34,13 +34,14 @@ export class NewClientComponent implements OnInit {
       phone2: [""],
       email: ["", Validators.required],
       streetName: ["", Validators.required],
+      active: [true],
     });
   }
 
   onSubmit() {
     if (this.clienteForm.valid) {
       console.log(this.clienteForm.value);
-      this.clientService.create(this.clienteForm.value as Client);
+      this.clientService.create(this.clienteForm.value as Client).subscribe();
     } else {
       console.log("Formulário inválido. Verifique os campos obrigatórios.");
     }
