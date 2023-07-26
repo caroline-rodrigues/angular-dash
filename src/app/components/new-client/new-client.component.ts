@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Client, ClientService } from "app/client/client.service";
 
 @Component({
@@ -8,14 +9,13 @@ import { Client, ClientService } from "app/client/client.service";
 })
 export class NewClientComponent implements OnInit {
   clienteForm: FormGroup;
-  // cliente = {
-  //   name: "",
-  //   dataNascimento: "",
-  //   cpf: "",
-  // };
+  clientId: string;
+
   constructor(
     private formBuilder: FormBuilder,
-    private clientService: ClientService
+    private clientService: ClientService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class NewClientComponent implements OnInit {
       qualification: [""],
       complement: ["", Validators.required],
       city: ["", Validators.required],
-      uf: ["", Validators.required],
+      state: ["", Validators.required],
       cep: ["", Validators.required],
       comments: [""],
       phone: ["", Validators.required],
@@ -36,14 +36,38 @@ export class NewClientComponent implements OnInit {
       streetName: ["", Validators.required],
       active: [true],
     });
+
+    this.route.queryParams.subscribe((queryParams) => {
+      if (queryParams.id) {
+        this.clientId = queryParams.id;
+        this.loadClientData(this.clientId);
+      }
+    });
   }
 
   onSubmit() {
     if (this.clienteForm.valid) {
-      console.log(this.clienteForm.value);
       this.clientService.create(this.clienteForm.value as Client).subscribe();
+      this.router.navigate(["/client"]);
     } else {
       console.log("Formulário inválido. Verifique os campos obrigatórios.");
     }
+  }
+
+  loadClientData(clientId: string) {
+    this.clientService.getClientById(clientId).subscribe((client) => {
+      console.log(client);
+      client.birthDate = this.formatDateToISO(new Date().toLocaleDateString());
+
+      this.clienteForm.patchValue(client);
+      console.log(this.clienteForm.value);
+
+      this.clienteForm.patchValue(client);
+    });
+  }
+
+  formatDateToISO(dateStr: string) {
+    const [day, month, year] = dateStr.split("/");
+    return `${year}-${month}-${day}`;
   }
 }

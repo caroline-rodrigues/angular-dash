@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { ClientService } from "./client.service";
+import { Router } from "@angular/router";
 import { map } from "rxjs/operators";
+import { ClientService } from "./client.service";
 
 @Component({
   selector: "app-client-cmp",
@@ -23,20 +24,42 @@ export class ClientComponent implements OnInit {
     "Situação",
     "Ações",
   ];
-  constructor(private clientService: ClientService) {}
+  constructor(private clientService: ClientService, private router: Router) {}
 
   ngOnInit() {
+    this.getAll(false);
+  }
+
+  getAll(event: boolean) {
     this.clientService
       .getAll()
       .pipe(map((clientResponse) => clientResponse.results))
-      .subscribe((client) => {
-        this.clientList = client;
-        this.filteredRows = this.paginate(this.clientList);
+      .subscribe((clientList) => {
+        this.clientList = clientList;
         this.totalPages = Math.ceil(this.clientList.length / this.itemsPerPage);
+
+        if (event && this.filteredRows.length === 1 && this.currentPage !== 1) {
+          this.currentPage = this.totalPages;
+        }
+
+        this.filteredRows = this.paginate(this.clientList);
+        this.totalPagesArray = this.calculateTotalPagesArray(
+          this.currentPage,
+          this.totalPages
+        );
       });
-    for (let i = 1; i <= 4; i++) {
-      this.totalPagesArray.push(i);
-    }
+  }
+
+  delete(client: string) {
+    this.clientService.delete(client).subscribe(() => {
+      this.getAll(true);
+    });
+  }
+
+  editProfile(clientId: string): void {
+    this.router.navigate(["/components/new-client"], {
+      queryParams: { id: clientId },
+    });
   }
 
   paginate(data: any[]): any[] {

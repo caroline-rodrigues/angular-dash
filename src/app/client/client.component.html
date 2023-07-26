@@ -55,6 +55,7 @@
                       rel="tooltip"
                       title="Edit Profile"
                       class="btn btn-success btn-simple btn-xs"
+                      (click)="editProfile(client?._id)"
                     >
                       <i class="fa fa-edit"></i>
                     </button>
@@ -62,7 +63,7 @@
                       rel="tooltip"
                       title="Remove"
                       class="btn btn-danger btn-simple btn-xs"
-                      (click)="delete(row?.rent?._id)"
+                      (click)="delete(client?._id)"
                     >
                       <i class="fa fa-times"></i>
                     </button>
