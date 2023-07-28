@@ -158,22 +158,53 @@
             />
           </div>
           <div class="form-group col-md-3">
-            <label for="comments">Observação</label>
+            <label for="observation">Observação</label>
             <input
               type="text"
               class="form-control"
               placeholder="Observações"
-              id="comments"
-              name="comments"
-              formControlName="comments"
+              id="observation"
+              name="observation"
+              formControlName="observation"
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="plataform_user" style="display: block"
+              >Usuário admin</label
+            >
+            <bSwitch
+              [switch-on-color]="'primary'"
+              [switch-off-text]="' '"
+              [switch-on-text]="' '"
+              (click)="becomeAdmin()"
+              formControlName="plataform_user"
+            >
+            </bSwitch>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="password" style="display: block">Usuário admin</label>
+            <label for="password">Senha</label>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="senha"
+              id="password"
+              name="password"
+              formControlName="password"
             />
           </div>
         </div>
       </form>
-      <div class="col-md-3" style="margin-bottom: 16px">
-        <button type="submit" class="btn btn-primary" (click)="onSubmit()">
-          Confirmar
-        </button>
+      <div class="form-row">
+        <div class="col-md-3" style="margin-bottom: 16px">
+          <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+            Confirmar
+          </button>
+        </div>
       </div>
     </div>
   </div>

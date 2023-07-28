@@ -8,6 +8,7 @@ import { ClientService } from "./client.service";
   templateUrl: "./client.component.html",
 })
 export class ClientComponent implements OnInit {
+  searchQuery: string = "";
   currentPage: number = 1;
   itemsPerPage: number = 10;
   pagesToShow: number = 3;
@@ -21,7 +22,6 @@ export class ClientComponent implements OnInit {
     "CPF",
     "Data cadastro",
     "Aniversário",
-    "Situação",
     "Ações",
   ];
   constructor(private clientService: ClientService, private router: Router) {}
@@ -48,6 +48,18 @@ export class ClientComponent implements OnInit {
           this.totalPages
         );
       });
+  }
+
+  filterItems() {
+    this.filteredRows = this.paginate(this.clientList).filter((client) => {
+      const clientValues = Object.keys(client).map(
+        (keyframes) => client[keyframes]
+      );
+      return clientValues
+        .toString()
+        .toLowerCase()
+        .includes(this.searchQuery.toLowerCase());
+    });
   }
 
   delete(client: string) {

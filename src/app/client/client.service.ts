@@ -31,15 +31,10 @@ export class ClientService {
   }
 
   create(client: Client) {
-    console.log(client);
-    return this.http.post<Client>(`${environment.api}/client/create`, client);
+    return this.http.post<any>(`${environment.api}/client/create`, client);
   }
-  update(client: Client, id: string) {
-    console.log("deu bom no subs");
-    return this.http.put<Client>(
-      `${environment.api}/client/update/${id}`,
-      client
-    );
+  update(client: any, id: string) {
+    return this.http.put<any>(`${environment.api}/client/update/${id}`, client);
   }
 
   delete(id: string) {

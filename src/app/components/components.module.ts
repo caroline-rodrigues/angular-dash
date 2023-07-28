@@ -13,6 +13,7 @@ import { SweetAlertComponent } from "./sweetalert/sweetalert.component";
 import { TypographyComponent } from "./typography/typography.component";
 import { NewRentComponent } from "./new-rent/new-rent.component";
 import { NewClientComponent } from "./new-client/new-client.component";
+import { JwBootstrapSwitchNg2Module } from "jw-bootstrap-switch-ng2";
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { NewClientComponent } from "./new-client/new-client.component";
     RouterModule.forChild(ComponentsRoutes),
     FormsModule,
     ReactiveFormsModule,
+    JwBootstrapSwitchNg2Module,
   ],
   declarations: [
     ButtonsComponent,
