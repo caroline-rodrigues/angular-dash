@@ -30,6 +30,10 @@ export const AppRoutes: Routes = [
         loadChildren: "./rent/rent.module#RentModule",
       },
       {
+        path: "vehicle",
+        loadChildren: "./vehicle/vehicle.module#VehicleModule",
+      },
+      {
         path: "tables",
         loadChildren: "./tables/tables.module#TablesModule",
       },

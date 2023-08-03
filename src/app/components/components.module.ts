@@ -14,6 +14,7 @@ import { TypographyComponent } from "./typography/typography.component";
 import { NewRentComponent } from "./new-rent/new-rent.component";
 import { NewClientComponent } from "./new-client/new-client.component";
 import { JwBootstrapSwitchNg2Module } from "jw-bootstrap-switch-ng2";
+import { NewVehicletComponent } from "./new-vehicle/new-vehicle.component";
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { JwBootstrapSwitchNg2Module } from "jw-bootstrap-switch-ng2";
     TypographyComponent,
     NewRentComponent,
     NewClientComponent,
+    NewVehicletComponent,
   ],
 })
 export class ComponentsModule {}

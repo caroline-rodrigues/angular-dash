@@ -9,6 +9,7 @@ import { SweetAlertComponent } from "./sweetalert/sweetalert.component";
 import { TypographyComponent } from "./typography/typography.component";
 import { NewRentComponent } from "./new-rent/new-rent.component";
 import { NewClientComponent } from "./new-client/new-client.component";
+import { NewVehicletComponent } from "./new-vehicle/new-vehicle.component";
 
 export const ComponentsRoutes: Routes = [
   {
@@ -89,6 +90,15 @@ export const ComponentsRoutes: Routes = [
       {
         path: "new-client",
         component: NewClientComponent,
+      },
+    ],
+  },
+  {
+    path: "",
+    children: [
+      {
+        path: "new-vehicle",
+        component: NewVehicletComponent,
       },
     ],
   },

@@ -39,6 +39,12 @@ export const ROUTES: RouteInfo[] = [
     icontype: "pe-7s-paper-plane",
   },
   {
+    path: "/vehicle",
+    title: "Veículo",
+    type: "link",
+    icontype: "pe-7s-car",
+  },
+  {
     path: "/client",
     title: "Cliente",
     type: "link",
