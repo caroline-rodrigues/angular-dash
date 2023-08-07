@@ -1,208 +1,176 @@
 <div class="card">
   <div class="container-fluid">
     <div class="content">
-      <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
         <div class="form-row">
           <div class="form-group col-md-4">
-            <label for="inputState">Id Cliente</label>
+            <label for="inputState">Id Veículo</label>
             <input type="text" class="form-control" disabled />
           </div>
           <div class="form-group col-md-4">
-            <label for="name">Nome</label>
+            <label for="name">Modelo</label>
             <input
               type="text"
               class="form-control"
-              placeholder="Nome"
+              placeholder="Informe o número do dispositivo legal"
               id="name"
               formControlName="name"
               name="name"
             />
           </div>
           <div class="form-group col-md-4">
-            <label for="birthDate">Data Nascimento</label>
+            <label for="purchaseDate">Data da Compra</label>
             <input
               type="date"
               class="form-control"
-              id="birthDate"
-              formControlName="birthDate"
-              name="birthDate"
+              id="purchaseDate"
+              formControlName="purchaseDate"
+              name="purchaseDate"
             />
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-4">
-            <label for="cpf">CPF</label>
+            <label for="brand">Marca</label>
             <input
               type="text"
-              id="cpf"
+              id="brand"
               class="form-control"
-              placeholder="000.000.000-00"
-              formControlName="cpf"
-              name="cpf"
+              placeholder="Marca"
+              formControlName="brand"
+              name="brand"
             />
           </div>
           <div class="form-group col-md-4">
-            <label for="rg">RG</label>
+            <label for="color">Cor</label>
             <input
               type="text"
               class="form-control"
-              placeholder="000.000.000-00"
-              id="rg"
-              formControlName="rg"
-              name="rg"
+              placeholder="Cor"
+              id="color"
+              formControlName="color"
+              name="color"
             />
           </div>
           <div class="form-group col-md-4">
-            <label for="qualification">Habilitação</label>
+            <label for="plate">Placa</label>
             <input
               type="text"
               class="form-control"
-              id="qualification"
-              placeholder="000.000.000-00"
-              formControlName="qualification"
-              name="qualification"
+              id="plate"
+              placeholder="ABC 1234"
+              formControlName="plate"
+              name="plate"
             />
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-4">
-            <label for="phone">Telefone 1</label>
+          <div class="form-group col-md-6">
+            <label for="chassi">Chassi</label>
             <input
               type="text"
-              id="phone"
+              id="chassi"
               class="form-control"
-              placeholder="(99) 99999-9999"
-              formControlName="phone"
-              name="phone"
+              placeholder=" XXXXXXXXXXXXXXXXX"
+              formControlName="chassi"
+              name="chassi"
             />
           </div>
-          <div class="form-group col-md-4">
-            <label for="phone2">Telefone 2</label>
+          <div class="form-group col-md-6">
+            <label for="year">Ano</label>
             <input
-              type="text"
+              type="number"
+              min="0"
+              max="9999"
               class="form-control"
-              placeholder="(99) 99999-9999"
-              id="phone2"
-              formControlName="phone2"
-              name="phone2"
-            />
-          </div>
-          <div class="form-group col-md-4">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="email@email.com"
-              formControlName="email"
-              name="email"
-            />
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-8">
-            <label for="streetName">Endereço</label>
-            <input
-              type="text"
-              id="streetName"
-              class="form-control"
-              placeholder="Endereço"
-              formControlName="streetName"
-              name="streetName"
-            />
-          </div>
-          <div class="form-group col-md-4">
-            <label for="complement">Complemento</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Complemento"
-              id="complement"
-              formControlName="complement"
-              name="complement"
-            />
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-3">
-            <label for="city">Cidade</label>
-            <input
-              type="text"
-              id="city"
-              class="form-control"
-              placeholder="Endereço"
-              formControlName="city"
-              name="city"
-            />
-          </div>
-          <div class="form-group col-md-3">
-            <label for="state">UF</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Complemento"
-              id="state"
-              formControlName="state"
-              name="state"
-            />
-          </div>
-          <div class="form-group col-md-3">
-            <label for="cep">CEP</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Complemento"
-              id="cep"
-              name="cep"
-              formControlName="cep"
-            />
-          </div>
-          <div class="form-group col-md-3">
-            <label for="observation">Observação</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Observações"
-              id="observation"
-              name="observation"
-              formControlName="observation"
+              id="year"
+              placeholder="Ano modelo"
+              formControlName="year"
+              name="year"
             />
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="plataform_user" style="display: block"
-              >Usuário admin</label
+              >Manuntenção</label
             >
-            <bSwitch
-              [switch-on-color]="'primary'"
-              [switch-off-text]="' '"
-              [switch-on-text]="' '"
-              (click)="becomeAdmin()"
-              formControlName="plataform_user"
-            >
-            </bSwitch>
           </div>
         </div>
+      </form>
+      <form [formGroup]="occurrenceForm">
         <div class="form-row">
-          <div class="form-group col-md-12">
-            <label for="password" style="display: block">Usuário admin</label>
-            <label for="password">Senha</label>
+          <div class="form-group col-md-4">
+            <label for="createdAt">Data Manuntenção</label>
             <input
-              type="password"
+              type="date"
               class="form-control"
               placeholder="senha"
-              id="password"
-              name="password"
-              formControlName="password"
+              id="createdAt"
+              name="createdAt"
+              formControlName="createdAt"
             />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="observation">Observação</label>
+            <input
+              type="observation"
+              class="form-control"
+              placeholder="senha"
+              id="observation"
+              name="observation"
+              formControlName="observation"
+            />
+          </div>
+          <div class="form-group col-md-4" style="margin-top: 24px">
+            <button
+              type="submit"
+              class="btn btn-default btn-fill btn-wd"
+              (click)="onCreateOcuurence()"
+            >
+              ADICIONAR MANUNTENÇÃO
+            </button>
           </div>
         </div>
       </form>
       <div class="form-row">
+        <div class="content table-responsive table-full-width">
+          <table class="table" (onDeleteRent)="onDeletedRent($event)">
+            <thead>
+              <tr>
+                <th class="text-center">{{ headerRow[0] }}</th>
+                <th class="text-center">{{ headerRow[1] }}</th>
+                <th class="text-center">{{ headerRow[2] }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let occurrence of occurrenceList; let i = index">
+                <td class="text-center">{{ occurrence?.createdAt }}</td>
+                <td class="text-center">{{ occurrence?.observation }}</td>
+                <td class="text-center">{{ i }}</td>
+                <td class="td-actions text-center">
+                  <button
+                    rel="tooltip"
+                    title="Remove"
+                    class="btn btn-danger btn-simple btn-xs"
+                    (click)="removeOcurrence(i)"
+                  >
+                    Remover<i class="fa fa-times"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="form-row">
         <div class="col-md-3" style="margin-bottom: 16px">
-          <button type="submit" class="btn btn-primary" (click)="onSubmit()">
-            Confirmar
+          <button
+            type="submit"
+            class="btn btn-success btn-fill btn-wd"
+            (click)="onSubmit()"
+          >
+            CONFIRMAR
           </button>
         </div>
       </div>

@@ -1,96 +1,106 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Client, ClientService } from "app/client/client.service";
+import { OccurrenceService } from "app/occurrence/occurrence.service";
+import { VehicleService } from "app/vehicle/vehicle.service";
 
 @Component({
   selector: "app-new-vehicle-cmp",
   templateUrl: "./new-vehicle.component.html",
 })
 export class NewVehicletComponent implements OnInit {
-  clienteForm: FormGroup;
-  clientId: string;
+  vehicleForm: FormGroup;
+  occurrenceForm: FormGroup;
   plataform_user: boolean = false;
+  occurrenceList: any[] = [];
+  headerRow: string[] = ["Data de entrega", "Observação", ""];
+  vehicleId: string;
 
   constructor(
     private formBuilder: FormBuilder,
-    private clientService: ClientService,
+    private vehicleService: VehicleService,
+    private occurrenceService: OccurrenceService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.clienteForm = this.formBuilder.group({
+    this.vehicleForm = this.formBuilder.group({
       name: ["", Validators.required],
-      birthDate: ["", Validators.required],
-      cpf: ["", Validators.required],
-      rg: [""],
-      qualification: [""],
-      complement: ["", Validators.required],
-      city: ["", Validators.required],
-      state: ["", Validators.required],
-      cep: ["", Validators.required],
+      purchaseDate: ["", Validators.required],
+      brand: ["", Validators.required],
+      color: ["", Validators.required],
+      plate: ["", Validators.required],
+      chassi: ["", Validators.required],
+      year: ["", Validators.required],
+    });
+
+    this.occurrenceForm = this.formBuilder.group({
+      createdAt: [""],
       observation: [""],
-      phone: ["", Validators.required],
-      phone2: [""],
-      email: ["", Validators.required],
-      streetName: ["", Validators.required],
-      plataform_user: [false, Validators.required],
-      password: [""],
-      active: [true],
+      type: ["Teste"],
     });
 
     this.route.queryParams.subscribe((queryParams) => {
       if (queryParams.id) {
-        this.clientId = queryParams.id;
-        this.loadClientData(this.clientId);
+        this.vehicleId = queryParams.id;
+        this.loadVehicle(this.vehicleId);
       }
     });
-    this.onPassword(this.clienteForm.value.plataform_user);
-  }
-
-  becomeAdmin() {
-    this.onPassword(this.clienteForm.value.plataform_user);
-  }
-
-  onPassword(enable: boolean) {
-    if (enable === true) {
-      this.clienteForm.controls["password"].setValidators([
-        Validators.required,
-      ]);
-      this.clienteForm.controls["password"].enable();
-    } else {
-      this.clienteForm.controls["password"].disable();
-      this.clienteForm.controls["password"].clearValidators();
-    }
   }
 
   onSubmit() {
-    if (this.clienteForm.valid && !this.clientId) {
-      this.clientService.create(this.clienteForm.value as Client).subscribe();
-      this.router.navigate(["/client"]);
-    } else if (this.clienteForm.valid && this.clientId) {
-      this.onUpdateClient(this.clienteForm.value, this.clientId);
-      this.router.navigate(["/client"]);
+    if (this.vehicleForm.valid && !this.vehicleId) {
+      const vehicle = this.vehicleForm.value as VehicleDto;
+      vehicle.occurrences = this.occurrenceList as OccurrenceDto[];
+      let t = [];
+      console.log({ vehicle });
+      this.occurrenceList.forEach((occurrence) => {
+        t.push(
+          this.occurrenceService.create(occurrence as OccurrenceDto).subscribe()
+        );
+      });
+      this.vehicleService.create(this.vehicleForm.value).subscribe();
+
+      this.router.navigate(["/vehicle"]);
+    } else if (this.vehicleForm.valid && this.vehicleId) {
+      const vehicle = this.vehicleForm.value as VehicleDto;
+      vehicle.occurrences = this.occurrenceList as OccurrenceDto[];
+      this.onUpdateClient(vehicle, this.vehicleId);
+      this.router.navigate(["/vehicle"]);
     } else {
       console.log("Formulário inválido. Verifique os campos obrigatórios.");
     }
   }
 
-  loadClientData(clientId: string) {
-    this.clientService.getClientById(clientId).subscribe((client) => {
-      client.birthDate = this.formatDateToISO(new Date().toLocaleDateString());
-      this.clienteForm.patchValue(client);
-      this.onPassword(this.clienteForm.value.plataform_user);
+  onCreateOcuurence() {
+    if (this.occurrenceForm.valid && !this.vehicleId) {
+      this.occurrenceList.push(this.occurrenceForm.value);
+    } else if (this.occurrenceForm.valid && this.vehicleId) {
+      console.log("alo");
+      this.occurrenceList.push(this.occurrenceForm.value);
+    } else {
+      console.log("Formulário inválido. Verifique os campos obrigatórios.");
+    }
+  }
+
+  removeOcurrence(i: any) {
+    if (this.occurrenceList[i]._id) {
+      this.occurrenceService.delete(this.occurrenceList[i]._id).subscribe();
+    }
+    this.occurrenceList.splice(i, 1);
+  }
+
+  loadVehicle(vehicleId: string) {
+    this.vehicleService.getVehicleById(vehicleId).subscribe((vehicle) => {
+      console.log({ vehicle });
+      this.vehicleForm.patchValue(vehicle);
+      this.occurrenceList = vehicle.occurrences;
+      console.log(this.occurrenceList);
     });
   }
 
   onUpdateClient(client: any, id: string) {
-    this.clientService.update(client, id).subscribe();
-  }
-
-  formatDateToISO(dateStr: string) {
-    const [day, month, year] = dateStr.split("/");
-    return `${year}-${month}-${day}`;
+    this.vehicleService.update(client, id).subscribe();
   }
 }
