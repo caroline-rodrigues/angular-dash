@@ -1,161 +1,7 @@
-<!-- <div class="card">
-  <form
-    #f2="ngForm"
-    class="form-horizontal"
-    novalidate
-    (ngSubmit)="save2(f2.value, f2.valid)"
-  >
-    <div class="container-fluid">
-      <div class="content">
-        <legend>Cadastrar Aluguel</legend>
-        <fieldset>
-          <div class="form-group">
-            <label for="text" class="form-label col-sm-2">Required Text</label>
-            <div class="container-fluid">
-              <input
-                class="form-control"
-                type="text"
-                id="text"
-                name="text"
-                [ngModel]="typeValidation.text"
-                required
-                #text="ngModel"
-              />
-              <small
-                [hidden]="text.valid || (text.pristine && !f2.submitted)"
-                class="text-danger"
-              >
-                Text is required.
-              </small>
-            </div>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <div class="form-group">
-            <label class="form-label col-sm-2"> Email </label>
-            <div class="container-fluid">
-              <input
-                type="email"
-                class="form-control"
-                name="email"
-                [ngModel]="typeValidation.email"
-                required
-                #email="ngModel"
-                pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"
-              />
-              <small
-                [hidden]="email.valid || (email.pristine && !f2.submitted)"
-                class="text-danger"
-              >
-                Email is required and format should be <i>john@doe.com</i>.
-              </small>
-            </div>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <div class="form-group">
-            <label class="form-label col-sm-2"> Number </label>
-            <div class="container-fluid">
-              <input
-                class="form-control"
-                type="number"
-                name="number"
-                number="true"
-                [ngModel]="typeValidation.number"
-                required
-                #number="ngModel"
-              />
-            </div>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <div class="form-group">
-            <label class="form-label col-sm-2"> Url </label>
-            <div class="container-fluid">
-              <input
-                class="form-control"
-                type="text"
-                id="url"
-                required
-                pattern="https?://.+"
-                [(ngModel)]="typeValidation.url"
-                name="url"
-                #url="ngModel"
-              />
-              <small
-                [hidden]="url.valid || (url.pristine && !f2.submitted)"
-                class="text-danger"
-              >
-                Must be a valid URL!
-              </small>
-            </div>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <div class="form-group column-sizing">
-            <label class="col-sm-2 control-label"> Equal to </label>
-            <div class="col-sm-3">
-              <input
-                type="text"
-                class="form-control"
-                name="idSource"
-                [ngModel]="typeValidation.idSource"
-                placeholder="#idSource"
-                required
-                validateEqual="idDestination"
-                reverse="true"
-                #idSource="ngModel"
-              />
-              <small
-                [hidden]="
-                  idSource.valid || (idSource.pristine && !f2.submitted)
-                "
-                class="text-danger"
-              >
-                IdSource is required
-              </small>
-            </div>
-            <div class="col-sm-3">
-              <input
-                type="text"
-                class="form-control"
-                name="idDestination"
-                [ngModel]="typeValidation.idDestination"
-                placeholder="#idDestination"
-                required
-                validateEqual="idSource"
-                reverse="false"
-                #idDestination="ngModel"
-              />
-              <small
-                [hidden]="
-                  idDestination.valid ||
-                  (idDestination.pristine && !f2.submitted)
-                "
-                class="text-danger"
-              >
-                IdSource mismatch!
-              </small>
-            </div>
-          </div>
-        </fieldset>
-      </div>
-    </div>
-    <div class="footer text-center">
-      <button type="submit" class="btn btn-info btn-fill">
-        Validate Inputs
-      </button>
-    </div>
-  </form>
-</div> -->
 <div class="card">
   <div class="container-fluid">
     <div class="content">
-      <form>
+      <form [formGroup]="rentForm" (ngSubmit)="onSubmit()">
         <div class="form-row">
           <div class="form-group col-md-4">
             <label for="inputState">Id Locação</label>
@@ -163,20 +9,28 @@
           </div>
           <div class="form-group col-md-4">
             <label for="inputState">Cliente</label>
-            <select id="inputState" class="form-control">
-              <option selected>Selecione o cliete</option>
-              <option *ngFor="let client of clientList" [value]="client">
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="client"
+            >
+              <option value="" disabled selected hidden>
+                Selecione o cliente
+              </option>
+              <option *ngFor="let client of clientList" [ngValue]="client">
                 {{ client.name }}
               </option>
             </select>
           </div>
           <div class="form-group col-md-4">
-            <label for="inputPassword4">CPF</label>
+            <label for="cpf">CPF</label>
             <input
               type="text"
+              disabled
               class="form-control"
-              id="inputPassword4"
+              id="cpf"
               placeholder="000.000.000-00"
+              formControlName="cpf"
             />
           </div>
         </div>
@@ -188,9 +42,15 @@
           </div>
           <div class="form-group col-md-4">
             <label for="inputState">Veículo</label>
-            <select id="inputState" class="form-control">
-              <option selected>Selecione o veículo</option>
-              <option *ngFor="let vehicle of vehicleList" [value]="vehicle">
+            <select
+              id="inputState"
+              class="form-control"
+              formControlName="vehicle"
+            >
+              <option value="" disabled selected hidden>
+                Selecione o veículo
+              </option>
+              <option *ngFor="let vehicle of vehicleList" [ngValue]="vehicle">
                 {{ vehicle.name }}
               </option>
             </select>
@@ -200,20 +60,31 @@
             <input
               type="text"
               class="form-control"
-              maxlength="6"
+              disabled
               placeholder="XXX - 1234"
               min="1"
+              formControlName="plate"
             />
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-4">
             <label for="inputState">Data de saída</label>
-            <input type="date" class="form-control" />
+            <input
+              type="date"
+              class="form-control"
+              formControlName="startDate"
+              id="startDate"
+            />
           </div>
           <div class="form-group col-md-4">
             <label for="inputState">Hora saída</label>
-            <input type="time" class="form-control" />
+            <input
+              type="time"
+              class="form-control"
+              formControlName="exitTime"
+              id="exitTime"
+            />
           </div>
           <div class="form-group col-md-4">
             <label for="inputState">Km Saída</label>
@@ -222,17 +93,23 @@
               class="form-control"
               placeholder="Kilometragem saída"
               oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+              formControlName="outputKm"
             />
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-4">
             <label for="inputState">Data da chegada</label>
-            <input type="date" class="form-control" />
+            <input type="date" class="form-control" formControlName="endDate" />
           </div>
           <div class="form-group col-md-4">
             <label for="inputState">Hora chegada</label>
-            <input type="time" class="form-control" />
+            <input
+              type="time"
+              class="form-control"
+              formControlName="arrivalTime"
+              id="arrivalTime"
+            />
           </div>
           <div class="form-group col-md-4">
             <label for="inputState">Km chegada</label>
@@ -241,29 +118,61 @@
               class="form-control"
               placeholder="Kilometragem chegada"
               oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+              formControlName="arrivalKM"
             />
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-4">
-            <label for="inputState">Cartão</label>
-            <input type="text" class="form-control" placeholder="Cartão" />
+            <label for="card">Cartão</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Cartão"
+              formControlName="card"
+              id="card"
+            />
           </div>
           <div class="form-group col-md-4">
-            <label for="inputState">Número</label>
+            <label for="cardNumber">Número</label>
             <input
               type="text"
               class="form-control"
               placeholder="Número"
               oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+              formControlName="cardNumber"
             />
           </div>
           <div class="form-group col-md-4">
-            <label for="inputState">Cód Segurança</label>
+            <label for="securityCode">Cód Segurança</label>
             <input
               type="text"
               class="form-control"
               placeholder="Cod Segurança"
+              formControlName="securityCode"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="inputState">Validade</label>
+            <input type="date" class="form-control" />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Franquia</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="franchise"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Observação</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="aboutCard"
             />
           </div>
         </div>
@@ -275,24 +184,72 @@
               type="text"
               class="form-control"
               placeholder="Total diárias"
+              formControlName="dailyValue"
             />
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputState">Hora extra</label>
-            <input type="text" class="form-control" placeholder="Hora extra" />
-          </div>
-          <div class="form-group col-md-8">
-            <label for="inputState">Cód Segurança</label>
+            <label for="excedentKm">Km Excedente</label>
             <input
               type="text"
               class="form-control"
-              placeholder="Cod Segurança"
+              placeholder="Km excedente"
+              formControlName="excedentKm"
+              id="excedentKm"
+            />
+            <label for="otherExpenses">Outras despesas</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Outras despesas"
+              formControlName="otherExpenses"
+            />
+          </div>
+          <div class="form-group col-md-2">
+            <label for="extraHour">Hora extra</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Hora extra"
+              formControlName="extraHour"
+              id="extraHour"
+            />
+            <label for="discounts">Descontos</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Descontos"
+              formControlName="discounts"
+            />
+            <label for="totalReceivable">Total a receber</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Total a receber"
+              formControlName="totalReceivable"
+            />
+          </div>
+
+          <div class="form-group col-md-8">
+            <label for="observationSafe">Observação</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Observação"
+              style="height: 170px"
+              formControlName="aboutRent"
             />
           </div>
         </div>
-
-        <button type="submit" class="btn btn-primary">Sign in</button>
       </form>
+      <div class="form-row">
+        <div class="col-md-3" style="margin-bottom: 16px">
+          <button
+            type="submit"
+            class="btn btn-success btn-fill btn-wd"
+            (click)="onSubmit()"
+          >
+            CONFIRMAR
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
