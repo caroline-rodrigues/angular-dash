@@ -1,0 +1,14 @@
+version: '3'
+
+volumes:
+  car-rent-ui-volume:
+    external: true
+
+services:
+  car-rent:
+    image: car-rent
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - car-rent-ui-volume:/app/dist:ro
