@@ -79,7 +79,9 @@ export class NewClientComponent implements OnInit {
 
   loadClientData(clientId: string) {
     this.clientService.getClientById(clientId).subscribe((client) => {
-      client.birthDate = this.formatDateToISO(new Date().toLocaleDateString());
+      client.birthDate = this.formatDateToISO(
+        new Date(client.birthDate).toLocaleDateString()
+      );
       this.clienteForm.patchValue(client);
       this.onPassword(this.clienteForm.value.plataform_user);
     });

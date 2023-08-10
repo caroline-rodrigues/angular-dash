@@ -3,63 +3,76 @@ import { ClientService } from "app/client/client.service";
 import { VehicleService } from "app/vehicle/vehicle.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { map } from "rxjs/operators";
-
-declare interface User {
-  text?: string;
-  email?: string;
-  password?: string;
-  confirmPassword?: string;
-  number?: number;
-  url?: string;
-  idSource?: string;
-  idDestination?: string;
-}
+import { RentService } from "app/rent/rent.service";
+import { OccurrenceService } from "app/occurrence/occurrence.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-new-rent-cmp",
   templateUrl: "./new-rent.component.html",
 })
 export class NewRentComponent implements OnInit {
-  public typeValidation: User;
   clientList: any[] = [];
   vehicleList: any[] = [];
   rentForm: FormGroup;
-  selectedClient: any;
+  rentDto: RentDto;
+  occurrenceForm: FormGroup;
+  occurrenceList: any[] = [];
+  rentId: string;
+  headerRow: string[] = ["Data de entrega", "Tipo de ocorrência", "Observação"];
+  occurrenceType: string[] = ["TESTE", "TESTE2", "TESTE3", "TESTE4", "TESTE5"];
 
   constructor(
     private clientService: ClientService,
     private vehicleService: VehicleService,
-    private formBuilder: FormBuilder
+    private rentService: RentService,
+    private occurrenceService: OccurrenceService,
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.createRentForm();
     this.findAllClients();
     this.findAllVehicles();
-    // this.rentForm = this.formBuilder.group({
-    //   cpf: [""],
-    //   plate: [""],
-    //   email: [""],
-    //   idSource: [""],
-    //   idDestination: [""],
-    //   url: [""],
-    // });
   }
 
   createRentForm() {
     this.rentForm = this.formBuilder.group({
-      client: [""],
+      clientId: ["", Validators.required],
       cpf: ["", Validators.required],
       plate: ["", Validators.required],
-      vehicle: [""],
-      email: ["", Validators.email],
-      idSource: [""],
+      vehicleId: ["", Validators.required],
       idDestination: [""],
-      url: [""],
-      // ... other form fields ...
+      startDate: [""],
+      exitTime: [""],
+      outputKm: [""],
+      endDate: [""],
+      arrivalTime: [""],
+      arrivalKM: [""],
+      card: [""],
+      cardNumber: [""],
+      securityCode: [""],
+      validity: [""],
+      franchise: [""],
+      aboutCard: [""],
+      dailyValue: [""],
+      excedentKm: [""],
+      otherExpenses: [""],
+      extraHour: [""],
+      discounts: [""],
+      totalReceivable: [""],
+      aboutRent: [""],
     });
 
-    this.rentForm.get("client").valueChanges.subscribe((selectedClient) => {
+    this.occurrenceForm = this.formBuilder.group({
+      createdAt: [""],
+      observation: [""],
+      type: [""],
+    });
+
+    this.rentForm.get("clientId").valueChanges.subscribe((selectedClient) => {
       console.log(selectedClient);
       if (selectedClient && selectedClient.cpf) {
         this.rentForm
@@ -69,7 +82,7 @@ export class NewRentComponent implements OnInit {
         this.rentForm.get("cpf").setValue("", { emitEvent: false });
       }
     });
-    this.rentForm.get("vehicle").valueChanges.subscribe((selectedVehicle) => {
+    this.rentForm.get("vehicleId").valueChanges.subscribe((selectedVehicle) => {
       console.log(selectedVehicle);
       if (selectedVehicle && selectedVehicle.plate) {
         this.rentForm
@@ -82,9 +95,21 @@ export class NewRentComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.rentForm.valid) {
-      // Do something with the form data
-      console.log(this.rentForm.value);
+    if (this.rentForm.valid && !this.rentId) {
+      const rent = (this.rentDto = this.rentForm.value as RentDto);
+      rent.occurrences = this.rentDto.occurrences as OccurrenceDto[];
+      this.occurrenceList.forEach((occurrence) => {
+        this.occurrenceService.create(occurrence as OccurrenceDto).subscribe();
+      });
+      console.log(this.rentDto);
+      this.rentService.create(this.rentDto).subscribe();
+    } else if (this.rentForm.valid && this.rentId) {
+      const vehicle = this.rentForm.value as VehicleDto;
+      vehicle.occurrences = this.occurrenceList as OccurrenceDto[];
+      // this.onUpdateRent(vehicle, this.rentId);
+      this.router.navigate(["/rent"]);
+    } else {
+      console.log("Formulário inválido. Verifique os campos obrigatórios.");
     }
   }
 
@@ -107,8 +132,25 @@ export class NewRentComponent implements OnInit {
       });
   }
 
-  onClientSelect(valorSelecionado: any) {
-    console.log({ valorSelecionado });
-    this.selectedClient = valorSelecionado;
+  formatDateToISO(dateStr: string) {
+    const [day, month, year] = dateStr.split("/");
+    return `${year}-${month}-${day}`;
+  }
+
+  onCreateOcuurence() {
+    if (this.occurrenceForm.valid && !this.rentId) {
+      this.occurrenceList.push(this.occurrenceForm.value);
+    } else if (this.occurrenceForm.valid && this.rentId) {
+      this.occurrenceList.push(this.occurrenceForm.value);
+    } else {
+      console.log("Formulário inválido. Verifique os campos obrigatórios.");
+    }
+  }
+
+  removeOcurrence(i: any) {
+    if (this.occurrenceList[i]._id) {
+      this.occurrenceService.delete(this.occurrenceList[i]._id).subscribe();
+    }
+    this.occurrenceList.splice(i, 1);
   }
 }

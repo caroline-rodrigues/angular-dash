@@ -38,7 +38,7 @@ export class NewVehicletComponent implements OnInit {
     this.occurrenceForm = this.formBuilder.group({
       createdAt: [""],
       observation: [""],
-      type: ["Teste"],
+      type: ["MANUNTENÇÃO"],
     });
 
     this.route.queryParams.subscribe((queryParams) => {
@@ -56,9 +56,7 @@ export class NewVehicletComponent implements OnInit {
       let t = [];
       console.log({ vehicle });
       this.occurrenceList.forEach((occurrence) => {
-        t.push(
-          this.occurrenceService.create(occurrence as OccurrenceDto).subscribe()
-        );
+        this.occurrenceService.create(occurrence as OccurrenceDto).subscribe();
       });
       this.vehicleService.create(this.vehicleForm.value).subscribe();
 
@@ -77,7 +75,6 @@ export class NewVehicletComponent implements OnInit {
     if (this.occurrenceForm.valid && !this.vehicleId) {
       this.occurrenceList.push(this.occurrenceForm.value);
     } else if (this.occurrenceForm.valid && this.vehicleId) {
-      console.log("alo");
       this.occurrenceList.push(this.occurrenceForm.value);
     } else {
       console.log("Formulário inválido. Verifique os campos obrigatórios.");

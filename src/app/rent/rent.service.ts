@@ -16,4 +16,8 @@ export class RentService {
     return this.http.delete<any>(`${environment.api}/rent/delete/${id}
     `);
   }
+
+  create(rent: RentDto) {
+    return this.http.post<any>(`${environment.api}/rent/create`, rent);
+  }
 }
