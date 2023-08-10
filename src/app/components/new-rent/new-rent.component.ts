@@ -96,17 +96,15 @@ export class NewRentComponent implements OnInit {
 
   onSubmit() {
     if (this.rentForm.valid && !this.rentId) {
-      const rent = (this.rentDto = this.rentForm.value as RentDto);
-      rent.occurrences = this.rentDto.occurrences as OccurrenceDto[];
+      const rent = this.rentForm.value as RentDto;
+      rent.occurrences = this.occurrenceList as OccurrenceDto[];
       this.occurrenceList.forEach((occurrence) => {
         this.occurrenceService.create(occurrence as OccurrenceDto).subscribe();
       });
-      console.log(this.rentDto);
-      this.rentService.create(this.rentDto).subscribe();
+      this.rentService.create(rent).subscribe();
     } else if (this.rentForm.valid && this.rentId) {
-      const vehicle = this.rentForm.value as VehicleDto;
-      vehicle.occurrences = this.occurrenceList as OccurrenceDto[];
-      // this.onUpdateRent(vehicle, this.rentId);
+      const rent = this.rentForm.value as RentDto;
+      rent.occurrences = this.occurrenceList as OccurrenceDto[];
       this.router.navigate(["/rent"]);
     } else {
       console.log("Formulário inválido. Verifique os campos obrigatórios.");
