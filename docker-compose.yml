@@ -6,9 +6,9 @@ volumes:
 
 services:
   car-rent:
-    image: car-rent
+    image: car-rent-ui
     build:
       context: .
       dockerfile: ./Dockerfile
     volumes:
-      - car-rent-ui-volume:/app/dist:ro
+      - car-rent-ui-volume:/app/dist:rw  
