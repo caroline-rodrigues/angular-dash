@@ -90,10 +90,8 @@ export class NewVehicletComponent implements OnInit {
 
   loadVehicle(vehicleId: string) {
     this.vehicleService.getVehicleById(vehicleId).subscribe((vehicle) => {
-      console.log({ vehicle });
       this.vehicleForm.patchValue(vehicle);
       this.occurrenceList = vehicle.occurrences;
-      console.log(this.occurrenceList);
     });
   }
 

@@ -20,4 +20,8 @@ export class RentService {
   create(rent: RentDto) {
     return this.http.post<any>(`${environment.api}/rent/create`, rent);
   }
+
+  getById(id: string) {
+    return this.http.get<any>(`${environment.api}/rent/findById/${id}`);
+  }
 }

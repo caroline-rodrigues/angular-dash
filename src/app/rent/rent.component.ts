@@ -3,6 +3,7 @@ import { Rent } from "./rent";
 import { RentService } from "./rent.service";
 import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
 import { Subject } from "rxjs";
+import { Router } from "@angular/router";
 
 declare interface TableData {
   headerRow: string[];
@@ -54,7 +55,7 @@ export class RentComponent implements OnInit {
 
   private searchQueryChanged = new Subject<string>();
 
-  constructor(private rentService: RentService) {}
+  constructor(private rentService: RentService, private router: Router) {}
 
   ngOnInit() {
     this.findAllRent();
@@ -140,5 +141,11 @@ export class RentComponent implements OnInit {
       this.rentList.splice(index, 1);
       this.findAllRent();
     }
+  }
+
+  editRent(rentId: string): void {
+    this.router.navigate(["/components/new-rent"], {
+      queryParams: { id: rentId },
+    });
   }
 }

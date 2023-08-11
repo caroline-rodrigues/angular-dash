@@ -12,6 +12,8 @@ import { ActivatedRoute, Router } from "@angular/router";
   templateUrl: "./new-rent.component.html",
 })
 export class NewRentComponent implements OnInit {
+  clientIdForm: any = null;
+  vehicleIdTForm: string = "";
   clientList: any[] = [];
   vehicleList: any[] = [];
   rentForm: FormGroup;
@@ -34,6 +36,12 @@ export class NewRentComponent implements OnInit {
 
   ngOnInit() {
     this.createRentForm();
+    this.route.queryParams.subscribe((queryParams) => {
+      if (queryParams.id) {
+        this.rentId = queryParams.id;
+        this.loadRent(this.rentId);
+      }
+    });
     this.findAllClients();
     this.findAllVehicles();
   }
@@ -44,7 +52,6 @@ export class NewRentComponent implements OnInit {
       cpf: ["", Validators.required],
       plate: ["", Validators.required],
       vehicleId: ["", Validators.required],
-      idDestination: [""],
       startDate: [""],
       exitTime: [""],
       outputKm: [""],
@@ -150,5 +157,20 @@ export class NewRentComponent implements OnInit {
       this.occurrenceService.delete(this.occurrenceList[i]._id).subscribe();
     }
     this.occurrenceList.splice(i, 1);
+  }
+
+  loadRent(rentId: string) {
+    this.rentService.getById(rentId).subscribe((rent) => {
+      this.rentForm.patchValue(rent);
+      this.clientIdForm = rent.clientId;
+      this.clientService.getClientById(rent.clientId).subscribe(
+        (client) => this.rentForm.get("clientId").setValue(client.name)
+        // (this.rentForm.value.clientId = client.name)
+      );
+      this.occurrenceList = rent.occurrences;
+    });
+
+    // this.rentForm.get("clientId").setValue(client, { emitEvent: false });
+    // this.rentForm.get("cpf").setValue(client.cpf, { emitEvent: false });
   }
 }
