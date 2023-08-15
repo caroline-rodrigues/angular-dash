@@ -1,14 +1,10 @@
 version: '3'
 
-volumes:
-  car-rent-ui-volume:
-    external: true
-
 services:
   car-rent:
     image: car-rent-ui
     build:
       context: .
       dockerfile: ./Dockerfile
-    volumes:
-      - car-rent-ui-volume:/app/dist:rw  
+    ports:
+      - "8080:80"
