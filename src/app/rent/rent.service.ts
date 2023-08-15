@@ -24,4 +24,8 @@ export class RentService {
   getById(id: string) {
     return this.http.get<any>(`${environment.api}/rent/findById/${id}`);
   }
+
+  update(rent: any, id: string) {
+    return this.http.put<any>(`${environment.api}/rent/update/${id}`, rent);
+  }
 }

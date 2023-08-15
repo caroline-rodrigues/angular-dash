@@ -12,8 +12,6 @@ import { ActivatedRoute, Router } from "@angular/router";
   templateUrl: "./new-rent.component.html",
 })
 export class NewRentComponent implements OnInit {
-  clientIdForm: any = null;
-  vehicleIdTForm: string = "";
   clientList: any[] = [];
   vehicleList: any[] = [];
   rentForm: FormGroup;
@@ -23,6 +21,7 @@ export class NewRentComponent implements OnInit {
   rentId: string;
   headerRow: string[] = ["Data de entrega", "Tipo de ocorrência", "Observação"];
   occurrenceType: string[] = ["TESTE", "TESTE2", "TESTE3", "TESTE4", "TESTE5"];
+  vehicleToUpdate: any;
 
   constructor(
     private clientService: ClientService,
@@ -42,8 +41,8 @@ export class NewRentComponent implements OnInit {
         this.loadRent(this.rentId);
       }
     });
-    this.findAllClients();
     this.findAllVehicles();
+    this.findAllClients();
   }
 
   createRentForm() {
@@ -80,7 +79,6 @@ export class NewRentComponent implements OnInit {
     });
 
     this.rentForm.get("clientId").valueChanges.subscribe((selectedClient) => {
-      console.log(selectedClient);
       if (selectedClient && selectedClient.cpf) {
         this.rentForm
           .get("cpf")
@@ -90,7 +88,6 @@ export class NewRentComponent implements OnInit {
       }
     });
     this.rentForm.get("vehicleId").valueChanges.subscribe((selectedVehicle) => {
-      console.log(selectedVehicle);
       if (selectedVehicle && selectedVehicle.plate) {
         this.rentForm
           .get("plate")
@@ -109,9 +106,11 @@ export class NewRentComponent implements OnInit {
         this.occurrenceService.create(occurrence as OccurrenceDto).subscribe();
       });
       this.rentService.create(rent).subscribe();
+      this.router.navigate(["/rent"]);
     } else if (this.rentForm.valid && this.rentId) {
       const rent = this.rentForm.value as RentDto;
       rent.occurrences = this.occurrenceList as OccurrenceDto[];
+      this.onUpdateRent(rent, this.rentId);
       this.router.navigate(["/rent"]);
     } else {
       console.log("Formulário inválido. Verifique os campos obrigatórios.");
@@ -123,8 +122,21 @@ export class NewRentComponent implements OnInit {
       .getAll()
       .pipe(map((clientResponse) => clientResponse.results))
       .subscribe((client) => {
-        this.clientList = client;
-        console.log(this.clientList);
+        const clientToUpdateForm = this.rentForm.get("clientId").value;
+        if (clientToUpdateForm !== "") {
+          const filteredClients = client.filter(
+            (v) => v._id !== clientToUpdateForm
+          );
+          this.clientService
+            .getClientById(clientToUpdateForm)
+            .subscribe((clientResult) => {
+              this.clientList.unshift(clientResult);
+              this.rentForm.get("cpf").setValue(clientResult.cpf);
+              this.clientList = [clientResult, ...filteredClients];
+            });
+        } else {
+          this.clientList = client;
+        }
       });
   }
   findAllVehicles() {
@@ -132,8 +144,21 @@ export class NewRentComponent implements OnInit {
       .getAll()
       .pipe(map((vehicletResponse) => vehicletResponse.results))
       .subscribe((vehicle) => {
-        this.vehicleList = vehicle;
-        console.log(vehicle);
+        const vehicleToUpdateForm = this.rentForm.get("vehicleId").value;
+        if (vehicleToUpdateForm !== "") {
+          const filteredVehicles = vehicle.filter(
+            (v) => v._id !== vehicleToUpdateForm
+          );
+          this.vehicleService
+            .getVehicleById(vehicleToUpdateForm)
+            .subscribe((vehicleResult) => {
+              this.vehicleList.unshift(vehicleResult);
+              this.rentForm.get("plate").setValue(vehicleResult.plate);
+              this.vehicleList = [vehicleResult, ...filteredVehicles];
+            });
+        } else {
+          this.vehicleList = vehicle;
+        }
       });
   }
 
@@ -162,15 +187,28 @@ export class NewRentComponent implements OnInit {
   loadRent(rentId: string) {
     this.rentService.getById(rentId).subscribe((rent) => {
       this.rentForm.patchValue(rent);
-      this.clientIdForm = rent.clientId;
-      this.clientService.getClientById(rent.clientId).subscribe(
-        (client) => this.rentForm.get("clientId").setValue(client.name)
-        // (this.rentForm.value.clientId = client.name)
-      );
+      this.rentForm
+        .get("startDate")
+        .setValue(
+          this.formatDateToISO(new Date(rent.startDate).toLocaleDateString())
+        );
+      this.rentForm
+        .get("endDate")
+        .setValue(
+          this.formatDateToISO(new Date(rent.endDate).toLocaleDateString())
+        );
+      this.rentForm
+        .get("validity")
+        .setValue(
+          this.formatDateToISO(new Date(rent.validity).toLocaleDateString())
+        );
       this.occurrenceList = rent.occurrences;
+      this.findAllVehicles();
+      this.findAllClients();
     });
+  }
 
-    // this.rentForm.get("clientId").setValue(client, { emitEvent: false });
-    // this.rentForm.get("cpf").setValue(client.cpf, { emitEvent: false });
+  onUpdateRent(rent: any, id: string) {
+    this.rentService.update(rent, id).subscribe();
   }
 }

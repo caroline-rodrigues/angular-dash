@@ -118,7 +118,6 @@ export class RentComponent implements OnInit {
   delete(id: string) {
     this.rentService.delete(id).subscribe(() => {
       this.onDeleteRent.emit(id);
-      console.log("delete", id);
     });
   }
 
