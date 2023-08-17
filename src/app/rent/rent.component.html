@@ -19,9 +19,10 @@
                   type="text"
                   value=""
                   class="form-control w-100"
-                  placeholder="Search..."
+                  placeholder="Buscar..."
                   [(ngModel)]="searchQuery"
                   name="search"
+                  (input)="filterItems()"
                 />
                 <span class="input-group-addon">
                   <i class="fa fa-search"></i>
@@ -30,7 +31,7 @@
             </form>
           </div>
           <div class="content table-responsive table-full-width">
-            <table class="table" (onDeleteRent)="onDeletedRent($event)">
+            <table class="table">
               <thead>
                 <tr>
                   <th class="text-center">{{ headerRow[0] }}</th>
@@ -63,7 +64,7 @@
                       rel="tooltip"
                       title="Remove"
                       class="btn btn-danger btn-simple btn-xs"
-                      (click)="delete(row?.rent?._id)"
+                      (click)="onDeletedRent(row?.rent?._id)"
                     >
                       <i class="fa fa-times"></i>
                     </button>

@@ -36,7 +36,7 @@ export class RentComponent implements OnInit {
   pagesToShow: number = 3;
   searchQuery: string;
   totalPages: number;
-  filteredRows: Row[];
+  filteredRows: any[];
   totalPagesArray: any[] = [];
   rows: Row[];
   rentList: any[] = [];
@@ -50,57 +50,46 @@ export class RentComponent implements OnInit {
     "Ações",
   ];
 
-  @Output()
-  onDeleteRent = new EventEmitter();
-
-  private searchQueryChanged = new Subject<string>();
-
   constructor(private rentService: RentService, private router: Router) {}
 
   ngOnInit() {
-    this.findAllRent();
-    this.searchQueryChanged
-      .pipe(debounceTime(300), distinctUntilChanged())
-      .subscribe((query) => {
-        this.search(query);
-      });
-
-    for (let i = 1; i <= 4; i++) {
-      this.totalPagesArray.push(i);
-    }
+    this.getAll(false);
   }
+
   paginate(data: any[]): any[] {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     return data.slice(startIndex, endIndex);
   }
 
-  search(query: string): void {
-    if (query) {
-      this.currentPage = 1;
-      this.filteredRows = this.rentList.filter((row) => {
-        return (
-          row.client.name.toLowerCase().includes(query.toLowerCase()) ||
-          row.client.cpf.includes(query.toLowerCase()) ||
-          row.rent._id.includes(query.toLowerCase()) ||
-          row.rent.endDate.includes(query.toLowerCase()) ||
-          row.vehicle.brand.toLowerCase().includes(query.toLowerCase()) ||
-          row.rent.situation.toLowerCase().includes(query.toLowerCase())
-        );
-      });
-    } else {
-      this.filteredRows = this.paginate(this.rentList);
-    }
-  }
+  // findAllRent() {
+  //   this.rentService
+  //     .getAll()
+  //     .pipe(map((rentResponse) => rentResponse.filteredEntityResults))
+  //     .subscribe((rent) => {
+  //       this.rentList = rent;
+  //       this.filteredRows = this.paginate(this.rentList);
+  //       this.totalPages = Math.ceil(this.rentList.length / this.itemsPerPage);
+  //     });
+  // }
 
-  findAllRent() {
+  getAll(event: boolean) {
     this.rentService
       .getAll()
       .pipe(map((rentResponse) => rentResponse.filteredEntityResults))
-      .subscribe((rent) => {
-        this.rentList = rent;
-        this.filteredRows = this.paginate(this.rentList);
+      .subscribe((rentList) => {
+        this.rentList = rentList;
         this.totalPages = Math.ceil(this.rentList.length / this.itemsPerPage);
+
+        if (event && this.filteredRows.length === 1 && this.currentPage !== 1) {
+          this.currentPage = this.totalPages;
+        }
+
+        this.filteredRows = this.paginate(this.rentList);
+        this.totalPagesArray = this.calculateTotalPagesArray(
+          this.currentPage,
+          this.totalPages
+        );
       });
   }
 
@@ -115,12 +104,6 @@ export class RentComponent implements OnInit {
     return pagesArray;
   }
 
-  delete(id: string) {
-    this.rentService.delete(id).subscribe(() => {
-      this.onDeleteRent.emit(id);
-    });
-  }
-
   changePage(page: number): void {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
@@ -132,19 +115,29 @@ export class RentComponent implements OnInit {
     }
   }
 
-  onDeletedRent(id: string) {
-    if (id) {
-      const index = this.rentList.findIndex(
-        (rentItem) => rentItem.rent._id == id
-      );
-      this.rentList.splice(index, 1);
-      this.findAllRent();
-    }
+  onDeletedRent(rentId: string) {
+    this.rentService.delete(rentId).subscribe(() => {
+      this.getAll(true);
+    });
   }
 
   editRent(rentId: string): void {
     this.router.navigate(["/components/new-rent"], {
       queryParams: { id: rentId },
+    });
+  }
+
+  filterItems() {
+    console.log(this.searchQuery);
+    this.filteredRows = this.paginate(this.rentList).filter((rent) => {
+      const { _id, endDate } = rent.rent;
+      const { name, cpf } = rent.client;
+      const contentString = `${_id}${name}${cpf}${endDate}`;
+      console.log(contentString);
+      return contentString
+        .toString()
+        .toLowerCase()
+        .includes(this.searchQuery.toLowerCase());
     });
   }
 }
