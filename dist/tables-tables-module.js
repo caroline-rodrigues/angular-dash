@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content\">\n    <div class=\"container-fluid\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <h4 class=\"title\">DataTables.net</h4>\n                <p class=\"category\">A powerful jQuery plugin handcrafted by our friends from <a href=\"https://datatables.net/\" target=\"_blank\">dataTables.net</a>. It is a highly flexible tool, based upon the foundations of progressive enhancement and will add advanced interaction controls to any HTML table. Please check out the <a href=\"https://datatables.net/manual/index\" target=\"_blank\">full documentation.</a></p>\n\n                <br>\n                <div class=\"card\">\n                    <div class=\"content\">\n                        <h4 class=\"title\">DataTables.net</h4>\n                        <div class=\"toolbar\">\n                            <!--        Here you can write extra buttons/actions for the toolbar              -->\n                        </div>\n                        <div class=\"fresh-datatables\">\n                            <table id=\"datatables\" class=\"table table-striped table-no-bordered table-hover\" cellspacing=\"0\" width=\"100%\" style=\"width:100%\">\n                                <thead>\n                                    <tr>\n                                      <th>{{ dataTable.headerRow[0] }}</th>\n                                      <th>{{ dataTable.headerRow[1] }}</th>\n                                      <th>{{ dataTable.headerRow[2] }}</th>\n                                      <th>{{ dataTable.headerRow[3] }}</th>\n                                      <th>{{ dataTable.headerRow[4] }}</th>\n                                      <th class=\"disabled-sorting text-right\">{{ dataTable.headerRow[5] }}</th>\n                                    </tr>\n                                </thead>\n                                <tfoot>\n                                    <tr>\n                                      <th>{{ dataTable.footerRow[0] }}</th>\n                                      <th>{{ dataTable.footerRow[1] }}</th>\n                                      <th>{{ dataTable.footerRow[2] }}</th>\n                                      <th>{{ dataTable.footerRow[3] }}</th>\n                                      <th>{{ dataTable.footerRow[4] }}</th>\n                                      <th class=\"text-right\">{{ dataTable.footerRow[5] }}</th>\n                                    </tr>\n                                </tfoot>\n                                <tbody>\n                                    <tr *ngFor=\"let row of dataTable.dataRows\">\n                                        <td>{{row[0]}}</td>\n                                        <td>{{row[1]}}</td>\n                                        <td>{{row[2]}}</td>\n                                        <td>{{row[3]}}</td>\n                                        <td>{{row[4]}}</td>\n                                        <td class=\"text-right\">\n                                            <a class=\"btn btn-simple btn-info btn-icon like\"><i class=\"fa fa-heart\"></i></a>\n                                            <a class=\"btn btn-simple btn-warning btn-icon edit\"><i class=\"fa fa-edit\"></i></a>\n                                            <a class=\"btn btn-simple btn-danger btn-icon remove\"><i class=\"fa fa-times\"></i></a>\n                                        </td>\n                                    </tr>\n                                </tbody>\n                            </table>\n                        </div>\n                    </div>\n                    <!-- end content-->\n                </div>\n                <!--  end card  -->\n            </div>\n            <!-- end col-md-12 -->\n        </div>\n        <!-- end row -->\n    </div>\n</div>\n"
+module.exports = "<div class=\"main-content\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <h4 class=\"title\">DataTables.net</h4>\n        <p class=\"category\">\n          A powerful jQuery plugin handcrafted by our friends from\n          <a href=\"https://datatables.net/\" target=\"_blank\">dataTables.net</a>.\n          It is a highly flexible tool, based upon the foundations of\n          progressive enhancement and will add advanced interaction controls to\n          any HTML table. Please check out the\n          <a href=\"https://datatables.net/manual/index\" target=\"_blank\"\n            >full documentation.</a\n          >\n        </p>\n\n        <br />\n        <div class=\"card\">\n          <div class=\"content\">\n            <h4 class=\"title\">DataTables.net</h4>\n            <div class=\"toolbar\">\n              <!--        Here you can write extra buttons/actions for the toolbar              -->\n            </div>\n            <div class=\"fresh-datatables\">\n              <table\n                id=\"datatables\"\n                class=\"table table-striped table-no-bordered table-hover\"\n                cellspacing=\"0\"\n                width=\"100%\"\n                style=\"width: 100%\"\n              >\n                <thead>\n                  <tr>\n                    <th>{{ dataTable.headerRow[0] }}</th>\n                    <th>{{ dataTable.headerRow[1] }}</th>\n                    <th>{{ dataTable.headerRow[2] }}</th>\n                    <th>{{ dataTable.headerRow[3] }}</th>\n                    <th>{{ dataTable.headerRow[4] }}</th>\n                    <th class=\"disabled-sorting text-right\">\n                      {{ dataTable.headerRow[5] }}\n                    </th>\n                  </tr>\n                </thead>\n                <tfoot>\n                  <tr>\n                    <th>{{ dataTable.footerRow[0] }}</th>\n                    <th>{{ dataTable.footerRow[1] }}</th>\n                    <th>{{ dataTable.footerRow[2] }}</th>\n                    <th>{{ dataTable.footerRow[3] }}</th>\n                    <th>{{ dataTable.footerRow[4] }}</th>\n                    <th class=\"text-right\">{{ dataTable.footerRow[5] }}</th>\n                  </tr>\n                </tfoot>\n                <tbody>\n                  <tr *ngFor=\"let row of dataTable.dataRows\">\n                    <td>{{ row[0] }}</td>\n                    <td>{{ row[1] }}</td>\n                    <td>{{ row[2] }}</td>\n                    <td>{{ row[3] }}</td>\n                    <td>{{ row[4] }}</td>\n                    <td class=\"text-right\">\n                      <a class=\"btn btn-simple btn-info btn-icon like\"\n                        ><i class=\"fa fa-heart\"></i\n                      ></a>\n                      <a class=\"btn btn-simple btn-warning btn-icon edit\"\n                        ><i class=\"fa fa-edit\"></i\n                      ></a>\n                      <a class=\"btn btn-simple btn-danger btn-icon remove\"\n                        ><i class=\"fa fa-times\"></i\n                      ></a>\n                    </td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n          </div>\n          <!-- end content-->\n        </div>\n        <!--  end card  -->\n      </div>\n      <!-- end col-md-12 -->\n    </div>\n    <!-- end row -->\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -34,85 +34,273 @@ var DataTableComponent = /** @class */ (function () {
     }
     DataTableComponent.prototype.ngOnInit = function () {
         this.dataTable = {
-            headerRow: ['Name', 'Position', 'Office', 'Age', 'Date', 'Actions'],
-            footerRow: ['Name', 'Position', 'Office', 'Age', 'Start Date', 'Actions'],
+            headerRow: ["Name", "Position", "Office", "Age", "Date", "Actions"],
+            footerRow: ["Name", "Position", "Office", "Age", "Start Date", "Actions"],
             dataRows: [
-                ['Airi Satou', 'Andrew Mike', 'Develop', '2013', '99,225', ''],
-                ['Angelica Ramos', 'John Doe', 'Design', '2012', '89,241', 'btn-round'],
-                ['Ashton Cox', 'Alex Mike', 'Design', '2010', '92,144', 'btn-simple'],
-                ['Bradley Greer', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Brenden Wagner', 'Paul Dickens', 'Communication', '2015', '69,201', ''],
-                ['Brielle Williamson', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Caesar Vance', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Cedric Kelly', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Charde Marshall', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Colleen Hurst', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Dai Rios', 'Andrew Mike', 'Develop', '2013', '99,225', ''],
-                ['Doris Wilder', 'John Doe', 'Design', '2012', '89,241', 'btn-round'],
-                ['Fiona Green', 'Alex Mike', 'Design', '2010', '92,144', 'btn-simple'],
-                ['Garrett Winters', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Gavin Cortez', 'Paul Dickens', 'Communication', '2015', '69,201', ''],
-                ['Gavin Joyce', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Gloria Little', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Haley Kennedy', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Herrod Chandler', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Hope Fuentes', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Howard Hatfield', 'Andrew Mike', 'Develop', '2013', '99,225', ''],
-                ['Jena Gaines', 'John Doe', 'Design', '2012', '89,241', 'btn-round'],
-                ['Jenette Caldwell', 'Alex Mike', 'Design', '2010', '92,144', 'btn-simple'],
-                ['Jennifer Chang', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Martena Mccray', 'Paul Dickens', 'Communication', '2015', '69,201', ''],
-                ['Michael Silva', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Michelle House', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Paul Byrd', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Prescott Bartlett', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Quinn Flynn', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Rhona Davidson', 'Andrew Mike', 'Develop', '2013', '99,225', ''],
-                ['Shou Itou', 'John Doe', 'Design', '2012', '89,241', 'btn-round'],
-                ['Sonya Frost', 'Alex Mike', 'Design', '2010', '92,144', 'btn-simple'],
-                ['Suki Burks', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Tatyana Fitzpatrick', 'Paul Dickens', 'Communication', '2015', '69,201', ''],
-                ['Tiger Nixon', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Timothy Mooney', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Unity Butler', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Vivian Harrell', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round'],
-                ['Yuri Berry', 'Mike Monday', 'Marketing', '2013', '49,990', 'btn-round']
-            ]
+                ["Airi Satou", "Andrew Mike", "Develop", "2013", "99,225", ""],
+                ["Angelica Ramos", "John Doe", "Design", "2012", "89,241", "btn-round"],
+                ["Ashton Cox", "Alex Mike", "Design", "2010", "92,144", "btn-simple"],
+                [
+                    "Bradley Greer",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Brenden Wagner",
+                    "Paul Dickens",
+                    "Communication",
+                    "2015",
+                    "69,201",
+                    "",
+                ],
+                [
+                    "Brielle Williamson",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Caesar Vance",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Cedric Kelly",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Charde Marshall",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Colleen Hurst",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                ["Dai Rios", "Andrew Mike", "Develop", "2013", "99,225", ""],
+                ["Doris Wilder", "John Doe", "Design", "2012", "89,241", "btn-round"],
+                ["Fiona Green", "Alex Mike", "Design", "2010", "92,144", "btn-simple"],
+                [
+                    "Garrett Winters",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                ["Gavin Cortez", "Paul Dickens", "Communication", "2015", "69,201", ""],
+                [
+                    "Gavin Joyce",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Gloria Little",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Haley Kennedy",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Herrod Chandler",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Hope Fuentes",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                ["Howard Hatfield", "Andrew Mike", "Develop", "2013", "99,225", ""],
+                ["Jena Gaines", "John Doe", "Design", "2012", "89,241", "btn-round"],
+                [
+                    "Jenette Caldwell",
+                    "Alex Mike",
+                    "Design",
+                    "2010",
+                    "92,144",
+                    "btn-simple",
+                ],
+                [
+                    "Jennifer Chang",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Martena Mccray",
+                    "Paul Dickens",
+                    "Communication",
+                    "2015",
+                    "69,201",
+                    "",
+                ],
+                [
+                    "Michael Silva",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Michelle House",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Paul Byrd",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Prescott Bartlett",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Quinn Flynn",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                ["Rhona Davidson", "Andrew Mike", "Develop", "2013", "99,225", ""],
+                ["Shou Itou", "John Doe", "Design", "2012", "89,241", "btn-round"],
+                ["Sonya Frost", "Alex Mike", "Design", "2010", "92,144", "btn-simple"],
+                [
+                    "Suki Burks",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Tatyana Fitzpatrick",
+                    "Paul Dickens",
+                    "Communication",
+                    "2015",
+                    "69,201",
+                    "",
+                ],
+                [
+                    "Tiger Nixon",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Timothy Mooney",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Unity Butler",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Vivian Harrell",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+                [
+                    "Yuri Berry",
+                    "Mike Monday",
+                    "Marketing",
+                    "2013",
+                    "49,990",
+                    "btn-round",
+                ],
+            ],
         };
     };
     DataTableComponent.prototype.ngAfterViewInit = function () {
-        $('#datatables').DataTable({
-            "pagingType": "full_numbers",
-            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-            responsive: true,
-            language: {
-                search: "_INPUT_",
-                searchPlaceholder: "Search records",
-            }
-        });
-        var table = $('#datatables').DataTable();
-        // Edit record
-        table.on('click', '.edit', function () {
-            var $tr = $(this).closest('tr');
-            var data = table.row($tr).data();
-            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
-        });
-        // Delete a record
-        table.on('click', '.remove', function (e) {
-            var $tr = $(this).closest('tr');
-            table.row($tr).remove().draw();
-            e.preventDefault();
-        });
-        //Like record
-        table.on('click', '.like', function () {
-            alert('You clicked on Like button');
-        });
+        $("#datatables").DataTable({});
+        // var table = $('#datatables').DataTable();
+        // // Edit record
+        // table.on( 'click', '.edit', function () {
+        //     var $tr = $(this).closest('tr');
+        //     var data = table.row($tr).data();
+        //     alert( 'You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.' );
+        // } );
+        // // Delete a record
+        // table.on( 'click', '.remove', function (e) {
+        //     var $tr = $(this).closest('tr');
+        //     table.row($tr).remove().draw();
+        //     e.preventDefault();
+        // } );
+        // //Like record
+        // table.on( 'click', '.like', function () {
+        //     alert('You clicked on Like button');
+        // });
     };
     DataTableComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             moduleId: module.i,
-            selector: 'data-table-cmp',
-            template: __webpack_require__(/*! ./datatable.component.html */ "./src/app/tables/datatable.net/datatable.component.html")
+            selector: "data-table-cmp",
+            template: __webpack_require__(/*! ./datatable.component.html */ "./src/app/tables/datatable.net/datatable.component.html"),
         })
     ], DataTableComponent);
     return DataTableComponent;

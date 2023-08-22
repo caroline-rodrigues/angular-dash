@@ -1,0 +1,20 @@
+{
+  "short_name": "Eclipse",
+  "name": "Eclipse Locadora",
+  "icons": [
+    {
+      "src": "/src/assets/img/eclipse.png?h=764b3b0e9dd824ad1166d6febb084f1f",
+      "type": "image/png",
+      "sizes": "1708x669"
+    },
+    {
+      "src": "/src/assets/img/eclipse.png?h=764b3b0e9dd824ad1166d6febb084f1f",
+      "type": "image/png",
+      "sizes": "1708x669"
+    }
+  ],
+  "background_color": "#5f91f4",
+  "theme_color": "#5f91f4",
+  "display": "fullscreen",
+  "orientation": "portrait"
+}

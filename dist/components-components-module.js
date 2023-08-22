@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"main-content buttons-with-margin\">\n\n<div class=\"container-fluid\">\n\n    <div class=\"row\">\n        <div class=\"col-md-12\">\n            <div class=\"card\">\n                <div class=\"row\">\n                    <div class=\"col-md-6\">\n                        <div class=\"header\">\n                            <h4 class=\"title\">Colors</h4>\n                        </div>\n                        <div class=\"content\">\n                            <button class=\"btn btn-default btn-fill btn-wd\">Default</button>\n                            <button class=\"btn btn-primary btn-fill btn-wd\">Primary</button>\n                            <button class=\"btn btn-info btn-fill btn-wd\">Info</button>\n                            <button class=\"btn btn-success btn-fill btn-wd\">Success</button>\n                            <button class=\"btn btn-warning btn-fill btn-wd\">Warning</button>\n                            <button class=\"btn btn-danger btn-fill btn-wd\">Danger</button>\n                        </div>\n                    </div>\n                    <div class=\"col-md-6\">\n                        <div class=\"header\">\n                            <h4 class=\"title\">Styles</h4>\n                        </div>\n                        <div class=\"content\">\n                            <button class=\"btn btn-wd\">Default</button>\n                            <button class=\"btn btn-fill btn-wd\">Fill</button>\n                            <button class=\"btn btn-fill btn-round btn-wd\">Fill + Round</button>\n                            <button class=\"btn btn-round btn-wd\">Round</button>\n                            <button class=\"btn btn-simple btn-wd\">Simple</button>\n                        </div>\n\n                    </div>\n                </div>\n\n                <div class=\"row\">\n                    <div class=\"col-md-6\">\n                        <div class=\"header\">\n                            <h4 class=\"title\">Buttons with Label</h4>\n                        </div>\n                        <div class=\"content\">\n                            <button type=\"button\" class=\"btn btn-wd btn-success\">\n                                <span class=\"btn-label\">\n                                    <i class=\"fa fa-check\"></i>\n                                </span>\n                                Success\n                            </button>\n\n                            <button type=\"button\" class=\"btn btn-wd btn-danger\">\n                                <span class=\"btn-label\">\n                                    <i class=\"fa fa-times\"></i>\n                                </span>\n                                Danger\n                            </button>\n\n                            <button type=\"button\" class=\"btn btn-wd btn-info\">\n                                <span class=\"btn-label\">\n                                    <i class=\"fa fa-exclamation\"></i>\n                                </span>\n                                Info\n                            </button>\n\n                            <button type=\"button\" class=\"btn btn-wd btn-warning\">\n                                <span class=\"btn-label\">\n                                    <i class=\"fa fa-warning\"></i>\n                                </span>\n                                Warning\n                            </button>\n\n                            <button type=\"button\" class=\"btn btn-wd btn-default\">\n                                <span class=\"btn-label\">\n                                    <i class=\"fa fa-arrow-left\"></i>\n                                </span>\n                                Left\n                            </button>\n\n                            <button type=\"button\" class=\"btn btn-wd btn-default\">\n                                Right\n                                <span class=\"btn-label btn-label-right\">\n                                    <i class=\"fa fa-arrow-right\"></i>\n                                </span>\n                            </button>\n                        </div>\n                    </div>\n\n                    <div class=\"col-md-6\">\n                        <div class=\"header\">\n                            <h4 class=\"title\">Sizes</h4>\n                        </div>\n                        <div class=\"content\">\n                            <button class=\"btn btn-lg btn-fill\">Large</button>\n                            <button class=\"btn btn-fill\">Default</button>\n                            <button class=\"btn btn-sm btn-fill\">Small</button>\n                            <button class=\"btn btn-xs btn-fill\">X-Small</button>\n\n\n                            <br>\n                            <button class=\"btn btn-round btn-lg btn-fill\">Large</button>\n                            <button class=\"btn btn-round btn-fill\">Default</button>\n                            <button class=\"btn btn-round btn-sm btn-fill\">Small</button>\n                            <button class=\"btn btn-round btn-xs btn-fill\">X-Small</button>\n                        </div>\n                    </div>\n                </div>\n\n\n                <div class=\"row\">\n                    <div class=\"col-md-6\">\n                        <div class=\"header\">\n                            <h4 class=\"title\">Button Group</h4>\n                        </div>\n                        <div class=\"content\">\n                            <div class=\"btn-group\">\n                               <button type=\"button\" class=\"btn btn-default\">Left</button>\n                               <button type=\"button\" class=\"btn btn-default\">Middle</button>\n                               <button type=\"button\" class=\"btn btn-default\">Right</button>\n                            </div>\n\n                            <br><br>\n                            <div class=\"btn-group\">\n                               <button type=\"button\" class=\"btn btn-default\">1</button>\n                               <button type=\"button\" class=\"btn btn-default\">2</button>\n                               <button type=\"button\" class=\"btn btn-default\">3</button>\n                               <button type=\"button\" class=\"btn btn-default\">4</button>\n                            </div>\n                            <div class=\"btn-group\">\n                               <button type=\"button\" class=\"btn btn-default\">5</button>\n                               <button type=\"button\" class=\"btn btn-default\">6</button>\n                               <button type=\"button\" class=\"btn btn-default\">7</button>\n                            </div>\n                            <div class=\"btn-group\">\n                               <button type=\"button\" class=\"btn btn-default\">8</button>\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"col-md-6\">\n                        <div class=\"header\">\n                            <h4 class=\"title\">Pagination</h4>\n                        </div>\n\n                        <div class=\"content\">\n                            <ul class=\"pagination\">\n                                <!--\n                                    color-classes: \"pagination-blue\", \"pagination-azure\", \"pagination-orange\", \"pagination-red\", \"pagination-green\"\n                                -->\n                                <li><a href=\"#\">«</a></li>\n                                <li><a href=\"#\">1</a></li>\n                                <li><a href=\"#\">2</a></li>\n                                <li class=\"active\"><a href=\"#\">3</a></li>\n                                <li><a href=\"#\">4</a></li>\n                                <li><a href=\"#\">5</a></li>\n                                <li><a href=\"#\">»</a></li>\n                            </ul>\n\n                            <ul class=\"pagination pagination-no-border\">\n                                <li><a href=\"#\">«</a></li>\n                                <li><a href=\"#\">1</a></li>\n                                <li><a href=\"#\">2</a></li>\n                                <li class=\"active\"><a href=\"#\">3</a></li>\n                                <li><a href=\"#\">4</a></li>\n                                <li><a href=\"#\">5</a></li>\n                                <li><a href=\"#\">»</a></li>\n                            </ul>\n\n                        </div>\n                    </div>\n                </div>\n\n\n                <div class=\"header\">\n                    <h4 class=\"title\">Social buttons</h4>\n                </div>\n\n                <div class=\"content\">\n                    <div class=\"row\">\n                        <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                            <h4 class=\"title\"><small> Filled </small></h4>\n                            <button class=\"btn btn-social btn-fill btn-twitter\">\n                                <i class=\"fa fa-twitter\"></i> Connect with Twitter\n                            </button>\n                        </div>\n\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <h4 class=\"title\"><small>Light</small></h4>\n                            <button class=\"btn btn-social btn-round btn-twitter\">\n                                <i class=\"fa fa-twitter\"></i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <h4 class=\"title\"><small>Simple</small></h4>\n                            <button class=\"btn btn-social btn-simple btn-twitter\">\n                                <i class=\"fa fa-twitter\"></i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-3 social-buttons-demo\">\n                            <h4 class=\"title\"><small>With Text</small></h4>\n                             <button class=\"btn btn-social btn-simple btn-twitter\">\n                                 <i class=\"fa fa-twitter\"></i> Connect with Twitter\n                             </button>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-fill btn-facebook\">\n                                <i class=\"fa fa-facebook-square\"></i> Share · 2.2k\n                            </button>\n                        </div>\n\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-round btn-facebook\">\n                                <i class=\"fa fa-facebook\"> </i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-facebook\">\n                                <i class=\"fa fa-facebook-square\"> </i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-3 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-facebook\">\n                                <i class=\"fa fa-facebook-square\"></i> Share · 2.2k\n                            </button>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-fill btn-google\">\n                                <i class=\"fa fa-google-plus-square\"></i> Share on Google+\n                            </button>\n                        </div>\n\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-round btn-google\">\n                                <i class=\"fa fa-google-plus\"> </i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-google\">\n                                <i class=\"fa fa-google-plus-square\"> </i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-3 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-google\">\n                                <i class=\"fa fa-google-plus-square\"></i> Share on Google+\n                            </button>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-fill btn-linkedin\">\n                                <i class=\"fa fa-linkedin-square\"></i> Connect with Linkedin\n                            </button>\n                        </div>\n\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-round btn-linkedin\">\n                                <i class=\"fa fa-linkedin\"></i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-linkedin\">\n                                <i class=\"fa fa-linkedin-square\"></i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-3 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-linkedin\">\n                                <i class=\"fa fa-linkedin-square\"></i> Connect with Linkedin\n                            </button>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-fill btn-pinterest\">\n                                <i class=\"fa fa-pinterest\"></i> Pint it · 212\n                            </button>\n                        </div>\n\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-round btn-pinterest\">\n                                <i class=\"fa fa-pinterest\"></i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-pinterest\">\n                                <i class=\"fa fa-pinterest\"></i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-3 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-pinterest\">\n                                <i class=\"fa fa-pinterest\"></i> Pint it · 212\n                            </button>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-fill btn-youtube\">\n                                <i class=\"fa fa-youtube-play\"></i> View on Youtube\n                            </button>\n                        </div>\n\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-round btn-youtube\">\n                                <i class=\"fa fa-youtube\"> </i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-youtube\">\n                                <i class=\"fa fa-youtube\"> </i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-3 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-youtube\">\n                                <i class=\"fa fa-youtube-play\"></i> View on Youtube\n                            </button>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-fill btn-tumblr\">\n                                <i class=\"fa fa-tumblr-square\"></i> Repost\n                            </button>\n                        </div>\n\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-round btn-tumblr\">\n                                <i class=\"fa fa-tumblr\"> </i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-tumblr\">\n                                <i class=\"fa fa-tumblr-square\"> </i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-3 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-tumblr\">\n                                <i class=\"fa fa-tumblr-square\"></i> Repost\n                            </button>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-fill btn-github\">\n                                <i class=\"fa fa-github\"></i> Connect with Github\n                            </button>\n                        </div>\n\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-round btn-github\">\n                                <i class=\"fa fa-github\"></i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-github\">\n                                <i class=\"fa fa-github\"></i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-3 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-github\">\n                                <i class=\"fa fa-github\"></i> Connect with Github\n                            </button>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-fill btn-behance\">\n                                <i class=\"fa fa-behance-square\"></i> Follow us\n                            </button>\n                        </div>\n\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-round btn-behance\">\n                                <i class=\"fa fa-behance\"></i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-behance\">\n                                <i class=\"fa fa-behance\"></i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-3 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-behance\">\n                                <i class=\"fa fa-behance-square\"></i> Follow us\n                            </button>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-fill btn-dribbble\">\n                                <i class=\"fa fa-dribbble\"></i> Find us on Dribbble\n                            </button>\n                        </div>\n\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-round btn-dribbble\">\n                                <i class=\"fa fa-dribbble\"></i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-dribbble\">\n                                <i class=\"fa fa-dribbble\"></i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-3 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-dribbble\">\n                                <i class=\"fa fa-dribbble\"></i> Find us on Dribbble\n                            </button>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-fill btn-reddit\">\n                                <i class=\"fa fa-reddit\"></i> Repost · 232\n                            </button>\n                        </div>\n\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-round btn-reddit\">\n                                <i class=\"fa fa-reddit\"></i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-reddit\">\n                                <i class=\"fa fa-reddit\"></i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-3 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-reddit\">\n                                <i class=\"fa fa-reddit\"></i> Repost · 232\n                            </button>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-fill btn-stumbleupon\">\n                                <i class=\"fa fa-stumbleupon\"></i> View on StumbleUpon\n                            </button>\n                        </div>\n\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-round btn-stumbleupon\">\n                                <i class=\"fa fa-stumbleupon\"></i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-1 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-stumbleupon\">\n                                <i class=\"fa fa-stumbleupon\"></i>\n                            </button>\n                        </div>\n                        <div class=\"col-md-3 social-buttons-demo\">\n                            <button class=\"btn btn-social btn-simple btn-stumbleupon\">\n                                <i class=\"fa fa-stumbleupon\"></i> View on StumbleUpon\n                            </button>\n                        </div>\n                    </div>\n                </div>\n\n            </div>\n        </div>\n    </div>\n\n\n</div>\n</div>\n"
+module.exports = "<div class=\"main-content buttons-with-margin\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"col-md-12\">\n        <div class=\"card\">\n          <div class=\"row\">\n            <div class=\"col-md-6\">\n              <div class=\"header\">\n                <h4 class=\"title\">Colors</h4>\n              </div>\n              <div class=\"content\">\n                <button class=\"btn btn-default btn-fill btn-wd\">Default</button>\n                <button class=\"btn btn-primary btn-fill btn-wd\">Primary</button>\n                <button class=\"btn btn-info btn-fill btn-wd\">Info</button>\n                <button class=\"btn btn-success btn-fill btn-wd\">Success</button>\n                <button class=\"btn btn-warning btn-fill btn-wd\">Warning</button>\n                <button class=\"btn btn-danger btn-fill btn-wd\">Danger</button>\n              </div>\n            </div>\n            <div class=\"col-md-6\">\n              <div class=\"header\">\n                <h4 class=\"title\">Styles</h4>\n              </div>\n              <div class=\"content\">\n                <button class=\"btn btn-wd\">Default</button>\n                <button class=\"btn btn-fill btn-wd\">Fill</button>\n                <button class=\"btn btn-fill btn-round btn-wd\">\n                  Fill + Round\n                </button>\n                <button class=\"btn btn-round btn-wd\">Round</button>\n                <button class=\"btn btn-simple btn-wd\">Simple</button>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"col-md-6\">\n              <div class=\"header\">\n                <h4 class=\"title\">Buttons with Label</h4>\n              </div>\n              <div class=\"content\">\n                <button type=\"button\" class=\"btn btn-wd btn-success\">\n                  <span class=\"btn-label\">\n                    <i class=\"fa fa-check\"></i>\n                  </span>\n                  Success\n                </button>\n\n                <button type=\"button\" class=\"btn btn-wd btn-danger\">\n                  <span class=\"btn-label\">\n                    <i class=\"fa fa-times\"></i>\n                  </span>\n                  Danger\n                </button>\n\n                <button type=\"button\" class=\"btn btn-wd btn-info\">\n                  <span class=\"btn-label\">\n                    <i class=\"fa fa-exclamation\"></i>\n                  </span>\n                  Info\n                </button>\n\n                <button type=\"button\" class=\"btn btn-wd btn-warning\">\n                  <span class=\"btn-label\">\n                    <i class=\"fa fa-warning\"></i>\n                  </span>\n                  Warning\n                </button>\n\n                <button type=\"button\" class=\"btn btn-wd btn-default\">\n                  <span class=\"btn-label\">\n                    <i class=\"fa fa-arrow-left\"></i>\n                  </span>\n                  Left\n                </button>\n\n                <button type=\"button\" class=\"btn btn-wd btn-default\">\n                  Right\n                  <span class=\"btn-label btn-label-right\">\n                    <i class=\"fa fa-arrow-right\"></i>\n                  </span>\n                </button>\n              </div>\n            </div>\n\n            <div class=\"col-md-6\">\n              <div class=\"header\">\n                <h4 class=\"title\">Sizes</h4>\n              </div>\n              <div class=\"content\">\n                <button class=\"btn btn-lg btn-fill\">Large</button>\n                <button class=\"btn btn-fill\">Default</button>\n                <button class=\"btn btn-sm btn-fill\">Small</button>\n                <button class=\"btn btn-xs btn-fill\">X-Small</button>\n\n                <br />\n                <button class=\"btn btn-round btn-lg btn-fill\">Large</button>\n                <button class=\"btn btn-round btn-fill\">Default</button>\n                <button class=\"btn btn-round btn-sm btn-fill\">Small</button>\n                <button class=\"btn btn-round btn-xs btn-fill\">X-Small</button>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"row\">\n            <div class=\"col-md-6\">\n              <div class=\"header\">\n                <h4 class=\"title\">Button Group</h4>\n              </div>\n              <div class=\"content\">\n                <div class=\"btn-group\">\n                  <button type=\"button\" class=\"btn btn-default\">Left</button>\n                  <button type=\"button\" class=\"btn btn-default\">Middle</button>\n                  <button type=\"button\" class=\"btn btn-default\">Right</button>\n                </div>\n\n                <br /><br />\n                <div class=\"btn-group\">\n                  <button type=\"button\" class=\"btn btn-default\">1</button>\n                  <button type=\"button\" class=\"btn btn-default\">2</button>\n                  <button type=\"button\" class=\"btn btn-default\">3</button>\n                  <button type=\"button\" class=\"btn btn-default\">4</button>\n                </div>\n                <div class=\"btn-group\">\n                  <button type=\"button\" class=\"btn btn-default\">5</button>\n                  <button type=\"button\" class=\"btn btn-default\">6</button>\n                  <button type=\"button\" class=\"btn btn-default\">7</button>\n                </div>\n                <div class=\"btn-group\">\n                  <button type=\"button\" class=\"btn btn-default\">8</button>\n                </div>\n              </div>\n            </div>\n            <div class=\"col-md-6\">\n              <div class=\"header\">\n                <h4 class=\"title\">Pagination</h4>\n              </div>\n\n              <div class=\"content\">\n                <!-- <ul class=\"pagination\">\n                                \n                                <li><a href=\"#\">«</a></li>\n                                <li><a href=\"#\">1</a></li>\n                                <li><a href=\"#\">2</a></li>\n                                <li class=\"active\"><a href=\"#\">3</a></li>\n                                <li><a href=\"#\">4</a></li>\n                                <li><a href=\"#\">5</a></li>\n                                <li><a href=\"#\">»</a></li>\n                            </ul> -->\n\n                <ul class=\"pagination pagination-no-border\">\n                  <li><a href=\"#\">«</a></li>\n                  <li><a href=\"#\">1</a></li>\n                  <li><a href=\"#\">2</a></li>\n                  <li class=\"active\"><a href=\"#\">3</a></li>\n                  <li><a href=\"#\">4</a></li>\n                  <li><a href=\"#\">5</a></li>\n                  <li><a href=\"#\">»</a></li>\n                </ul>\n              </div>\n            </div>\n          </div>\n\n          <div class=\"header\">\n            <h4 class=\"title\">Social buttons</h4>\n          </div>\n\n          <div class=\"content\">\n            <div class=\"row\">\n              <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                <h4 class=\"title\"><small> Filled </small></h4>\n                <button class=\"btn btn-social btn-fill btn-twitter\">\n                  <i class=\"fa fa-twitter\"></i> Connect with Twitter\n                </button>\n              </div>\n\n              <div class=\"col-md-1 social-buttons-demo\">\n                <h4 class=\"title\"><small>Light</small></h4>\n                <button class=\"btn btn-social btn-round btn-twitter\">\n                  <i class=\"fa fa-twitter\"></i>\n                </button>\n              </div>\n              <div class=\"col-md-1 social-buttons-demo\">\n                <h4 class=\"title\"><small>Simple</small></h4>\n                <button class=\"btn btn-social btn-simple btn-twitter\">\n                  <i class=\"fa fa-twitter\"></i>\n                </button>\n              </div>\n              <div class=\"col-md-3 social-buttons-demo\">\n                <h4 class=\"title\"><small>With Text</small></h4>\n                <button class=\"btn btn-social btn-simple btn-twitter\">\n                  <i class=\"fa fa-twitter\"></i> Connect with Twitter\n                </button>\n              </div>\n            </div>\n            <div class=\"row\">\n              <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                <button class=\"btn btn-social btn-fill btn-facebook\">\n                  <i class=\"fa fa-facebook-square\"></i> Share · 2.2k\n                </button>\n              </div>\n\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-round btn-facebook\">\n                  <i class=\"fa fa-facebook\"> </i>\n                </button>\n              </div>\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-facebook\">\n                  <i class=\"fa fa-facebook-square\"> </i>\n                </button>\n              </div>\n              <div class=\"col-md-3 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-facebook\">\n                  <i class=\"fa fa-facebook-square\"></i> Share · 2.2k\n                </button>\n              </div>\n            </div>\n            <div class=\"row\">\n              <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                <button class=\"btn btn-social btn-fill btn-google\">\n                  <i class=\"fa fa-google-plus-square\"></i> Share on Google+\n                </button>\n              </div>\n\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-round btn-google\">\n                  <i class=\"fa fa-google-plus\"> </i>\n                </button>\n              </div>\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-google\">\n                  <i class=\"fa fa-google-plus-square\"> </i>\n                </button>\n              </div>\n              <div class=\"col-md-3 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-google\">\n                  <i class=\"fa fa-google-plus-square\"></i> Share on Google+\n                </button>\n              </div>\n            </div>\n            <div class=\"row\">\n              <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                <button class=\"btn btn-social btn-fill btn-linkedin\">\n                  <i class=\"fa fa-linkedin-square\"></i> Connect with Linkedin\n                </button>\n              </div>\n\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-round btn-linkedin\">\n                  <i class=\"fa fa-linkedin\"></i>\n                </button>\n              </div>\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-linkedin\">\n                  <i class=\"fa fa-linkedin-square\"></i>\n                </button>\n              </div>\n              <div class=\"col-md-3 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-linkedin\">\n                  <i class=\"fa fa-linkedin-square\"></i> Connect with Linkedin\n                </button>\n              </div>\n            </div>\n            <div class=\"row\">\n              <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                <button class=\"btn btn-social btn-fill btn-pinterest\">\n                  <i class=\"fa fa-pinterest\"></i> Pint it · 212\n                </button>\n              </div>\n\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-round btn-pinterest\">\n                  <i class=\"fa fa-pinterest\"></i>\n                </button>\n              </div>\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-pinterest\">\n                  <i class=\"fa fa-pinterest\"></i>\n                </button>\n              </div>\n              <div class=\"col-md-3 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-pinterest\">\n                  <i class=\"fa fa-pinterest\"></i> Pint it · 212\n                </button>\n              </div>\n            </div>\n            <div class=\"row\">\n              <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                <button class=\"btn btn-social btn-fill btn-youtube\">\n                  <i class=\"fa fa-youtube-play\"></i> View on Youtube\n                </button>\n              </div>\n\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-round btn-youtube\">\n                  <i class=\"fa fa-youtube\"> </i>\n                </button>\n              </div>\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-youtube\">\n                  <i class=\"fa fa-youtube\"> </i>\n                </button>\n              </div>\n              <div class=\"col-md-3 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-youtube\">\n                  <i class=\"fa fa-youtube-play\"></i> View on Youtube\n                </button>\n              </div>\n            </div>\n            <div class=\"row\">\n              <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                <button class=\"btn btn-social btn-fill btn-tumblr\">\n                  <i class=\"fa fa-tumblr-square\"></i> Repost\n                </button>\n              </div>\n\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-round btn-tumblr\">\n                  <i class=\"fa fa-tumblr\"> </i>\n                </button>\n              </div>\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-tumblr\">\n                  <i class=\"fa fa-tumblr-square\"> </i>\n                </button>\n              </div>\n              <div class=\"col-md-3 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-tumblr\">\n                  <i class=\"fa fa-tumblr-square\"></i> Repost\n                </button>\n              </div>\n            </div>\n            <div class=\"row\">\n              <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                <button class=\"btn btn-social btn-fill btn-github\">\n                  <i class=\"fa fa-github\"></i> Connect with Github\n                </button>\n              </div>\n\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-round btn-github\">\n                  <i class=\"fa fa-github\"></i>\n                </button>\n              </div>\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-github\">\n                  <i class=\"fa fa-github\"></i>\n                </button>\n              </div>\n              <div class=\"col-md-3 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-github\">\n                  <i class=\"fa fa-github\"></i> Connect with Github\n                </button>\n              </div>\n            </div>\n            <div class=\"row\">\n              <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                <button class=\"btn btn-social btn-fill btn-behance\">\n                  <i class=\"fa fa-behance-square\"></i> Follow us\n                </button>\n              </div>\n\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-round btn-behance\">\n                  <i class=\"fa fa-behance\"></i>\n                </button>\n              </div>\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-behance\">\n                  <i class=\"fa fa-behance\"></i>\n                </button>\n              </div>\n              <div class=\"col-md-3 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-behance\">\n                  <i class=\"fa fa-behance-square\"></i> Follow us\n                </button>\n              </div>\n            </div>\n            <div class=\"row\">\n              <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                <button class=\"btn btn-social btn-fill btn-dribbble\">\n                  <i class=\"fa fa-dribbble\"></i> Find us on Dribbble\n                </button>\n              </div>\n\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-round btn-dribbble\">\n                  <i class=\"fa fa-dribbble\"></i>\n                </button>\n              </div>\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-dribbble\">\n                  <i class=\"fa fa-dribbble\"></i>\n                </button>\n              </div>\n              <div class=\"col-md-3 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-dribbble\">\n                  <i class=\"fa fa-dribbble\"></i> Find us on Dribbble\n                </button>\n              </div>\n            </div>\n            <div class=\"row\">\n              <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                <button class=\"btn btn-social btn-fill btn-reddit\">\n                  <i class=\"fa fa-reddit\"></i> Repost · 232\n                </button>\n              </div>\n\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-round btn-reddit\">\n                  <i class=\"fa fa-reddit\"></i>\n                </button>\n              </div>\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-reddit\">\n                  <i class=\"fa fa-reddit\"></i>\n                </button>\n              </div>\n              <div class=\"col-md-3 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-reddit\">\n                  <i class=\"fa fa-reddit\"></i> Repost · 232\n                </button>\n              </div>\n            </div>\n            <div class=\"row\">\n              <div class=\"col-lg-3 col-md-4 social-buttons-demo\">\n                <button class=\"btn btn-social btn-fill btn-stumbleupon\">\n                  <i class=\"fa fa-stumbleupon\"></i> View on StumbleUpon\n                </button>\n              </div>\n\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-round btn-stumbleupon\">\n                  <i class=\"fa fa-stumbleupon\"></i>\n                </button>\n              </div>\n              <div class=\"col-md-1 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-stumbleupon\">\n                  <i class=\"fa fa-stumbleupon\"></i>\n                </button>\n              </div>\n              <div class=\"col-md-3 social-buttons-demo\">\n                <button class=\"btn btn-social btn-simple btn-stumbleupon\">\n                  <i class=\"fa fa-stumbleupon\"></i> View on StumbleUpon\n                </button>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -67,12 +67,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _panels_panels_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./panels/panels.component */ "./src/app/components/panels/panels.component.ts");
 /* harmony import */ var _sweetalert_sweetalert_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./sweetalert/sweetalert.component */ "./src/app/components/sweetalert/sweetalert.component.ts");
 /* harmony import */ var _typography_typography_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./typography/typography.component */ "./src/app/components/typography/typography.component.ts");
+/* harmony import */ var _new_rent_new_rent_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./new-rent/new-rent.component */ "./src/app/components/new-rent/new-rent.component.ts");
+/* harmony import */ var _new_client_new_client_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./new-client/new-client.component */ "./src/app/components/new-client/new-client.component.ts");
+/* harmony import */ var jw_bootstrap_switch_ng2__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! jw-bootstrap-switch-ng2 */ "./node_modules/jw-bootstrap-switch-ng2/fesm5/jw-bootstrap-switch-ng2.js");
+/* harmony import */ var _new_vehicle_new_vehicle_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./new-vehicle/new-vehicle.component */ "./src/app/components/new-vehicle/new-vehicle.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
 
 
 
@@ -93,7 +101,9 @@ var ComponentsModule = /** @class */ (function () {
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild(_components_routing__WEBPACK_IMPORTED_MODULE_5__["ComponentsRoutes"]),
-                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"]
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
+                jw_bootstrap_switch_ng2__WEBPACK_IMPORTED_MODULE_14__["JwBootstrapSwitchNg2Module"],
             ],
             declarations: [
                 _buttons_buttons_component__WEBPACK_IMPORTED_MODULE_4__["ButtonsComponent"],
@@ -102,8 +112,11 @@ var ComponentsModule = /** @class */ (function () {
                 _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_8__["NotificationsComponent"],
                 _panels_panels_component__WEBPACK_IMPORTED_MODULE_9__["PanelsComponent"],
                 _sweetalert_sweetalert_component__WEBPACK_IMPORTED_MODULE_10__["SweetAlertComponent"],
-                _typography_typography_component__WEBPACK_IMPORTED_MODULE_11__["TypographyComponent"]
-            ]
+                _typography_typography_component__WEBPACK_IMPORTED_MODULE_11__["TypographyComponent"],
+                _new_rent_new_rent_component__WEBPACK_IMPORTED_MODULE_12__["NewRentComponent"],
+                _new_client_new_client_component__WEBPACK_IMPORTED_MODULE_13__["NewClientComponent"],
+                _new_vehicle_new_vehicle_component__WEBPACK_IMPORTED_MODULE_15__["NewVehicletComponent"],
+            ],
         })
     ], ComponentsModule);
     return ComponentsModule;
@@ -130,6 +143,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _panels_panels_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./panels/panels.component */ "./src/app/components/panels/panels.component.ts");
 /* harmony import */ var _sweetalert_sweetalert_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sweetalert/sweetalert.component */ "./src/app/components/sweetalert/sweetalert.component.ts");
 /* harmony import */ var _typography_typography_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./typography/typography.component */ "./src/app/components/typography/typography.component.ts");
+/* harmony import */ var _new_rent_new_rent_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./new-rent/new-rent.component */ "./src/app/components/new-rent/new-rent.component.ts");
+/* harmony import */ var _new_client_new_client_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./new-client/new-client.component */ "./src/app/components/new-client/new-client.component.ts");
+/* harmony import */ var _new_vehicle_new_vehicle_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./new-vehicle/new-vehicle.component */ "./src/app/components/new-vehicle/new-vehicle.component.ts");
 
 
 
@@ -137,49 +153,100 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ComponentsRoutes = [{
-        path: '',
-        children: [{
-                path: 'buttons',
-                component: _buttons_buttons_component__WEBPACK_IMPORTED_MODULE_0__["ButtonsComponent"]
-            }]
-    }, {
-        path: '',
-        children: [{
-                path: 'grid',
-                component: _grid_grid_component__WEBPACK_IMPORTED_MODULE_1__["GridSystemComponent"]
-            }]
-    }, {
-        path: '',
-        children: [{
-                path: 'icons',
-                component: _icons_icons_component__WEBPACK_IMPORTED_MODULE_2__["IconsComponent"]
-            }]
-    }, {
-        path: '',
-        children: [{
-                path: 'notifications',
-                component: _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_3__["NotificationsComponent"]
-            }]
-    }, {
-        path: '',
-        children: [{
-                path: 'panels',
-                component: _panels_panels_component__WEBPACK_IMPORTED_MODULE_4__["PanelsComponent"]
-            }]
-    }, {
-        path: '',
-        children: [{
-                path: 'sweet-alert',
-                component: _sweetalert_sweetalert_component__WEBPACK_IMPORTED_MODULE_5__["SweetAlertComponent"]
-            }]
-    }, {
-        path: '',
-        children: [{
-                path: 'typography',
-                component: _typography_typography_component__WEBPACK_IMPORTED_MODULE_6__["TypographyComponent"]
-            }]
-    }
+
+
+
+var ComponentsRoutes = [
+    {
+        path: "",
+        children: [
+            {
+                path: "buttons",
+                component: _buttons_buttons_component__WEBPACK_IMPORTED_MODULE_0__["ButtonsComponent"],
+            },
+        ],
+    },
+    {
+        path: "",
+        children: [
+            {
+                path: "grid",
+                component: _grid_grid_component__WEBPACK_IMPORTED_MODULE_1__["GridSystemComponent"],
+            },
+        ],
+    },
+    {
+        path: "",
+        children: [
+            {
+                path: "icons",
+                component: _icons_icons_component__WEBPACK_IMPORTED_MODULE_2__["IconsComponent"],
+            },
+        ],
+    },
+    {
+        path: "",
+        children: [
+            {
+                path: "notifications",
+                component: _notifications_notifications_component__WEBPACK_IMPORTED_MODULE_3__["NotificationsComponent"],
+            },
+        ],
+    },
+    {
+        path: "",
+        children: [
+            {
+                path: "panels",
+                component: _panels_panels_component__WEBPACK_IMPORTED_MODULE_4__["PanelsComponent"],
+            },
+        ],
+    },
+    {
+        path: "",
+        children: [
+            {
+                path: "sweet-alert",
+                component: _sweetalert_sweetalert_component__WEBPACK_IMPORTED_MODULE_5__["SweetAlertComponent"],
+            },
+        ],
+    },
+    {
+        path: "",
+        children: [
+            {
+                path: "typography",
+                component: _typography_typography_component__WEBPACK_IMPORTED_MODULE_6__["TypographyComponent"],
+            },
+        ],
+    },
+    {
+        path: "",
+        children: [
+            {
+                path: "new-rent",
+                component: _new_rent_new_rent_component__WEBPACK_IMPORTED_MODULE_7__["NewRentComponent"],
+            },
+        ],
+    },
+    {
+        path: "",
+        children: [
+            {
+                path: "new-client",
+                component: _new_client_new_client_component__WEBPACK_IMPORTED_MODULE_8__["NewClientComponent"],
+            },
+        ],
+    },
+    {
+        path: "",
+        children: [
+            {
+                path: "new-vehicle",
+                component: _new_vehicle_new_vehicle_component__WEBPACK_IMPORTED_MODULE_9__["NewVehicletComponent"],
+            },
+        ],
+    },
 ];
 
 
@@ -271,6 +338,534 @@ var IconsComponent = /** @class */ (function () {
         })
     ], IconsComponent);
     return IconsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/new-client/new-client.component.html":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/new-client/new-client.component.html ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card\">\n  <div class=\"container-fluid\">\n    <div class=\"content\">\n      <form [formGroup]=\"clienteForm\" (ngSubmit)=\"onSubmit()\">\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-4\">\n            <label for=\"inputState\">Id Cliente</label>\n            <input type=\"text\" class=\"form-control\" disabled />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"name\">Nome</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Nome\"\n              id=\"name\"\n              formControlName=\"name\"\n              name=\"name\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"birthDate\">Data Nascimento</label>\n            <input\n              type=\"date\"\n              class=\"form-control\"\n              id=\"birthDate\"\n              formControlName=\"birthDate\"\n              name=\"birthDate\"\n            />\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-4\">\n            <label for=\"cpf\">CPF</label>\n            <input\n              type=\"text\"\n              id=\"cpf\"\n              class=\"form-control\"\n              placeholder=\"000.000.000-00\"\n              formControlName=\"cpf\"\n              name=\"cpf\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"rg\">RG</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"000.000.000-00\"\n              id=\"rg\"\n              formControlName=\"rg\"\n              name=\"rg\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"qualification\">Habilitação</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              id=\"qualification\"\n              placeholder=\"000.000.000-00\"\n              formControlName=\"qualification\"\n              name=\"qualification\"\n            />\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-4\">\n            <label for=\"phone\">Telefone 1</label>\n            <input\n              type=\"text\"\n              id=\"phone\"\n              class=\"form-control\"\n              placeholder=\"(99) 99999-9999\"\n              formControlName=\"phone\"\n              name=\"phone\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"phone2\">Telefone 2</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"(99) 99999-9999\"\n              id=\"phone2\"\n              formControlName=\"phone2\"\n              name=\"phone2\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"email\">Email</label>\n            <input\n              type=\"email\"\n              class=\"form-control\"\n              id=\"email\"\n              placeholder=\"email@email.com\"\n              formControlName=\"email\"\n              name=\"email\"\n            />\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-8\">\n            <label for=\"streetName\">Endereço</label>\n            <input\n              type=\"text\"\n              id=\"streetName\"\n              class=\"form-control\"\n              placeholder=\"Endereço\"\n              formControlName=\"streetName\"\n              name=\"streetName\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"complement\">Complemento</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Complemento\"\n              id=\"complement\"\n              formControlName=\"complement\"\n              name=\"complement\"\n            />\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-3\">\n            <label for=\"city\">Cidade</label>\n            <input\n              type=\"text\"\n              id=\"city\"\n              class=\"form-control\"\n              placeholder=\"Endereço\"\n              formControlName=\"city\"\n              name=\"city\"\n            />\n          </div>\n          <div class=\"form-group col-md-3\">\n            <label for=\"state\">UF</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Complemento\"\n              id=\"state\"\n              formControlName=\"state\"\n              name=\"state\"\n            />\n          </div>\n          <div class=\"form-group col-md-3\">\n            <label for=\"cep\">CEP</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Complemento\"\n              id=\"cep\"\n              name=\"cep\"\n              formControlName=\"cep\"\n            />\n          </div>\n          <div class=\"form-group col-md-3\">\n            <label for=\"observation\">Observação</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Observações\"\n              id=\"observation\"\n              name=\"observation\"\n              formControlName=\"observation\"\n            />\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-12\">\n            <label for=\"plataform_user\" style=\"display: block\"\n              >Usuário admin</label\n            >\n            <bSwitch\n              [switch-on-color]=\"'primary'\"\n              [switch-off-text]=\"' '\"\n              [switch-on-text]=\"' '\"\n              (click)=\"becomeAdmin()\"\n              formControlName=\"plataform_user\"\n            >\n            </bSwitch>\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-12\">\n            <label for=\"password\">Senha</label>\n            <input\n              type=\"password\"\n              class=\"form-control\"\n              placeholder=\"senha\"\n              id=\"password\"\n              name=\"password\"\n              formControlName=\"password\"\n            />\n          </div>\n        </div>\n      </form>\n      <div class=\"form-row\">\n        <div class=\"col-md-3\" style=\"margin-bottom: 16px\">\n          <button type=\"submit\" class=\"btn btn-primary\" (click)=\"onSubmit()\">\n            Confirmar\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/new-client/new-client.component.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/components/new-client/new-client.component.ts ***!
+  \***************************************************************/
+/*! exports provided: NewClientComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewClientComponent", function() { return NewClientComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var app_client_client_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! app/client/client.service */ "./src/app/client/client.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var NewClientComponent = /** @class */ (function () {
+    function NewClientComponent(formBuilder, clientService, route, router) {
+        this.formBuilder = formBuilder;
+        this.clientService = clientService;
+        this.route = route;
+        this.router = router;
+        this.plataform_user = false;
+    }
+    NewClientComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.clienteForm = this.formBuilder.group({
+            name: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            birthDate: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            cpf: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            rg: [""],
+            qualification: [""],
+            complement: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            city: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            state: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            cep: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            observation: [""],
+            phone: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            phone2: [""],
+            email: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            streetName: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            plataform_user: [false, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            password: [""],
+            active: [true],
+        });
+        this.route.queryParams.subscribe(function (queryParams) {
+            if (queryParams.id) {
+                _this.clientId = queryParams.id;
+                _this.loadClientData(_this.clientId);
+            }
+        });
+        this.onPassword(this.clienteForm.value.plataform_user);
+    };
+    NewClientComponent.prototype.becomeAdmin = function () {
+        this.onPassword(this.clienteForm.value.plataform_user);
+    };
+    NewClientComponent.prototype.onPassword = function (enable) {
+        if (enable === true) {
+            this.clienteForm.controls["password"].setValidators([
+                _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required,
+            ]);
+            this.clienteForm.controls["password"].enable();
+        }
+        else {
+            this.clienteForm.controls["password"].disable();
+            this.clienteForm.controls["password"].clearValidators();
+        }
+    };
+    NewClientComponent.prototype.onSubmit = function () {
+        if (this.clienteForm.valid && !this.clientId) {
+            this.clientService.create(this.clienteForm.value).subscribe();
+            this.router.navigate(["/client"]);
+        }
+        else if (this.clienteForm.valid && this.clientId) {
+            this.onUpdateClient(this.clienteForm.value, this.clientId);
+            this.router.navigate(["/client"]);
+        }
+        else {
+            console.log("Formulário inválido. Verifique os campos obrigatórios.");
+        }
+    };
+    NewClientComponent.prototype.loadClientData = function (clientId) {
+        var _this = this;
+        this.clientService.getClientById(clientId).subscribe(function (client) {
+            client.birthDate = _this.formatDateToISO(new Date(client.birthDate).toLocaleDateString());
+            _this.clienteForm.patchValue(client);
+            _this.onPassword(_this.clienteForm.value.plataform_user);
+        });
+    };
+    NewClientComponent.prototype.onUpdateClient = function (client, id) {
+        this.clientService.update(client, id).subscribe();
+    };
+    NewClientComponent.prototype.formatDateToISO = function (dateStr) {
+        var _a = dateStr.split("/"), day = _a[0], month = _a[1], year = _a[2];
+        return year + "-" + month + "-" + day;
+    };
+    NewClientComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: "app-new-client-cmp",
+            template: __webpack_require__(/*! ./new-client.component.html */ "./src/app/components/new-client/new-client.component.html"),
+        }),
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
+            app_client_client_service__WEBPACK_IMPORTED_MODULE_3__["ClientService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], NewClientComponent);
+    return NewClientComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/new-rent/new-rent.component.html":
+/*!*************************************************************!*\
+  !*** ./src/app/components/new-rent/new-rent.component.html ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card\">\n  <div class=\"container-fluid\">\n    <div class=\"content\">\n      <div class=\"header\">\n        <legend>Registro de locação</legend>\n     </div>\n      <form [formGroup]=\"rentForm\" (ngSubmit)=\"onSubmit()\">\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-4\">\n            <label for=\"_id\">Id Locação</label>\n            <input type=\"text\" class=\"form-control\" disabled />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"clientId\">Cliente</label>\n            <select\n              id=\"clientId\"\n              class=\"form-control\"\n              formControlName=\"clientId\"\n            >\n              <option value=\"\" disabled selected hidden>\n                Selecione o cliente\n              </option>\n              <option *ngFor=\"let client of clientList\" [ngValue]=\"client\">\n                {{ client.name }}\n              </option>\n            </select>\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"cpf\">CPF</label>\n            <input\n              type=\"text\"\n              disabled\n              class=\"form-control\"\n              id=\"cpf\"\n              placeholder=\"000.000.000-00\"\n              formControlName=\"cpf\"\n            />\n          </div>\n        </div>\n\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-4\">\n            <label for=\"idVehicle\">Id Veículo</label>\n            <input type=\"text\" class=\"form-control\" disabled />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"vehicleId\">Veículo</label>\n            <select\n              id=\"vehicleId\"\n              class=\"form-control\"\n              formControlName=\"vehicleId\"\n            >\n              <option value=\"\" disabled selected hidden>\n                Selecione o veículo\n              </option>\n              <option *ngFor=\"let vehicle of vehicleList\" [ngValue]=\"vehicle\">\n                {{ vehicle.name }}\n              </option>\n            </select>\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"plate\">Placa</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              disabled\n              placeholder=\"XXX - 1234\"\n              min=\"1\"\n              formControlName=\"plate\"\n            />\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-4\">\n            <label for=\"startDate\">Data de saída</label>\n            <input\n              type=\"date\"\n              class=\"form-control\"\n              formControlName=\"startDate\"\n              id=\"startDate\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"exitTime\">Hora saída</label>\n            <input\n              type=\"time\"\n              class=\"form-control\"\n              formControlName=\"exitTime\"\n              id=\"exitTime\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"outputKm\">Km Saída</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Kilometragem saída\"\n              oninput=\"this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\\..*?)\\..*/g, '$1');\"\n              formControlName=\"outputKm\"\n            />\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-4\">\n            <label for=\"endDate\">Data da chegada</label>\n            <input type=\"date\" class=\"form-control\" formControlName=\"endDate\" />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"arrivalTime\">Hora chegada</label>\n            <input\n              type=\"time\"\n              class=\"form-control\"\n              formControlName=\"arrivalTime\"\n              id=\"arrivalTime\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"arrivalKM\">Km chegada</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Kilometragem chegada\"\n              oninput=\"this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\\..*?)\\..*/g, '$1');\"\n              formControlName=\"arrivalKM\"\n            />\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-4\">\n            <label for=\"card\">Cartão</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Cartão\"\n              formControlName=\"card\"\n              id=\"card\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"cardNumber\">Número</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Número\"\n              oninput=\"this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\\..*?)\\..*/g, '$1');\"\n              formControlName=\"cardNumber\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"securityCode\">Cód Segurança</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Cod Segurança\"\n              formControlName=\"securityCode\"\n            />\n          </div>\n        </div>\n\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-4\">\n            <label for=\"validity\">Validade</label>\n            <input\n              type=\"date\"\n              class=\"form-control\"\n              formControlName=\"validity\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"franchise\">Franquia</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              formControlName=\"franchise\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"aboutCard\">Observação</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              formControlName=\"aboutCard\"\n            />\n          </div>\n        </div>\n\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-2\">\n            <label for=\"dailyValue\">Total diárias</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Total diárias\"\n              formControlName=\"dailyValue\"\n            />\n            <label for=\"excedentKm\">Km Excedente</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Km excedente\"\n              formControlName=\"excedentKm\"\n              id=\"excedentKm\"\n            />\n            <label for=\"otherExpenses\">Outras despesas</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Outras despesas\"\n              formControlName=\"otherExpenses\"\n            />\n          </div>\n          <div class=\"form-group col-md-2\">\n            <label for=\"extraHour\">Hora extra</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Hora extra\"\n              formControlName=\"extraHour\"\n              id=\"extraHour\"\n            />\n            <label for=\"discounts\">Descontos</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Descontos\"\n              formControlName=\"discounts\"\n            />\n            <label for=\"totalReceivable\">Total a receber</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Total a receber\"\n              formControlName=\"totalReceivable\"\n            />\n          </div>\n\n          <div class=\"form-group col-md-8\">\n            <label for=\"aboutRent\">Observação</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Observação\"\n              style=\"height: 170px\"\n              formControlName=\"aboutRent\"\n            />\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"col-md-4\"></div>\n          <div class=\"col-md-4\" style=\"left: 24%;\">\n            <button\n            type=\"submit\"\n            class=\"btn btn-success btn-fill btn-wd\"\n            (click)=\"onSubmit()\"\n          >\n            CONFIRMAR\n          </button>\n          </div>\n          <div class=\"col-md-4\" style=\"margin-bottom: 16px; float: left;\"></div>\n        </div>\n      </form>\n\n    </div><!--/fim content-->\n  </div>\n</div>\n\n\n\n\n<div class=\"card\">\n  <div class=\"container-fluid\">\n    <div class=\"row\">\n      <div class=\"header\">\n          <legend>Regsitro de ocorrências</legend>\n      </div>\n      <div class=\"content\">\n\n<form [formGroup]=\"occurrenceForm\">\n  <div class=\"form-row\">\n    <div class=\"form-group col-md-2\">\n      <label for=\"createdAt\">Data Manuntenção</label>\n      <input\n        type=\"date\"\n        class=\"form-control\"\n        id=\"createdAt\"\n        name=\"createdAt\"\n        formControlName=\"createdAt\"\n      />\n    </div>\n    <div class=\"form-group col-md-3\">\n      <label for=\"observation\">Observação</label>\n      <input\n        type=\"observation\"\n        class=\"form-control\"\n        placeholder=\"Observação\"\n        id=\"observation\"\n        name=\"observation\"\n        formControlName=\"observation\"\n      />\n    </div>\n    <div class=\"form-group col-md-2\">\n      <label for=\"observation\">Tipo de ocorrência</label>\n      <select\n        id=\"occurrenceType\"\n        class=\"form-control\"\n        formControlName=\"type\"\n      >\n        <option value=\"\" disabled selected hidden>\n          Tipo de ocorrência\n        </option>\n        <option\n          *ngFor=\"let occurrence of occurrenceType\"\n          [ngValue]=\"occurrence\"\n        >\n          {{ occurrence }}\n        </option>\n      </select>\n    </div>\n    \n    <div class=\"form-group col-md-2\" style=\"margin-top: 24px;\">\n      <button\n        type=\"submit\"\n        class=\"btn btn-default btn-fill btn-wd\"\n        (click)=\"onCreateOcuurence()\"\n      >\n        ADICIONAR OCORRÊNCIA\n      </button>\n    </div>\n\n    \n  </div>\n</form>\n</div>\n\n<div class=\"form-row\">\n  <div class=\"content table-responsive table-full-width\">\n    <table class=\"table\" (onDeleteRent)=\"onDeletedRent($event)\">\n      <thead>\n        <tr>\n          <th class=\"text-center\">{{ headerRow[0] }}</th>\n          <th class=\"text-center\">{{ headerRow[1] }}</th>\n          <th class=\"text-center\">{{ headerRow[2] }}</th>\n          <th class=\"text-center\">{{ headerRow[3] }}</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let occurrence of occurrenceList; let i = index\">\n          <td class=\"text-center\">{{ occurrence?.createdAt }}</td>\n          <td class=\"text-center\">{{ occurrence?.type }}</td>\n          <td class=\"text-center\">{{ occurrence?.observation }}</td>\n          <td class=\"text-center\">{{ i }}</td>\n          <td class=\"td-actions text-center\">\n            <button\n              rel=\"tooltip\"\n              title=\"Remove\"\n              class=\"btn btn-danger btn-simple btn-xs\"\n              (click)=\"removeOcurrence(i)\"\n            >\n              Remover<i class=\"fa fa-times\"></i>\n            </button>\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n\n<!--/fim ocorrencia-->\n\n        \n      </div>\n  </div>\n</div>\n</div>\n\n"
+
+/***/ }),
+
+/***/ "./src/app/components/new-rent/new-rent.component.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/components/new-rent/new-rent.component.ts ***!
+  \***********************************************************/
+/*! exports provided: NewRentComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewRentComponent", function() { return NewRentComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var app_client_client_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! app/client/client.service */ "./src/app/client/client.service.ts");
+/* harmony import */ var app_vehicle_vehicle_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! app/vehicle/vehicle.service */ "./src/app/vehicle/vehicle.service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var app_rent_rent_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! app/rent/rent.service */ "./src/app/rent/rent.service.ts");
+/* harmony import */ var app_occurrence_occurrence_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! app/occurrence/occurrence.service */ "./src/app/occurrence/occurrence.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+var NewRentComponent = /** @class */ (function () {
+    function NewRentComponent(clientService, vehicleService, rentService, occurrenceService, formBuilder, route, router) {
+        this.clientService = clientService;
+        this.vehicleService = vehicleService;
+        this.rentService = rentService;
+        this.occurrenceService = occurrenceService;
+        this.formBuilder = formBuilder;
+        this.route = route;
+        this.router = router;
+        this.clientList = [];
+        this.vehicleList = [];
+        this.occurrenceList = [];
+        this.headerRow = ["Data de entrega", "Tipo de ocorrência", "Observação"];
+        this.occurrenceType = ["TESTE", "TESTE2", "TESTE3", "TESTE4", "TESTE5"];
+    }
+    NewRentComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.createRentForm();
+        this.route.queryParams.subscribe(function (queryParams) {
+            if (queryParams.id) {
+                _this.rentId = queryParams.id;
+                _this.loadRent(_this.rentId);
+            }
+        });
+        this.findAllVehicles();
+        this.findAllClients();
+    };
+    NewRentComponent.prototype.createRentForm = function () {
+        var _this = this;
+        this.rentForm = this.formBuilder.group({
+            clientId: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+            cpf: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+            plate: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+            vehicleId: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+            startDate: [""],
+            exitTime: [""],
+            outputKm: [""],
+            endDate: [""],
+            arrivalTime: [""],
+            arrivalKM: [""],
+            card: [""],
+            cardNumber: [""],
+            securityCode: [""],
+            validity: [""],
+            franchise: [""],
+            aboutCard: [""],
+            dailyValue: [""],
+            excedentKm: [""],
+            otherExpenses: [""],
+            extraHour: [""],
+            discounts: [""],
+            totalReceivable: [""],
+            aboutRent: [""],
+        });
+        this.occurrenceForm = this.formBuilder.group({
+            createdAt: [""],
+            observation: [""],
+            type: [""],
+        });
+        this.rentForm.get("clientId").valueChanges.subscribe(function (selectedClient) {
+            if (selectedClient && selectedClient.cpf) {
+                _this.rentForm
+                    .get("cpf")
+                    .setValue(selectedClient.cpf, { emitEvent: false });
+            }
+            else {
+                _this.rentForm.get("cpf").setValue("", { emitEvent: false });
+            }
+        });
+        this.rentForm.get("vehicleId").valueChanges.subscribe(function (selectedVehicle) {
+            if (selectedVehicle && selectedVehicle.plate) {
+                _this.rentForm
+                    .get("plate")
+                    .setValue(selectedVehicle.plate, { emitEvent: false });
+            }
+            else {
+                _this.rentForm.get("plate").setValue("", { emitEvent: false });
+            }
+        });
+    };
+    NewRentComponent.prototype.onSubmit = function () {
+        var _this = this;
+        if (this.rentForm.valid && !this.rentId) {
+            var rent = this.rentForm.value;
+            rent.occurrences = this.occurrenceList;
+            this.occurrenceList.forEach(function (occurrence) {
+                _this.occurrenceService.create(occurrence).subscribe();
+            });
+            this.rentService.create(rent).subscribe();
+            this.router.navigate(["/rent"]);
+        }
+        else if (this.rentForm.valid && this.rentId) {
+            var rent = this.rentForm.value;
+            rent.occurrences = this.occurrenceList;
+            this.onUpdateRent(rent, this.rentId);
+            this.router.navigate(["/rent"]);
+        }
+        else {
+            console.log("Formulário inválido. Verifique os campos obrigatórios.");
+        }
+    };
+    NewRentComponent.prototype.findAllClients = function () {
+        var _this = this;
+        this.clientService
+            .getAll()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (clientResponse) { return clientResponse.results; }))
+            .subscribe(function (client) {
+            var clientToUpdateForm = _this.rentForm.get("clientId").value;
+            if (clientToUpdateForm !== "") {
+                var filteredClients_1 = client.filter(function (v) { return v._id !== clientToUpdateForm; });
+                _this.clientService
+                    .getClientById(clientToUpdateForm)
+                    .subscribe(function (clientResult) {
+                    _this.clientList.unshift(clientResult);
+                    _this.rentForm.get("cpf").setValue(clientResult.cpf);
+                    _this.clientList = [clientResult].concat(filteredClients_1);
+                });
+            }
+            else {
+                _this.clientList = client;
+            }
+        });
+    };
+    NewRentComponent.prototype.findAllVehicles = function () {
+        var _this = this;
+        this.vehicleService
+            .getAll()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (vehicletResponse) { return vehicletResponse.results; }))
+            .subscribe(function (vehicle) {
+            var vehicleToUpdateForm = _this.rentForm.get("vehicleId").value;
+            if (vehicleToUpdateForm !== "") {
+                var filteredVehicles_1 = vehicle.filter(function (v) { return v._id !== vehicleToUpdateForm; });
+                _this.vehicleService
+                    .getVehicleById(vehicleToUpdateForm)
+                    .subscribe(function (vehicleResult) {
+                    _this.vehicleList.unshift(vehicleResult);
+                    _this.rentForm.get("plate").setValue(vehicleResult.plate);
+                    _this.vehicleList = [vehicleResult].concat(filteredVehicles_1);
+                });
+            }
+            else {
+                _this.vehicleList = vehicle;
+            }
+        });
+    };
+    NewRentComponent.prototype.formatDateToISO = function (dateStr) {
+        var _a = dateStr.split("/"), day = _a[0], month = _a[1], year = _a[2];
+        return year + "-" + month + "-" + day;
+    };
+    NewRentComponent.prototype.onCreateOcuurence = function () {
+        if (this.occurrenceForm.valid && !this.rentId) {
+            this.occurrenceList.push(this.occurrenceForm.value);
+        }
+        else if (this.occurrenceForm.valid && this.rentId) {
+            this.occurrenceList.push(this.occurrenceForm.value);
+        }
+        else {
+            console.log("Formulário inválido. Verifique os campos obrigatórios.");
+        }
+    };
+    NewRentComponent.prototype.removeOcurrence = function (i) {
+        if (this.occurrenceList[i]._id) {
+            this.occurrenceService.delete(this.occurrenceList[i]._id).subscribe();
+        }
+        this.occurrenceList.splice(i, 1);
+    };
+    NewRentComponent.prototype.loadRent = function (rentId) {
+        var _this = this;
+        this.rentService.getById(rentId).subscribe(function (rent) {
+            _this.rentForm.patchValue(rent);
+            _this.rentForm
+                .get("startDate")
+                .setValue(_this.formatDateToISO(new Date(rent.startDate).toLocaleDateString()));
+            _this.rentForm
+                .get("endDate")
+                .setValue(_this.formatDateToISO(new Date(rent.endDate).toLocaleDateString()));
+            _this.rentForm
+                .get("validity")
+                .setValue(_this.formatDateToISO(new Date(rent.validity).toLocaleDateString()));
+            _this.occurrenceList = rent.occurrences;
+            _this.findAllVehicles();
+            _this.findAllClients();
+        });
+    };
+    NewRentComponent.prototype.onUpdateRent = function (rent, id) {
+        this.rentService.update(rent, id).subscribe();
+    };
+    NewRentComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: "app-new-rent-cmp",
+            template: __webpack_require__(/*! ./new-rent.component.html */ "./src/app/components/new-rent/new-rent.component.html"),
+        }),
+        __metadata("design:paramtypes", [app_client_client_service__WEBPACK_IMPORTED_MODULE_1__["ClientService"],
+            app_vehicle_vehicle_service__WEBPACK_IMPORTED_MODULE_2__["VehicleService"],
+            app_rent_rent_service__WEBPACK_IMPORTED_MODULE_5__["RentService"],
+            app_occurrence_occurrence_service__WEBPACK_IMPORTED_MODULE_6__["OccurrenceService"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_7__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]])
+    ], NewRentComponent);
+    return NewRentComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/new-vehicle/new-vehicle.component.html":
+/*!*******************************************************************!*\
+  !*** ./src/app/components/new-vehicle/new-vehicle.component.html ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card\">\n  <div class=\"container-fluid\">\n    <div class=\"content\">\n      <form [formGroup]=\"vehicleForm\" (ngSubmit)=\"onSubmit()\">\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-4\">\n            <label for=\"inputState\">Id Veículo</label>\n            <input type=\"text\" class=\"form-control\" disabled />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"name\">Modelo</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Informe o número do dispositivo legal\"\n              id=\"name\"\n              formControlName=\"name\"\n              name=\"name\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"purchaseDate\">Data da Compra</label>\n            <input\n              type=\"date\"\n              class=\"form-control\"\n              id=\"purchaseDate\"\n              formControlName=\"purchaseDate\"\n              name=\"purchaseDate\"\n            />\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-4\">\n            <label for=\"brand\">Marca</label>\n            <input\n              type=\"text\"\n              id=\"brand\"\n              class=\"form-control\"\n              placeholder=\"Marca\"\n              formControlName=\"brand\"\n              name=\"brand\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"color\">Cor</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              placeholder=\"Cor\"\n              id=\"color\"\n              formControlName=\"color\"\n              name=\"color\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"plate\">Placa</label>\n            <input\n              type=\"text\"\n              class=\"form-control\"\n              id=\"plate\"\n              placeholder=\"ABC 1234\"\n              formControlName=\"plate\"\n              name=\"plate\"\n            />\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-6\">\n            <label for=\"chassi\">Chassi</label>\n            <input\n              type=\"text\"\n              id=\"chassi\"\n              class=\"form-control\"\n              placeholder=\" XXXXXXXXXXXXXXXXX\"\n              formControlName=\"chassi\"\n              name=\"chassi\"\n            />\n          </div>\n          <div class=\"form-group col-md-6\">\n            <label for=\"year\">Ano</label>\n            <input\n              type=\"number\"\n              min=\"0\"\n              max=\"9999\"\n              class=\"form-control\"\n              id=\"year\"\n              placeholder=\"Ano modelo\"\n              formControlName=\"year\"\n              name=\"year\"\n            />\n          </div>\n        </div>\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-12\">\n            <label for=\"plataform_user\" style=\"display: block\"\n              >Manuntenção</label\n            >\n          </div>\n        </div>\n      </form>\n      <form [formGroup]=\"occurrenceForm\">\n        <div class=\"form-row\">\n          <div class=\"form-group col-md-4\">\n            <label for=\"createdAt\">Data Manuntenção</label>\n            <input\n              type=\"date\"\n              class=\"form-control\"\n              id=\"createdAt\"\n              name=\"createdAt\"\n              formControlName=\"createdAt\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\">\n            <label for=\"observation\">Observação</label>\n            <input\n              type=\"observation\"\n              class=\"form-control\"\n              placeholder=\"Observação\"\n              id=\"observation\"\n              name=\"observation\"\n              formControlName=\"observation\"\n            />\n          </div>\n          <div class=\"form-group col-md-4\" style=\"margin-top: 24px\">\n            <button\n              type=\"submit\"\n              class=\"btn btn-default btn-fill btn-wd\"\n              (click)=\"onCreateOcuurence()\"\n            >\n              ADICIONAR MANUNTENÇÃO\n            </button>\n          </div>\n        </div>\n      </form>\n      <div class=\"form-row\">\n        <div class=\"content table-responsive table-full-width\">\n          <table class=\"table\" (onDeleteRent)=\"onDeletedRent($event)\">\n            <thead>\n              <tr>\n                <th class=\"text-center\">{{ headerRow[0] }}</th>\n                <th class=\"text-center\">{{ headerRow[1] }}</th>\n                <th class=\"text-center\">{{ headerRow[2] }}</th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr *ngFor=\"let occurrence of occurrenceList; let i = index\">\n                <td class=\"text-center\">{{ occurrence?.createdAt }}</td>\n                <td class=\"text-center\">{{ occurrence?.observation }}</td>\n                <td class=\"text-center\">{{ i }}</td>\n                <td class=\"td-actions text-center\">\n                  <button\n                    rel=\"tooltip\"\n                    title=\"Remove\"\n                    class=\"btn btn-danger btn-simple btn-xs\"\n                    (click)=\"removeOcurrence(i)\"\n                  >\n                    Remover<i class=\"fa fa-times\"></i>\n                  </button>\n                </td>\n              </tr>\n            </tbody>\n          </table>\n        </div>\n      </div>\n      <div class=\"form-row\">\n        <div class=\"col-md-3\" style=\"margin-bottom: 16px\">\n          <button\n            type=\"submit\"\n            class=\"btn btn-success btn-fill btn-wd\"\n            (click)=\"onSubmit()\"\n          >\n            CONFIRMAR\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/new-vehicle/new-vehicle.component.ts":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/new-vehicle/new-vehicle.component.ts ***!
+  \*****************************************************************/
+/*! exports provided: NewVehicletComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewVehicletComponent", function() { return NewVehicletComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var app_occurrence_occurrence_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! app/occurrence/occurrence.service */ "./src/app/occurrence/occurrence.service.ts");
+/* harmony import */ var app_vehicle_vehicle_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! app/vehicle/vehicle.service */ "./src/app/vehicle/vehicle.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var NewVehicletComponent = /** @class */ (function () {
+    function NewVehicletComponent(formBuilder, vehicleService, occurrenceService, route, router) {
+        this.formBuilder = formBuilder;
+        this.vehicleService = vehicleService;
+        this.occurrenceService = occurrenceService;
+        this.route = route;
+        this.router = router;
+        this.plataform_user = false;
+        this.occurrenceList = [];
+        this.headerRow = ["Data de entrega", "Observação", ""];
+    }
+    NewVehicletComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.vehicleForm = this.formBuilder.group({
+            name: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            purchaseDate: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            brand: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            color: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            plate: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            chassi: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            year: ["", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+        });
+        this.occurrenceForm = this.formBuilder.group({
+            createdAt: [""],
+            observation: [""],
+            type: ["MANUNTENÇÃO"],
+        });
+        this.route.queryParams.subscribe(function (queryParams) {
+            if (queryParams.id) {
+                _this.vehicleId = queryParams.id;
+                _this.loadVehicle(_this.vehicleId);
+            }
+        });
+    };
+    NewVehicletComponent.prototype.onSubmit = function () {
+        var _this = this;
+        if (this.vehicleForm.valid && !this.vehicleId) {
+            var vehicle = this.vehicleForm.value;
+            vehicle.occurrences = this.occurrenceList;
+            this.occurrenceList.forEach(function (occurrence) {
+                _this.occurrenceService.create(occurrence).subscribe();
+            });
+            this.vehicleService.create(this.vehicleForm.value).subscribe();
+            this.router.navigate(["/vehicle"]);
+        }
+        else if (this.vehicleForm.valid && this.vehicleId) {
+            var vehicle = this.vehicleForm.value;
+            vehicle.occurrences = this.occurrenceList;
+            this.onUpdateClient(vehicle, this.vehicleId);
+            this.router.navigate(["/vehicle"]);
+        }
+        else {
+            console.log("Formulário inválido. Verifique os campos obrigatórios.");
+        }
+    };
+    NewVehicletComponent.prototype.onCreateOcuurence = function () {
+        if (this.occurrenceForm.valid && !this.vehicleId) {
+            this.occurrenceList.push(this.occurrenceForm.value);
+        }
+        else if (this.occurrenceForm.valid && this.vehicleId) {
+            this.occurrenceList.push(this.occurrenceForm.value);
+        }
+        else {
+            console.log("Formulário inválido. Verifique os campos obrigatórios.");
+        }
+    };
+    NewVehicletComponent.prototype.removeOcurrence = function (i) {
+        if (this.occurrenceList[i]._id) {
+            this.occurrenceService.delete(this.occurrenceList[i]._id).subscribe();
+        }
+        this.occurrenceList.splice(i, 1);
+    };
+    NewVehicletComponent.prototype.loadVehicle = function (vehicleId) {
+        var _this = this;
+        this.vehicleService.getVehicleById(vehicleId).subscribe(function (vehicle) {
+            _this.vehicleForm.patchValue(vehicle);
+            _this.occurrenceList = vehicle.occurrences;
+        });
+    };
+    NewVehicletComponent.prototype.onUpdateClient = function (client, id) {
+        this.vehicleService.update(client, id).subscribe();
+    };
+    NewVehicletComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: "app-new-vehicle-cmp",
+            template: __webpack_require__(/*! ./new-vehicle.component.html */ "./src/app/components/new-vehicle/new-vehicle.component.html"),
+        }),
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"],
+            app_vehicle_vehicle_service__WEBPACK_IMPORTED_MODULE_4__["VehicleService"],
+            app_occurrence_occurrence_service__WEBPACK_IMPORTED_MODULE_3__["OccurrenceService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], NewVehicletComponent);
+    return NewVehicletComponent;
 }());
 
 
@@ -633,6 +1228,55 @@ var TypographyComponent = /** @class */ (function () {
         })
     ], TypographyComponent);
     return TypographyComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/occurrence/occurrence.service.ts":
+/*!**************************************************!*\
+  !*** ./src/app/occurrence/occurrence.service.ts ***!
+  \**************************************************/
+/*! exports provided: OccurrenceService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OccurrenceService", function() { return OccurrenceService; });
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! environments/environment */ "./src/environments/environment.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var OccurrenceService = /** @class */ (function () {
+    function OccurrenceService(http) {
+        this.http = http;
+    }
+    OccurrenceService.prototype.create = function (occurrence) {
+        return this.http.post(environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].api + "/occurrence/create", occurrence);
+    };
+    OccurrenceService.prototype.delete = function (id) {
+        console.log(id);
+        return this.http.delete(environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].api + "/occurrence/delete/" + id + "\n    ");
+    };
+    OccurrenceService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: "root",
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"]])
+    ], OccurrenceService);
+    return OccurrenceService;
 }());
 
 

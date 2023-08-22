@@ -15,26 +15,31 @@ var map = {
 	"./charts/charts.module": [
 		"./src/app/charts/charts.module.ts",
 		"charts-charts-module~dashboard-dashboard-module~forms-forms-module",
+		"common",
 		"charts-charts-module"
 	],
 	"./client/client.module": [
 		"./src/app/client/client.module.ts",
+		"common",
 		"client-client-module"
 	],
 	"./components/components.module": [
 		"./src/app/components/components.module.ts",
 		"components-components-module~forms-forms-module",
+		"common",
 		"components-components-module"
 	],
 	"./dashboard/dashboard.module": [
 		"./src/app/dashboard/dashboard.module.ts",
 		"charts-charts-module~dashboard-dashboard-module~forms-forms-module",
+		"common",
 		"dashboard-dashboard-module"
 	],
 	"./forms/forms.module": [
 		"./src/app/forms/forms.module.ts",
 		"charts-charts-module~dashboard-dashboard-module~forms-forms-module",
 		"components-components-module~forms-forms-module",
+		"common",
 		"forms-forms-module"
 	],
 	"./maps/maps.module": [
@@ -47,6 +52,7 @@ var map = {
 	],
 	"./rent/rent.module": [
 		"./src/app/rent/rent.module.ts",
+		"common",
 		"rent-rent-module"
 	],
 	"./tables/tables.module": [
@@ -56,6 +62,11 @@ var map = {
 	"./userpage/user.module": [
 		"./src/app/userpage/user.module.ts",
 		"userpage-user-module"
+	],
+	"./vehicle/vehicle.module": [
+		"./src/app/vehicle/vehicle.module.ts",
+		"common",
+		"vehicle-vehicle-module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -162,6 +173,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_navbar_navbar_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./shared/navbar/navbar.module */ "./src/app/shared/navbar/navbar.module.ts");
 /* harmony import */ var _shared_pagesnavbar_pagesnavbar_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./shared/pagesnavbar/pagesnavbar.module */ "./src/app/shared/pagesnavbar/pagesnavbar.module.ts");
 /* harmony import */ var _sidebar_sidebar_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./sidebar/sidebar.module */ "./src/app/sidebar/sidebar.module.ts");
+/* harmony import */ var _occurrence_occurrence_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./occurrence/occurrence.component */ "./src/app/occurrence/occurrence.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -173,6 +185,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
  // this is needed!
+
 
 
 
@@ -202,7 +215,7 @@ var AppModule = /** @class */ (function () {
                 _shared_fixedplugin_fixedplugin_module__WEBPACK_IMPORTED_MODULE_10__["FixedPluginModule"],
                 _shared_pagesnavbar_pagesnavbar_module__WEBPACK_IMPORTED_MODULE_13__["PagesnavbarModule"],
             ],
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _layouts_admin_admin_layout_component__WEBPACK_IMPORTED_MODULE_8__["AdminLayoutComponent"], _layouts_auth_auth_layout_component__WEBPACK_IMPORTED_MODULE_9__["AuthLayoutComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _layouts_admin_admin_layout_component__WEBPACK_IMPORTED_MODULE_8__["AdminLayoutComponent"], _layouts_auth_auth_layout_component__WEBPACK_IMPORTED_MODULE_9__["AuthLayoutComponent"], _occurrence_occurrence_component__WEBPACK_IMPORTED_MODULE_15__["OccurrenceComponent"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]],
         })
     ], AppModule);
@@ -254,6 +267,10 @@ var AppRoutes = [
                 loadChildren: "./rent/rent.module#RentModule",
             },
             {
+                path: "vehicle",
+                loadChildren: "./vehicle/vehicle.module#VehicleModule",
+            },
+            {
                 path: "tables",
                 loadChildren: "./tables/tables.module#TablesModule",
             },
@@ -301,7 +318,7 @@ var AppRoutes = [
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n  <div class=\"sidebar\" data-color=\"red\" data-image=\"\">\n    <sidebar-cmp></sidebar-cmp>\n    <div\n      class=\"sidebar-background\"\n      style=\"background-image: url(assets/img/full-screen-image-3.jpg)\"\n    ></div>\n  </div>\n  <div class=\"main-panel\">\n    <navbar-cmp></navbar-cmp>\n    <router-outlet></router-outlet>\n    <div *ngIf=\"!isMap()\">\n      <footer-cmp></footer-cmp>\n    </div>\n  </div>\n</div>\n<fixedplugin-cmp></fixedplugin-cmp>\n"
+module.exports = "<div class=\"wrapper\">\n  <div class=\"sidebar\" data-color=\"blue\" data-image=\"\">\n    <sidebar-cmp></sidebar-cmp>\n    <div\n      class=\"sidebar-background\"\n      style=\"background-image: url(assets/img/full-screen-image-3.jpg)\"\n    ></div>\n  </div>\n  <div class=\"main-panel\">\n    <navbar-cmp></navbar-cmp>\n    <router-outlet></router-outlet>\n    <div *ngIf=\"!isMap()\">\n      <footer-cmp></footer-cmp>\n    </div>\n  </div>\n</div>\n<fixedplugin-cmp></fixedplugin-cmp>\n"
 
 /***/ }),
 
@@ -342,8 +359,8 @@ var AdminLayoutComponent = /** @class */ (function () {
     }
     AdminLayoutComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var elemMainPanel = document.querySelector('.main-panel');
-        var elemSidebar = document.querySelector('.sidebar .sidebar-wrapper');
+        var elemMainPanel = document.querySelector(".main-panel");
+        var elemSidebar = (document.querySelector(".sidebar .sidebar-wrapper"));
         this.router.events.subscribe(function (event) {
             if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationStart"]) {
                 if (event.url != _this.lastPoppedUrl)
@@ -358,23 +375,28 @@ var AdminLayoutComponent = /** @class */ (function () {
                     window.scrollTo(0, 0);
             }
         });
-        this._router = this.router.events.filter(function (event) { return event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"]; }).subscribe(function (event) {
+        this._router = this.router.events
+            .filter(function (event) { return event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"]; })
+            .subscribe(function (event) {
             elemMainPanel.scrollTop = 0;
             elemSidebar.scrollTop = 0;
         });
-        this._router = this.router.events.filter(function (event) { return event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"]; }).subscribe(function (event) {
+        this._router = this.router.events
+            .filter(function (event) { return event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"]; })
+            .subscribe(function (event) {
             //   this.url = event.url;
-            _this.navbar.sidebarClose();
+            //   this.navbar.sidebarClose();
         });
-        var isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
+        var isWindows = navigator.platform.indexOf("Win") > -1 ? true : false;
         if (isWindows) {
             // if we are on windows OS we activate the perfectScrollbar function
-            var $main_panel = $('.main-panel');
+            var $main_panel = $(".main-panel");
             $main_panel.perfectScrollbar();
         }
     };
     AdminLayoutComponent.prototype.isMap = function () {
-        if (this.location.prepareExternalUrl(this.location.path()) == '#/maps/fullscreen') {
+        if (this.location.prepareExternalUrl(this.location.path()) ==
+            "#/maps/fullscreen") {
             return true;
         }
         else {
@@ -382,7 +404,7 @@ var AdminLayoutComponent = /** @class */ (function () {
         }
     };
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('sidebar'),
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])("sidebar"),
         __metadata("design:type", Object)
     ], AdminLayoutComponent.prototype, "sidebar", void 0);
     __decorate([
@@ -391,8 +413,8 @@ var AdminLayoutComponent = /** @class */ (function () {
     ], AdminLayoutComponent.prototype, "navbar", void 0);
     AdminLayoutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-layout',
-            template: __webpack_require__(/*! ./admin-layout.component.html */ "./src/app/layouts/admin/admin-layout.component.html")
+            selector: "app-layout",
+            template: __webpack_require__(/*! ./admin-layout.component.html */ "./src/app/layouts/admin/admin-layout.component.html"),
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"]])
     ], AdminLayoutComponent);
@@ -467,6 +489,56 @@ var AuthLayoutComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"]])
     ], AuthLayoutComponent);
     return AuthLayoutComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/occurrence/occurrence.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/occurrence/occurrence.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  occurrence works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/occurrence/occurrence.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/occurrence/occurrence.component.ts ***!
+  \****************************************************/
+/*! exports provided: OccurrenceComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OccurrenceComponent", function() { return OccurrenceComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var OccurrenceComponent = /** @class */ (function () {
+    function OccurrenceComponent() {
+    }
+    OccurrenceComponent.prototype.ngOnInit = function () { };
+    OccurrenceComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: "app-occurrence",
+            template: __webpack_require__(/*! ./occurrence.component.html */ "./src/app/occurrence/occurrence.component.html"),
+        }),
+        __metadata("design:paramtypes", [])
+    ], OccurrenceComponent);
+    return OccurrenceComponent;
 }());
 
 
@@ -721,7 +793,7 @@ var FixedPluginModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<footer class=\"footer\">\n    <div class=\"container-fluid\">\n        <nav class=\"pull-left\">\n            <ul>\n                <li>\n                    <a href=\"#\">\n                        Home\n                    </a>\n                </li>\n                <li>\n                    <a href=\"#\">\n                        Company\n                    </a>\n                </li>\n                <li>\n                    <a href=\"#\">\n                        Portfolio\n                    </a>\n                </li>\n                <li>\n                    <a href=\"#\">\n                       Blog\n                    </a>\n                </li>\n            </ul>\n        </nav>\n        <p class=\"copyright pull-right\">\n            &copy; {{test | date: 'yyyy'}} <a href=\"https://www.creative-tim.com\">Creative Tim</a>, made with love for a better web\n        </p>\n    </div>\n</footer>\n"
+module.exports = "<!-- \n<footer class=\"footer\">\n    <div class=\"container-fluid\">\n        <nav class=\"pull-left\">\n            <ul>\n                <li>\n                    <a href=\"#\">\n                        Home\n                    </a>\n                </li>\n                <li>\n                    <a href=\"#\">\n                        Company\n                    </a>\n                </li>\n                <li>\n                    <a href=\"#\">\n                        Portfolio\n                    </a>\n                </li>\n                <li>\n                    <a href=\"#\">\n                       Blog\n                    </a>\n                </li>\n            </ul>\n        </nav>\n        <p class=\"copyright pull-right\">\n            &copy; {{test | date: 'yyyy'}} <a href=\"https://www.creative-tim.com\">Creative Tim</a>, made with love for a better web\n        </p>\n    </div>\n</footer> -->\n"
 
 /***/ }),
 
@@ -809,7 +881,7 @@ var FooterModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav #navbar class=\"navbar navbar-default\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-minimize\">\n      <button\n        id=\"minimizeSidebar\"\n        class=\"btn btn-danger btn-fill btn-round btn-icon\"\n      >\n        <i class=\"fa fa-ellipsis-v visible-on-sidebar-regular\"></i>\n        <i class=\"fa fa-navicon visible-on-sidebar-mini\"></i>\n      </button>\n    </div>\n    <div class=\"navbar-header\">\n      <button\n        type=\"button\"\n        class=\"navbar-toggle\"\n        data-toggle=\"collapse\"\n        (click)=\"sidebarToggle()\"\n      >\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\">{{ getTitle() }}</a>\n    </div>\n    <div class=\"collapse navbar-collapse\">\n      <div class=\"\" *ngIf=\"isMobileMenu()\">\n        <form class=\"navbar-form navbar-left navbar-search-form\" role=\"search\">\n          <div class=\"input-group\">\n            <span class=\"input-group-addon\"><i class=\"fa fa-search\"></i></span>\n            <input\n              type=\"text\"\n              value=\"\"\n              class=\"form-control\"\n              placeholder=\"Search...\"\n            />\n          </div>\n        </form>\n\n        <ul class=\"nav navbar-nav navbar-right\">\n          <li>\n            <a ruterLinkActive=\"active\" [routerLink]=\"['/charts']\">\n              <i class=\"fa fa-line-chart\"></i>\n              <p>Stats</p>\n            </a>\n          </li>\n\n          <li class=\"dropdown\">\n            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n              <i class=\"fa fa-gavel\"></i>\n              <p class=\"hidden-md hidden-lg\">\n                Actions\n                <b class=\"caret\"></b>\n              </p>\n            </a>\n            <ul class=\"dropdown-menu\">\n              <li><a href=\"#\">Create New Post</a></li>\n              <li><a href=\"#\">Manage Something</a></li>\n              <li><a href=\"#\">Do Nothing</a></li>\n              <li><a href=\"#\">Submit to live</a></li>\n              <li class=\"divider\"></li>\n              <li><a href=\"#\">Another Action</a></li>\n            </ul>\n          </li>\n\n          <li class=\"dropdown\">\n            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n              <i class=\"fa fa-bell-o\"></i>\n              <span class=\"notification\">5</span>\n              <p class=\"hidden-md hidden-lg\">\n                Notifications\n                <b class=\"caret\"></b>\n              </p>\n            </a>\n            <ul class=\"dropdown-menu\">\n              <li><a href=\"#\">Notification 1</a></li>\n              <li><a href=\"#\">Notification 2</a></li>\n              <li><a href=\"#\">Notification 3</a></li>\n              <li><a href=\"#\">Notification 4</a></li>\n              <li><a href=\"#\">Another notification</a></li>\n            </ul>\n          </li>\n\n          <li class=\"dropdown dropdown-with-icons\">\n            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n              <i class=\"fa fa-list\"></i>\n              <p class=\"hidden-md hidden-lg\">\n                More\n                <b class=\"caret\"></b>\n              </p>\n            </a>\n            <ul class=\"dropdown-menu dropdown-with-icons\">\n              <li>\n                <a href=\"#\"> <i class=\"pe-7s-mail\"></i> Messages </a>\n              </li>\n              <li>\n                <a href=\"#\"> <i class=\"pe-7s-help1\"></i> Help Center </a>\n              </li>\n              <li>\n                <a href=\"#\"> <i class=\"pe-7s-tools\"></i> Settings </a>\n              </li>\n              <li class=\"divider\"></li>\n              <li>\n                <a href=\"#\"> <i class=\"pe-7s-lock\"></i> Lock Screen </a>\n              </li>\n              <li>\n                <a href=\"#\" class=\"text-danger\">\n                  <i class=\"pe-7s-close-circle\"></i>\n                  Log out\n                </a>\n              </li>\n            </ul>\n          </li>\n        </ul>\n      </div>\n    </div>\n  </div>\n</nav>\n"
+module.exports = "<nav #navbar class=\"navbar navbar-default\">\n  <div class=\"container-fluid\">\n    <div class=\"navbar-minimize\">\n      <button\n        id=\"minimizeSidebar\"\n        class=\"btn btn-danger btn-fill btn-round btn-icon\"\n      >\n        <i class=\"fa fa-ellipsis-v visible-on-sidebar-regular\"></i>\n        <i class=\"fa fa-navicon visible-on-sidebar-mini\"></i>\n      </button>\n    </div>\n    <!-- <div class=\"navbar-header\">\n      <button\n        type=\"button\"\n        class=\"navbar-toggle\"\n        data-toggle=\"collapse\"\n        (click)=\"sidebarToggle()\"\n      >\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\">{{ getTitle() }}</a>\n    </div>\n    <div class=\"collapse navbar-collapse\">\n      <div class=\"\" *ngIf=\"isMobileMenu()\">\n        <form class=\"navbar-form navbar-left navbar-search-form\" role=\"search\">\n          <div class=\"input-group\">\n            <span class=\"input-group-addon\"><i class=\"fa fa-search\"></i></span>\n            <input\n              type=\"text\"\n              value=\"\"\n              class=\"form-control\"\n              placeholder=\"Search...\"\n            />\n          </div>\n        </form>\n\n        <ul class=\"nav navbar-nav navbar-right\">\n          <li>\n            <a ruterLinkActive=\"active\" [routerLink]=\"['/charts']\">\n              <i class=\"fa fa-line-chart\"></i>\n              <p>Stats</p>\n            </a>\n          </li>\n\n          <li class=\"dropdown\">\n            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n              <i class=\"fa fa-gavel\"></i>\n              <p class=\"hidden-md hidden-lg\">\n                Actions\n                <b class=\"caret\"></b>\n              </p>\n            </a>\n            <ul class=\"dropdown-menu\">\n              <li><a href=\"#\">Create New Post</a></li>\n              <li><a href=\"#\">Manage Something</a></li>\n              <li><a href=\"#\">Do Nothing</a></li>\n              <li><a href=\"#\">Submit to live</a></li>\n              <li class=\"divider\"></li>\n              <li><a href=\"#\">Another Action</a></li>\n            </ul>\n          </li>\n\n          <li class=\"dropdown\">\n            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n              <i class=\"fa fa-bell-o\"></i>\n              <span class=\"notification\">5</span>\n              <p class=\"hidden-md hidden-lg\">\n                Notifications\n                <b class=\"caret\"></b>\n              </p>\n            </a>\n            <ul class=\"dropdown-menu\">\n              <li><a href=\"#\">Notification 1</a></li>\n              <li><a href=\"#\">Notification 2</a></li>\n              <li><a href=\"#\">Notification 3</a></li>\n              <li><a href=\"#\">Notification 4</a></li>\n              <li><a href=\"#\">Another notification</a></li>\n            </ul>\n          </li>\n\n          <li class=\"dropdown dropdown-with-icons\">\n            <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">\n              <i class=\"fa fa-list\"></i>\n              <p class=\"hidden-md hidden-lg\">\n                More\n                <b class=\"caret\"></b>\n              </p>\n            </a>\n            <ul class=\"dropdown-menu dropdown-with-icons\">\n              <li>\n                <a href=\"#\"> <i class=\"pe-7s-mail\"></i> Messages </a>\n              </li>\n              <li>\n                <a href=\"#\"> <i class=\"pe-7s-help1\"></i> Help Center </a>\n              </li>\n              <li>\n                <a href=\"#\"> <i class=\"pe-7s-tools\"></i> Settings </a>\n              </li>\n              <li class=\"divider\"></li>\n              <li>\n                <a href=\"#\"> <i class=\"pe-7s-lock\"></i> Lock Screen </a>\n              </li>\n              <li>\n                <a href=\"#\" class=\"text-danger\">\n                  <i class=\"pe-7s-close-circle\"></i>\n                  Log out\n                </a>\n              </li>\n            </ul>\n          </li>\n        </ul>\n      </div>\n    </div> -->\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -854,25 +926,25 @@ var NavbarComponent = /** @class */ (function () {
     NavbarComponent.prototype.ngOnInit = function () {
         this.listTitles = _sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_1__["ROUTES"].filter(function (listTitle) { return listTitle; });
         var navbar = this.element.nativeElement;
-        this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
-        if ($('body').hasClass('sidebar-mini')) {
+        this.toggleButton = navbar.getElementsByClassName("navbar-toggle")[0];
+        if ($("body").hasClass("sidebar-mini")) {
             misc.sidebar_mini_active = true;
         }
-        $('#minimizeSidebar').click(function () {
+        $("#minimizeSidebar").click(function () {
             var $btn = $(this);
             if (misc.sidebar_mini_active == true) {
-                $('body').removeClass('sidebar-mini');
+                $("body").removeClass("sidebar-mini");
                 misc.sidebar_mini_active = false;
             }
             else {
                 setTimeout(function () {
-                    $('body').addClass('sidebar-mini');
+                    $("body").addClass("sidebar-mini");
                     misc.sidebar_mini_active = true;
                 }, 300);
             }
             // we simulate the window Resize so the charts will get updated in realtime.
             var simulateWindowResize = setInterval(function () {
-                window.dispatchEvent(new Event('resize'));
+                window.dispatchEvent(new Event("resize"));
             }, 180);
             // we stop the simulation of Window Resize after the animations are completed
             setTimeout(function () {
@@ -888,39 +960,40 @@ var NavbarComponent = /** @class */ (function () {
     };
     NavbarComponent.prototype.sidebarOpen = function () {
         var toggleButton = this.toggleButton;
-        var body = document.getElementsByTagName('body')[0];
+        var body = document.getElementsByTagName("body")[0];
         setTimeout(function () {
-            toggleButton.classList.add('toggled');
+            toggleButton.classList.add("toggled");
         }, 500);
-        body.classList.add('nav-open');
+        body.classList.add("nav-open");
         this.sidebarVisible = true;
     };
-    NavbarComponent.prototype.sidebarClose = function () {
-        var body = document.getElementsByTagName('body')[0];
-        this.toggleButton.classList.remove('toggled');
-        this.sidebarVisible = false;
-        body.classList.remove('nav-open');
-    };
+    //   sidebarClose() {
+    //     var body = document.getElementsByTagName("body")[0];
+    //     this.toggleButton.classList.remove("toggled");
+    //     this.sidebarVisible = false;
+    //     body.classList.remove("nav-open");
+    //   }
     NavbarComponent.prototype.sidebarToggle = function () {
         if (this.sidebarVisible == false) {
             this.sidebarOpen();
         }
         else {
-            this.sidebarClose();
+            //   this.sidebarClose();
         }
     };
     NavbarComponent.prototype.getTitle = function () {
         var titlee = this.location.prepareExternalUrl(this.location.path());
-        if (titlee.charAt(0) === '#') {
+        if (titlee.charAt(0) === "#") {
             titlee = titlee.slice(1);
         }
         for (var i = 0; i < this.listTitles.length; i++) {
-            if (this.listTitles[i].type === "link" && this.listTitles[i].path === titlee) {
+            if (this.listTitles[i].type === "link" &&
+                this.listTitles[i].path === titlee) {
                 return this.listTitles[i].title;
             }
             else if (this.listTitles[i].type === "sub") {
                 for (var j = 0; j < this.listTitles[i].children.length; j++) {
-                    var subtitle = this.listTitles[i].path + '/' + this.listTitles[i].children[j].path;
+                    var subtitle = this.listTitles[i].path + "/" + this.listTitles[i].children[j].path;
                     // console.log(subtitle)
                     // console.log(titlee)
                     if (subtitle === titlee) {
@@ -929,7 +1002,7 @@ var NavbarComponent = /** @class */ (function () {
                 }
             }
         }
-        return 'Dashboard';
+        return "Dashboard";
     };
     NavbarComponent.prototype.getPath = function () {
         // console.log(this.location);
@@ -942,10 +1015,12 @@ var NavbarComponent = /** @class */ (function () {
     NavbarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             moduleId: module.i,
-            selector: 'navbar-cmp',
-            template: __webpack_require__(/*! ./navbar.component.html */ "./src/app/shared/navbar/navbar.component.html")
+            selector: "navbar-cmp",
+            template: __webpack_require__(/*! ./navbar.component.html */ "./src/app/shared/navbar/navbar.component.html"),
         }),
-        __metadata("design:paramtypes", [_angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]])
+        __metadata("design:paramtypes", [_angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]])
     ], NavbarComponent);
     return NavbarComponent;
 }());
@@ -1039,23 +1114,23 @@ var PagesnavbarComponent = /** @class */ (function () {
     }
     PagesnavbarComponent.prototype.ngOnInit = function () {
         var navbar = this.element.nativeElement;
-        this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
+        this.toggleButton = navbar.getElementsByClassName("navbar-toggle")[0];
         console.log(this.location.prepareExternalUrl(this.location.path()));
     };
     PagesnavbarComponent.prototype.sidebarOpen = function () {
         var toggleButton = this.toggleButton;
-        var body = document.getElementsByTagName('body')[0];
+        var body = document.getElementsByTagName("body")[0];
         setTimeout(function () {
-            toggleButton.classList.add('toggled');
+            toggleButton.classList.add("toggled");
         }, 500);
-        body.classList.add('nav-open');
+        body.classList.add("nav-open");
         this.sidebarVisible = true;
     };
     PagesnavbarComponent.prototype.sidebarClose = function () {
-        var body = document.getElementsByTagName('body')[0];
-        this.toggleButton.classList.remove('toggled');
+        var body = document.getElementsByTagName("body")[0];
+        this.toggleButton.classList.remove("toggled");
         this.sidebarVisible = false;
-        body.classList.remove('nav-open');
+        body.classList.remove("nav-open");
     };
     PagesnavbarComponent.prototype.sidebarToggle = function () {
         // var toggleButton = this.toggleButton;
@@ -1068,19 +1143,20 @@ var PagesnavbarComponent = /** @class */ (function () {
         }
     };
     PagesnavbarComponent.prototype.isLogin = function () {
-        if (this.location.prepareExternalUrl(this.location.path()) === '#/pages/login') {
+        if (this.location.prepareExternalUrl(this.location.path()) === "#/pages/login") {
             return true;
         }
         return false;
     };
     PagesnavbarComponent.prototype.isLock = function () {
-        if (this.location.prepareExternalUrl(this.location.path()) === '#/pages/lock') {
+        if (this.location.prepareExternalUrl(this.location.path()) === "#/pages/lock") {
             return true;
         }
         return false;
     };
     PagesnavbarComponent.prototype.isRegister = function () {
-        if (this.location.prepareExternalUrl(this.location.path()) === '#/pages/register') {
+        if (this.location.prepareExternalUrl(this.location.path()) ===
+            "#/pages/register") {
             return true;
         }
         return false;
@@ -1096,10 +1172,12 @@ var PagesnavbarComponent = /** @class */ (function () {
     PagesnavbarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             moduleId: module.i,
-            selector: 'pagesnavbar-cmp',
-            template: __webpack_require__(/*! ./pagesnavbar.component.html */ "./src/app/shared/pagesnavbar/pagesnavbar.component.html")
+            selector: "pagesnavbar-cmp",
+            template: __webpack_require__(/*! ./pagesnavbar.component.html */ "./src/app/shared/pagesnavbar/pagesnavbar.component.html"),
         }),
-        __metadata("design:paramtypes", [_angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]])
+        __metadata("design:paramtypes", [_angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]])
     ], PagesnavbarComponent);
     return PagesnavbarComponent;
 }());
@@ -1159,7 +1237,7 @@ var PagesnavbarModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"logo\">\n  <a href=\"http://www.creative-tim.com\" class=\"simple-text logo-mini\">\n    <div class=\"logo-img\">\n      <img src=\"../../assets/img/angular2-logo-white.png\" />\n    </div>\n  </a>\n  <a href=\"http://www.creative-tim.com\" class=\"simple-text logo-normal\">\n    Creative Tim (logo)\n  </a>\n</div>\n\n<div class=\"sidebar-wrapper\">\n  <!-- <div class=\"user\">\n\t\t<div class=\"info\">\n\t\t\t<div class=\"photo\">\n\t\t\t\t<img src=\"../assets/img/default-avatar.png\" />\n\t\t\t</div>\n\t\t\t<a data-toggle=\"collapse\" href=\"#collapseExample\" class=\"collapsed\">\n\t\t\t\t<span>\n\t\t\t\t\tTania Andrew\n\t\t\t\t\t<b class=\"caret\"></b>\n\t\t\t\t</span>\n\t\t\t</a>\n\t\t\t<div class=\"collapse\" id=\"collapseExample\">\n\t\t\t\t<ul class=\"nav\">\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t\t\t<span class=\"sidebar-mini\">MP</span>\n\t\t\t\t\t\t\t<span class=\"sidebar-normal\">My Profile</span>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t\t\t<span class=\"sidebar-mini\">EP</span>\n\t\t\t\t\t\t\t<span class=\"sidebar-normal\">Edit Profile</span>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t\t\t<span class=\"sidebar-mini\">S</span>\n\t\t\t\t\t\t\t<span class=\"sidebar-normal\">Settings</span>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t</div>\n\t</div> -->\n  <div *ngIf=\"isNotMobileMenu()\">\n    <form class=\"navbar-form navbar-left navbar-search-form\" role=\"search\">\n      <div class=\"input-group\">\n        <span class=\"input-group-addon\"><i class=\"fa fa-search\"></i></span>\n        <input\n          class=\"form-control\"\n          placeholder=\"Search...\"\n          type=\"text\"\n          value=\"\"\n        />\n      </div>\n    </form>\n    <ul class=\"nav nav-mobile-menu\">\n      <li>\n        <a routerLinkActive=\"active\" [routerLink]=\"['/charts']\">\n          <i class=\"fa fa-line-chart\"></i>\n          <p>Stats</p>\n        </a>\n      </li>\n\n      <li class=\"dropdown\">\n        <a\n          class=\"dropdown-toggle\"\n          data-toggle=\"dropdown\"\n          href=\"#\"\n          aria-expanded=\"false\"\n        >\n          <i class=\"fa fa-gavel\"></i>\n          <p class=\"hidden-md hidden-lg\">\n            Actions\n            <b class=\"caret\"></b>\n          </p>\n        </a>\n        <ul class=\"dropdown-menu\">\n          <li><a href=\"#\">Create New Post</a></li>\n          <li><a href=\"#\">Manage Something</a></li>\n          <li><a href=\"#\">Do Nothing</a></li>\n          <li><a href=\"#\">Submit to live</a></li>\n          <li class=\"divider\"></li>\n          <li><a href=\"#\">Another Action</a></li>\n        </ul>\n      </li>\n\n      <li class=\"dropdown\">\n        <a\n          class=\"dropdown-toggle\"\n          data-toggle=\"dropdown\"\n          href=\"#\"\n          aria-expanded=\"false\"\n        >\n          <i class=\"fa fa-bell-o\"></i>\n          <span class=\"notification\">5</span>\n          <p class=\"hidden-md hidden-lg\">\n            Notifications\n            <b class=\"caret\"></b>\n          </p>\n        </a>\n        <ul class=\"dropdown-menu\">\n          <li><a href=\"#\">Notification 1</a></li>\n          <li><a href=\"#\">Notification 2</a></li>\n          <li><a href=\"#\">Notification 3</a></li>\n          <li><a href=\"#\">Notification 4</a></li>\n          <li><a href=\"#\">Another notification</a></li>\n        </ul>\n      </li>\n\n      <li class=\"dropdown dropdown-with-icons\">\n        <a\n          class=\"dropdown-toggle\"\n          data-toggle=\"dropdown\"\n          href=\"#\"\n          aria-expanded=\"false\"\n        >\n          <i class=\"fa fa-list\"></i>\n          <p class=\"hidden-md hidden-lg\">\n            More\n            <b class=\"caret\"></b>\n          </p>\n        </a>\n        <ul class=\"dropdown-menu dropdown-with-icons\">\n          <li>\n            <a href=\"#\"> <i class=\"pe-7s-mail\"></i> Messages </a>\n          </li>\n          <li>\n            <a href=\"#\"> <i class=\"pe-7s-help1\"></i> Help Center </a>\n          </li>\n          <li>\n            <a href=\"#\"> <i class=\"pe-7s-tools\"></i> Settings </a>\n          </li>\n          <li class=\"divider\"></li>\n          <li>\n            <a href=\"#\"> <i class=\"pe-7s-lock\"></i> Lock Screen </a>\n          </li>\n          <li>\n            <a class=\"text-danger\" href=\"#\">\n              <i class=\"pe-7s-close-circle\"></i>\n              Log out\n            </a>\n          </li>\n        </ul>\n      </li>\n    </ul>\n  </div>\n  <ul class=\"nav\">\n    <li routerLinkActive=\"active\" *ngFor=\"let menuitem of menuItems\">\n      <!--If is a single link-->\n      <a [routerLink]=\"[menuitem.path]\" *ngIf=\"menuitem.type === 'link'\">\n        <i class=\"{{ menuitem.icontype }}\"></i>\n        <p style=\"text-transform: capitalize\">{{ menuitem.title }}</p>\n      </a>\n      <!--If it have a submenu-->\n      <a\n        data-toggle=\"collapse\"\n        href=\"#{{ menuitem.title }}\"\n        *ngIf=\"menuitem.type === 'sub'\"\n      >\n        <i class=\"{{ menuitem.icontype }}\"></i>\n        <p>{{ menuitem.title }}<b class=\"caret\"></b></p>\n      </a>\n\n      <!--Display the submenu items-->\n      <div\n        id=\"{{ menuitem.title }}\"\n        class=\"collapse\"\n        *ngIf=\"menuitem.type === 'sub'\"\n      >\n        <ul class=\"nav\">\n          <li\n            routerLinkActive=\"active\"\n            *ngFor=\"let childitem of menuitem.children\"\n          >\n            <a [routerLink]=\"[menuitem.path, childitem.path]\">\n              <span class=\"sidebar-mini\">{{ childitem.ab }}</span>\n              <span class=\"sidebar-normal\">{{ childitem.title }}</span>\n            </a>\n          </li>\n        </ul>\n      </div>\n    </li>\n    <li>\n      <a\n        href=\"http://lbd-pro-angular2.creative-tim.com/documentation/tutorial?ref=lbd-pro-archive\"\n      >\n        <i class=\"pe-7s-study\"></i>\n        <p>Documentation</p>\n      </a>\n    </li>\n  </ul>\n</div>\n"
+module.exports = "<div class=\"logo\">\n  <a href=\"#\" class=\"logo-normal\">\n    <div class=\"logo-img\">\n      <img src=\"../../assets/img/eclipse.png\" />\n    </div>\n  </a>\n  <!-- <a href=\"http://www.creative-tim.com\" class=\"simple-text logo-normal\">\n    Creative Tim (logo)\n  </a> -->\n</div>\n\n<div class=\"sidebar-wrapper\">\n  <!-- <div class=\"user\">\n\t\t<div class=\"info\">\n\t\t\t<div class=\"photo\">\n\t\t\t\t<img src=\"../assets/img/default-avatar.png\" />\n\t\t\t</div>\n\t\t\t<a data-toggle=\"collapse\" href=\"#collapseExample\" class=\"collapsed\">\n\t\t\t\t<span>\n\t\t\t\t\tTania Andrew\n\t\t\t\t\t<b class=\"caret\"></b>\n\t\t\t\t</span>\n\t\t\t</a>\n\t\t\t<div class=\"collapse\" id=\"collapseExample\">\n\t\t\t\t<ul class=\"nav\">\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t\t\t<span class=\"sidebar-mini\">MP</span>\n\t\t\t\t\t\t\t<span class=\"sidebar-normal\">My Profile</span>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t\t\t<span class=\"sidebar-mini\">EP</span>\n\t\t\t\t\t\t\t<span class=\"sidebar-normal\">Edit Profile</span>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</li>\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<a href=\"#\">\n\t\t\t\t\t\t\t<span class=\"sidebar-mini\">S</span>\n\t\t\t\t\t\t\t<span class=\"sidebar-normal\">Settings</span>\n\t\t\t\t\t\t</a>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t</div>\n\t</div> -->\n  <div *ngIf=\"isNotMobileMenu()\">\n    <form class=\"navbar-form navbar-left navbar-search-form\" role=\"search\">\n      <div class=\"input-group\">\n        <span class=\"input-group-addon\"><i class=\"fa fa-search\"></i></span>\n        <input\n          class=\"form-control\"\n          placeholder=\"Search...\"\n          type=\"text\"\n          value=\"\"\n        />\n      </div>\n    </form>\n    <ul class=\"nav nav-mobile-menu\">\n      <li>\n        <a routerLinkActive=\"active\" [routerLink]=\"['/charts']\">\n          <i class=\"fa fa-line-chart\"></i>\n          <p>Stats</p>\n        </a>\n      </li>\n\n      <li class=\"dropdown\">\n        <a\n          class=\"dropdown-toggle\"\n          data-toggle=\"dropdown\"\n          href=\"#\"\n          aria-expanded=\"false\"\n        >\n          <i class=\"fa fa-gavel\"></i>\n          <p class=\"hidden-md hidden-lg\">\n            Actions\n            <b class=\"caret\"></b>\n          </p>\n        </a>\n        <ul class=\"dropdown-menu\">\n          <li><a href=\"#\">Create New Post</a></li>\n          <li><a href=\"#\">Manage Something</a></li>\n          <li><a href=\"#\">Do Nothing</a></li>\n          <li><a href=\"#\">Submit to live</a></li>\n          <li class=\"divider\"></li>\n          <li><a href=\"#\">Another Action</a></li>\n        </ul>\n      </li>\n\n      <li class=\"dropdown\">\n        <a\n          class=\"dropdown-toggle\"\n          data-toggle=\"dropdown\"\n          href=\"#\"\n          aria-expanded=\"false\"\n        >\n          <i class=\"fa fa-bell-o\"></i>\n          <span class=\"notification\">5</span>\n          <p class=\"hidden-md hidden-lg\">\n            Notifications\n            <b class=\"caret\"></b>\n          </p>\n        </a>\n        <ul class=\"dropdown-menu\">\n          <li><a href=\"#\">Notification 1</a></li>\n          <li><a href=\"#\">Notification 2</a></li>\n          <li><a href=\"#\">Notification 3</a></li>\n          <li><a href=\"#\">Notification 4</a></li>\n          <li><a href=\"#\">Another notification</a></li>\n        </ul>\n      </li>\n\n      <li class=\"dropdown dropdown-with-icons\">\n        <a\n          class=\"dropdown-toggle\"\n          data-toggle=\"dropdown\"\n          href=\"#\"\n          aria-expanded=\"false\"\n        >\n          <i class=\"fa fa-list\"></i>\n          <p class=\"hidden-md hidden-lg\">\n            More\n            <b class=\"caret\"></b>\n          </p>\n        </a>\n        <ul class=\"dropdown-menu dropdown-with-icons\">\n          <li>\n            <a href=\"#\"> <i class=\"pe-7s-mail\"></i> Messages </a>\n          </li>\n          <li>\n            <a href=\"#\"> <i class=\"pe-7s-help1\"></i> Help Center </a>\n          </li>\n          <li>\n            <a href=\"#\"> <i class=\"pe-7s-tools\"></i> Settings </a>\n          </li>\n          <li class=\"divider\"></li>\n          <li>\n            <a href=\"#\"> <i class=\"pe-7s-lock\"></i> Lock Screen </a>\n          </li>\n          <li>\n            <a class=\"text-danger\" href=\"#\">\n              <i class=\"pe-7s-close-circle\"></i>\n              Log out\n            </a>\n          </li>\n        </ul>\n      </li>\n    </ul>\n  </div>\n  <ul class=\"nav\">\n    <li routerLinkActive=\"active\" *ngFor=\"let menuitem of menuItems\">\n      <!--If is a single link-->\n      <a [routerLink]=\"[menuitem.path]\" *ngIf=\"menuitem.type === 'link'\">\n        <i class=\"{{ menuitem.icontype }}\"></i>\n        <p style=\"text-transform: capitalize\">{{ menuitem.title }}</p>\n      </a>\n      <!--If it have a submenu-->\n      <a\n        data-toggle=\"collapse\"\n        href=\"#{{ menuitem.title }}\"\n        *ngIf=\"menuitem.type === 'sub'\"\n      >\n        <i class=\"{{ menuitem.icontype }}\"></i>\n        <p>{{ menuitem.title }}<b class=\"caret\"></b></p>\n      </a>\n\n      <!--Display the submenu items-->\n      <div\n        id=\"{{ menuitem.title }}\"\n        class=\"collapse\"\n        *ngIf=\"menuitem.type === 'sub'\"\n      >\n        <ul class=\"nav\">\n          <li\n            routerLinkActive=\"active\"\n            *ngFor=\"let childitem of menuitem.children\"\n          >\n            <a [routerLink]=\"[menuitem.path, childitem.path]\">\n              <span class=\"sidebar-mini\">{{ childitem.ab }}</span>\n              <span class=\"sidebar-normal\">{{ childitem.title }}</span>\n            </a>\n          </li>\n        </ul>\n      </div>\n    </li>\n    <!-- <li>\n      <a\n        href=\"http://lbd-pro-angular2.creative-tim.com/documentation/tutorial?ref=lbd-pro-archive\"\n      >\n        <i class=\"pe-7s-study\"></i>\n        <p>Documentation</p>\n      </a>\n    </li> -->\n  </ul>\n</div>\n"
 
 /***/ }),
 
@@ -1197,77 +1275,16 @@ var ROUTES = [
         icontype: "pe-7s-paper-plane",
     },
     {
-        path: "/components",
-        title: "Components",
-        type: "sub",
-        icontype: "pe-7s-plugin",
-        children: [
-            { path: "buttons", title: "Buttons", ab: "B" },
-            { path: "grid", title: "Grid System", ab: "GS" },
-            { path: "panels", title: "Panels", ab: "P" },
-            { path: "sweet-alert", title: "Sweet Alert", ab: "SA" },
-            { path: "notifications", title: "Notifications", ab: "N" },
-            { path: "icons", title: "Icons", ab: "I" },
-            { path: "typography", title: "Typography", ab: "T" },
-        ],
-    },
-    {
-        path: "/forms",
-        title: "Forms",
-        type: "sub",
-        icontype: "pe-7s-note2",
-        children: [
-            { path: "regular", title: "Regular Forms", ab: "RF" },
-            { path: "extended", title: "Extended Forms", ab: "EF" },
-            { path: "validation", title: "Validation Forms", ab: "VF" },
-            { path: "wizard", title: "Wizard", ab: "W" },
-        ],
-    },
-    {
-        path: "/tables",
-        title: "Tables",
-        type: "sub",
-        icontype: "pe-7s-news-paper",
-        children: [
-            { path: "regular", title: "Regular Tables", ab: "RT" },
-            { path: "extended", title: "Extended Tables", ab: "ET" },
-            { path: "datatables.net", title: "Datatables.net", ab: "DT" },
-        ],
-    },
-    {
-        path: "/maps",
-        title: "Maps",
-        type: "sub",
-        icontype: "pe-7s-map-marker",
-        children: [
-            { path: "google", title: "Google Maps", ab: "GM" },
-            { path: "fullscreen", title: "Full Screen Map", ab: "FSM" },
-            { path: "vector", title: "Vector Map", ab: "VM" },
-        ],
-    },
-    {
-        path: "/charts",
-        title: "Charts",
+        path: "/vehicle",
+        title: "Veículo",
         type: "link",
-        icontype: "pe-7s-graph1",
+        icontype: "pe-7s-car",
     },
     {
-        path: "/calendar",
-        title: "Calendar",
+        path: "/client",
+        title: "Cliente",
         type: "link",
-        icontype: "pe-7s-date",
-    },
-    {
-        path: "/pages",
-        title: "Pages",
-        type: "sub",
-        icontype: "pe-7s-gift",
-        children: [
-            { path: "user", title: "User Page", ab: "UP" },
-            { path: "login", title: "Login Page", ab: "LP" },
-            { path: "register", title: "Register Page", ab: "RP" },
-            { path: "lock", title: "Lock Screen Page", ab: "LSP" },
-        ],
+        icontype: "pe-7s-users",
     },
 ];
 var SidebarComponent = /** @class */ (function () {
@@ -1371,7 +1388,8 @@ __webpack_require__.r(__webpack_exports__);
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
     production: false,
-    api: "http://localhost:3000",
+    // api: "http://localhost:3000",
+    api: "http://154.49.246.33:3000",
 };
 
 
@@ -1425,7 +1443,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\jamp0\Documents\repositories2\angular-dash\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/carolinerodrigues/Documents/eclipse-locadora/src/main.ts */"./src/main.ts");
 
 
 /***/ })

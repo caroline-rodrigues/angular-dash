@@ -5007,14 +5007,12 @@ h1 .subtitle {
   overflow-x: hidden;
   overflow-y: scroll; }
   .sidebar .logo-img {
-    width: 30px;
-    display: inline-block;
-    max-height: 30px; }
+    display: inline-block;}
     .sidebar .logo-img img {
-      width: 35px;
-      top: 1px;
+      width: 200px;
+      top: 5px;
       position: absolute;
-      left: 0px; }
+      left: 10px; }
   .sidebar .sidebar-wrapper {
     position: relative;
     z-index: 4;
