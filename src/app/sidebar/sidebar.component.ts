@@ -124,6 +124,50 @@ export const ROUTES: RouteInfo[] = [
   //   ],
   // },
 ];
+export const ROUTESrent: RouteInfo[] = [
+  {
+    path: "/dashboard",
+    title: "Painel",
+    type: "link",
+    icontype: "pe-7s-graph",
+  },
+  {
+    path: "/rent",
+    title: "Aluguel",
+    type: "link",
+    icontype: "pe-7s-paper-plane",
+  },
+  {
+    path: "/vehicle",
+    title: "Veículo",
+    type: "link",
+    icontype: "pe-7s-car",
+  },
+  {
+    path: "/client",
+    title: "Cliente",
+    type: "link",
+    icontype: "pe-7s-users",
+  },
+  {
+    path: "/components/new-rent",
+    title: "Novo Aluguel",
+    type: "link",
+    icontype: "pe-7s-users",
+  },
+  {
+    path: "/components/new-client",
+    title: "Novo Cliente",
+    type: "link",
+    icontype: "pe-7s-users",
+  },
+  {
+    path: "/components/new-vehicle",
+    title: "Novo Veículo",
+    type: "link",
+    icontype: "pe-7s-users",
+  },
+];
 
 @Component({
   moduleId: module.id,

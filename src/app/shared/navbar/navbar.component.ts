@@ -1,18 +1,12 @@
+import { Location } from "@angular/common";
 import {
   Component,
+  ElementRef,
   OnInit,
   Renderer,
   ViewChild,
-  ElementRef,
-  Directive,
 } from "@angular/core";
-import { ROUTES } from "../.././sidebar/sidebar.component";
-import { Router, ActivatedRoute } from "@angular/router";
-import {
-  Location,
-  LocationStrategy,
-  PathLocationStrategy,
-} from "@angular/common";
+import { ROUTESrent } from "../.././sidebar/sidebar.component";
 
 var misc: any = {
   navbar_menu_visible: 0,
@@ -46,7 +40,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.listTitles = ROUTES.filter((listTitle) => listTitle);
+    this.listTitles = ROUTESrent.filter((listTitle) => listTitle);
 
     var navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName("navbar-toggle")[0];
@@ -95,17 +89,17 @@ export class NavbarComponent implements OnInit {
     body.classList.add("nav-open");
     this.sidebarVisible = true;
   }
-  //   sidebarClose() {
-  //     var body = document.getElementsByTagName("body")[0];
-  //     this.toggleButton.classList.remove("toggled");
-  //     this.sidebarVisible = false;
-  //     body.classList.remove("nav-open");
-  //   }
+  sidebarClose() {
+    var body = document.getElementsByTagName("body")[0];
+    this.toggleButton.classList.remove("toggled");
+    this.sidebarVisible = false;
+    body.classList.remove("nav-open");
+  }
   sidebarToggle() {
     if (this.sidebarVisible == false) {
       this.sidebarOpen();
     } else {
-      //   this.sidebarClose();
+      this.sidebarClose();
     }
   }
 
@@ -117,22 +111,20 @@ export class NavbarComponent implements OnInit {
     for (let i = 0; i < this.listTitles.length; i++) {
       if (
         this.listTitles[i].type === "link" &&
-        this.listTitles[i].path === titlee
+        titlee.includes(this.listTitles[i].path)
       ) {
         return this.listTitles[i].title;
       } else if (this.listTitles[i].type === "sub") {
         for (let j = 0; j < this.listTitles[i].children.length; j++) {
           let subtitle =
             this.listTitles[i].path + "/" + this.listTitles[i].children[j].path;
-          // console.log(subtitle)
-          // console.log(titlee)
           if (subtitle === titlee) {
             return this.listTitles[i].children[j].title;
           }
         }
       }
     }
-    return "Dashboard";
+    return "this.location.path()";
   }
 
   getPath() {

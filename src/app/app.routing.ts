@@ -69,4 +69,14 @@ export const AppRoutes: Routes = [
       },
     ],
   },
+  // {
+  //   path: "",
+  //   component: NewRentComponent,
+  //   children: [
+  //     {
+  //       path: "/components/new-rent",
+  //       loadChildren: "./pages/pages.module#PagesModule",
+  //     },
+  //   ],
+  // },
 ];

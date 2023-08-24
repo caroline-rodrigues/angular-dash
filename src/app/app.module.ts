@@ -15,7 +15,6 @@ import { FooterModule } from "./shared/footer/footer.module";
 import { NavbarModule } from "./shared/navbar/navbar.module";
 import { PagesnavbarModule } from "./shared/pagesnavbar/pagesnavbar.module";
 import { SidebarModule } from "./sidebar/sidebar.module";
-import { OccurrenceComponent } from './occurrence/occurrence.component';
 
 @NgModule({
   imports: [
@@ -32,7 +31,7 @@ import { OccurrenceComponent } from './occurrence/occurrence.component';
     FixedPluginModule,
     PagesnavbarModule,
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, OccurrenceComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
