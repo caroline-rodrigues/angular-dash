@@ -16,7 +16,7 @@
                   align-items: center;
                 "
               >
-                <p>06</p>
+                <p>{{ inProgress }}</p>
                 <i class="pe-7s-note2" style="font-size: 3rem"></i>
               </div>
             </div>
@@ -38,7 +38,7 @@
                   align-items: center;
                 "
               >
-                <p>06</p>
+                <p>{{ late }}</p>
                 <i class="pe-7s-diskette" style="font-size: 3rem"></i>
               </div>
             </div>
@@ -60,7 +60,7 @@
                   align-items: center;
                 "
               >
-                <p>06</p>
+                <p>{{ clients }}</p>
                 <i class="pe-7s-users" style="font-size: 3rem"></i>
               </div>
             </div>
@@ -72,7 +72,7 @@
     <div class="row">
       <div class="col-lg-8">
         <div class="content table-responsive table-full-width">
-          <table class="table" (onDeleteRent)="onDeletedRent($event)">
+          <table class="table">
             <thead>
               <tr>
                 <th class="text-center">{{ headerRow[0] }}</th>
@@ -80,38 +80,40 @@
                 <th class="text-center">{{ headerRow[2] }}</th>
                 <th class="text-center">{{ headerRow[3] }}</th>
                 <th class="text-center">{{ headerRow[4] }}</th>
-                <th class="text-center">{{ headerRow[5] }}</th>
-                <th class="text-center">{{ headerRow[6] }}</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let row of rows">
-                <td class="text-center">{{ row?.rent?._id }}</td>
+              <tr *ngFor="let row of filteredRows">
                 <td class="text-center">{{ row?.client?.name }}</td>
-                <td class="text-center">{{ row?.client?.cpf }}</td>
-                <td class="text-center">{{ row?.rent?.endDate }}</td>
+                <td class="text-center">{{ row?.client?._id }}</td>
                 <td class="text-center">{{ row?.vehicle?.brand }}</td>
-                <td class="text-center">{{ row?.rent?.situation }}</td>
-                <td class="td-actions text-center">
-                  <button
-                    rel="tooltip"
-                    title="Edit Profile"
-                    class="btn btn-success btn-simple btn-xs"
-                  >
-                    <i class="fa fa-edit"></i>
-                  </button>
-                  <button
-                    rel="tooltip"
-                    title="Remove"
-                    class="btn btn-danger btn-simple btn-xs"
-                    (click)="delete(row?.rent?._id)"
-                  >
-                    <i class="fa fa-times"></i>
-                  </button>
-                </td>
+                <td class="text-center">{{ row?.status }}</td>
+                <td class="text-center">{{ row?.rent?.endDate }}</td>
               </tr>
             </tbody>
           </table>
+        </div>
+        <div style="display: flex; justify-content: center">
+          <ul class="pagination">
+            <li
+              [class.disabled]="currentPage === 1"
+              (click)="changePage(currentPage - 1)"
+            >
+              <a><<</a>
+            </li>
+            <li
+              [class.active]="currentPage === page"
+              *ngFor="let page of totalPagesArray"
+            >
+              <a (click)="changePage(page)">{{ page }}</a>
+            </li>
+            <li
+              [class.disabled]="currentPage === totalPages"
+              (click)="changePage(currentPage + 1)"
+            >
+              <a>>></a>
+            </li>
+          </ul>
         </div>
       </div>
       <div class="col-lg-4">

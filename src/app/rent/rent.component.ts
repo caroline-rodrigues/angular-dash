@@ -1,9 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
-import { Rent } from "./rent";
-import { RentService } from "./rent.service";
-import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
-import { Subject } from "rxjs";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { map } from "rxjs/operators";
+import { RentService } from "./rent.service";
 
 declare interface TableData {
   headerRow: string[];

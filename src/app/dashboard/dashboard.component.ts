@@ -1,6 +1,9 @@
 import { Component } from "@angular/core";
 import { ChartType, LegendItem } from "../lbd/lbd-chart/lbd-chart.component";
 import { Task } from "../lbd/lbd-task-list/lbd-task-list.component";
+import { ClientService } from "app/client/client.service";
+import { map } from "rxjs/operators";
+import { RentService } from "app/rent/rent.service";
 
 interface Row {
   rent?: {
@@ -25,92 +28,36 @@ export class DashboardComponent {
   public graphType: ChartType;
   public dataGraph: any;
   public dataGraphInfo: LegendItem[];
+  public clients: any;
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+  pagesToShow: number = 3;
+  searchQuery: string;
+  totalPages: number;
+  filteredRows: any[];
+  totalPagesArray: any[] = [];
+  rentList: any[] = [];
+  inProgress: any;
+  late: any;
 
   rows: Row[];
   headerRow: string[] = [
-    "ID",
-    "Nome",
-    "CPF",
-    "Data devolução",
-    "Modelo",
-    "Situação",
-    "Ações",
+    "Cliente",
+    "ID Cliente",
+    "Carro",
+    "STATUS",
+    "Data Entrega",
   ];
 
-  public tasks: Task[];
+  constructor(
+    private clientService: ClientService,
+    private rentService: RentService
+  ) {}
+
   ngOnInit() {
-    this.rows = [
-      {
-        rent: {
-          _id: "1",
-          endDate: "2023-07-20",
-          situation: "active",
-        },
-        client: {
-          name: "John Doe",
-          cpf: "12345678901",
-        },
-        vehicle: {
-          brand: "Toyota",
-        },
-      },
-      {
-        rent: {
-          _id: "2",
-          endDate: "2023-07-22",
-          situation: "inactive",
-        },
-        client: {
-          name: "Jane Smith",
-          cpf: "98765432109",
-        },
-        vehicle: {
-          brand: "Honda",
-        },
-      },
-      {
-        rent: {
-          _id: "3",
-          endDate: "2023-07-25",
-          situation: "active",
-        },
-        client: {
-          name: "Michael Johnson",
-          cpf: "45678912304",
-        },
-        vehicle: {
-          brand: "Ford",
-        },
-      },
-      {
-        rent: {
-          _id: "4",
-          endDate: "2023-07-30",
-          situation: "inactive",
-        },
-        client: {
-          name: "Emily Davis",
-          cpf: "65432198706",
-        },
-        vehicle: {
-          brand: "Chevrolet",
-        },
-      },
-      {
-        rent: {
-          _id: "5",
-          endDate: "2023-08-02",
-          situation: "active",
-        },
-        client: {
-          name: "Daniel Wilson",
-          cpf: "78912345603",
-        },
-        vehicle: {
-          brand: "Volkswagen",
-        },
-      },
-    ];
+    this.getAll(false);
+    this.findAllClients();
+    this.rentalStatus();
 
     this.graphType = ChartType.Pie;
     this.dataGraph = {
@@ -122,5 +69,67 @@ export class DashboardComponent {
       { title: "Bounce", imageClass: "fa fa-circle text-danger" },
       { title: "Unsubscribe", imageClass: "fa fa-circle text-warning" },
     ];
+  }
+
+  getAll(event: boolean) {
+    this.rentService
+      .getAll()
+      .pipe(map((rentResponse) => rentResponse.filteredEntityResults))
+      .subscribe((rentList) => {
+        this.rentList = rentList;
+        this.totalPages = Math.ceil(this.rentList.length / this.itemsPerPage);
+
+        if (event && this.filteredRows.length === 1 && this.currentPage !== 1) {
+          this.currentPage = this.totalPages;
+        }
+
+        this.filteredRows = this.paginate(this.rentList);
+        this.totalPagesArray = this.calculateTotalPagesArray(
+          this.currentPage,
+          this.totalPages
+        );
+      });
+  }
+
+  paginate(data: any[]): any[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return data.slice(startIndex, endIndex);
+  }
+
+  calculateTotalPagesArray(currentPage: number, totalPages: number): number[] {
+    const pagesArray: number[] = [];
+    const startPage = Math.max(1, currentPage - this.pagesToShow);
+    const endPage = Math.min(totalPages, currentPage + this.pagesToShow);
+
+    for (let i = startPage; i <= endPage; i++) {
+      pagesArray.push(i);
+    }
+    return pagesArray;
+  }
+
+  changePage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.filteredRows = this.paginate(this.rentList);
+      this.totalPagesArray = this.calculateTotalPagesArray(
+        this.currentPage,
+        this.totalPages
+      );
+    }
+  }
+
+  findAllClients() {
+    this.clientService.getAll().subscribe((client) => {
+      this.clients = client.count;
+    });
+    return this.clients;
+  }
+
+  rentalStatus() {
+    this.rentService.rentalStatus().subscribe((status) => {
+      this.late = status.late;
+      this.inProgress = status.inProgress;
+    });
   }
 }

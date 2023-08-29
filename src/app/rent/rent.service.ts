@@ -11,6 +11,9 @@ export class RentService {
   getAll() {
     return this.http.get<any>(`${environment.api}/rent/findAll`);
   }
+  rentalStatus() {
+    return this.http.get<any>(`${environment.api}/rent/rentalStatus`);
+  }
 
   delete(id: string) {
     return this.http.delete<any>(`${environment.api}/rent/delete/${id}
