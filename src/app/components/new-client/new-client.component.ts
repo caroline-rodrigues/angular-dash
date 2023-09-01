@@ -10,7 +10,7 @@ import { Client, ClientService } from "app/client/client.service";
 export class NewClientComponent implements OnInit {
   clienteForm: FormGroup;
   clientId: string;
-  plataform_user: boolean = false;
+  // plataform_user: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,

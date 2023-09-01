@@ -4,6 +4,7 @@ import { Task } from "../lbd/lbd-task-list/lbd-task-list.component";
 import { ClientService } from "app/client/client.service";
 import { map } from "rxjs/operators";
 import { RentService } from "app/rent/rent.service";
+import { VehicleService } from "app/vehicle/vehicle.service";
 
 interface Row {
   rent?: {
@@ -38,7 +39,8 @@ export class DashboardComponent {
   totalPagesArray: any[] = [];
   rentList: any[] = [];
   inProgress: any;
-  late: any;
+  late: number;
+  showChart: boolean = false;
 
   rows: Row[];
   headerRow: string[] = [
@@ -51,7 +53,8 @@ export class DashboardComponent {
 
   constructor(
     private clientService: ClientService,
-    private rentService: RentService
+    private rentService: RentService,
+    private vehicleService: VehicleService
   ) {}
 
   ngOnInit() {
@@ -59,16 +62,17 @@ export class DashboardComponent {
     this.findAllClients();
     this.rentalStatus();
 
-    this.graphType = ChartType.Pie;
-    this.dataGraph = {
-      labels: ["62%", "32%", "6%"],
-      series: [62, 32, 6],
-    };
-    this.dataGraphInfo = [
-      { title: "Open", imageClass: "fa fa-circle text-info" },
-      { title: "Bounce", imageClass: "fa fa-circle text-danger" },
-      { title: "Unsubscribe", imageClass: "fa fa-circle text-warning" },
-    ];
+    // this.graphType = ChartType.Pie;
+    // this.dataGraph = {
+    //   labels: [`${this.late}`, "32%", "6%"],
+    //   series: [62, 32, 6],
+    // };
+    // this.dataGraphInfo = [
+    //   { title: "Alugados", imageClass: "fa fa-circle text-info" },
+    //   { title: "Disponíveis", imageClass: "fa fa-circle text-danger" },
+    //   { title: "Manutenção", imageClass: "fa fa-circle text-warning" },
+    // ];
+    console.log(this.late);
   }
 
   getAll(event: boolean) {
@@ -130,6 +134,17 @@ export class DashboardComponent {
     this.rentService.rentalStatus().subscribe((status) => {
       this.late = status.late;
       this.inProgress = status.inProgress;
+      this.graphType = ChartType.Pie;
+      this.dataGraph = {
+        labels: [`${this.inProgress}%`, `${this.late}%`, "13%"],
+        series: [this.inProgress, this.late],
+      };
+      this.dataGraphInfo = [
+        { title: "Alugados", imageClass: "fa fa-circle text-info" },
+        { title: "Disponíveis", imageClass: "fa fa-circle text-danger" },
+        { title: "Manutenção", imageClass: "fa fa-circle text-warning" },
+      ];
+      this.showChart = true;
     });
   }
 }

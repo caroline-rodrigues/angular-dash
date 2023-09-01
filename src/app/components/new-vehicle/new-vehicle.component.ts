@@ -11,7 +11,6 @@ import { VehicleService } from "app/vehicle/vehicle.service";
 export class NewVehicletComponent implements OnInit {
   vehicleForm: FormGroup;
   occurrenceForm: FormGroup;
-  plataform_user: boolean = false;
   occurrenceList: any[] = [];
   headerRow: string[] = ["Data de entrega", "Observação", ""];
   vehicleId: string;
@@ -33,6 +32,8 @@ export class NewVehicletComponent implements OnInit {
       plate: ["", Validators.required],
       chassi: ["", Validators.required],
       year: ["", Validators.required],
+      available: [false],
+      rented: [false],
     });
 
     this.occurrenceForm = this.formBuilder.group({
@@ -61,6 +62,7 @@ export class NewVehicletComponent implements OnInit {
       this.router.navigate(["/vehicle"]);
     } else if (this.vehicleForm.valid && this.vehicleId) {
       const vehicle = this.vehicleForm.value as VehicleDto;
+      console.log({ vehicle });
       vehicle.occurrences = this.occurrenceList as OccurrenceDto[];
       this.onUpdateClient(vehicle, this.vehicleId);
       this.router.navigate(["/vehicle"]);
@@ -88,12 +90,23 @@ export class NewVehicletComponent implements OnInit {
 
   loadVehicle(vehicleId: string) {
     this.vehicleService.getVehicleById(vehicleId).subscribe((vehicle) => {
+      console.log({ vehicle });
       this.vehicleForm.patchValue(vehicle);
       this.occurrenceList = vehicle.occurrences;
+      this.onAvaible(this.vehicleForm.value.available);
     });
   }
 
   onUpdateClient(client: any, id: string) {
     this.vehicleService.update(client, id).subscribe();
+  }
+
+  isAvaible() {
+    this.onAvaible(this.vehicleForm.value.available);
+  }
+
+  onAvaible(isAvaible: any) {
+    this.vehicleForm.get("available").setValue(isAvaible);
+    console.log({ isAvaible });
   }
 }

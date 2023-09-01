@@ -50,7 +50,7 @@ export class NewRentComponent implements OnInit {
       clientId: ["", Validators.required],
       cpf: ["", Validators.required],
       plate: ["", Validators.required],
-      vehicleId: ["", Validators.required],
+      vehicle: ["", Validators.required],
       startDate: [""],
       exitTime: [""],
       outputKm: [""],
@@ -87,7 +87,7 @@ export class NewRentComponent implements OnInit {
         this.rentForm.get("cpf").setValue("", { emitEvent: false });
       }
     });
-    this.rentForm.get("vehicleId").valueChanges.subscribe((selectedVehicle) => {
+    this.rentForm.get("vehicle").valueChanges.subscribe((selectedVehicle) => {
       if (selectedVehicle && selectedVehicle.plate) {
         this.rentForm
           .get("plate")
@@ -102,6 +102,9 @@ export class NewRentComponent implements OnInit {
     if (this.rentForm.valid && !this.rentId) {
       const rent = this.rentForm.value as RentDto;
       rent.occurrences = this.occurrenceList as OccurrenceDto[];
+      rent.vehicle.rented = true;
+      const vehicleUpdate = rent.vehicle;
+      this.vehicleService.update(vehicleUpdate, vehicleUpdate._id).subscribe();
       this.occurrenceList.forEach((occurrence) => {
         this.occurrenceService.create(occurrence as OccurrenceDto).subscribe();
       });
@@ -144,7 +147,7 @@ export class NewRentComponent implements OnInit {
       .getAll()
       .pipe(map((vehicletResponse) => vehicletResponse.results))
       .subscribe((vehicle) => {
-        const vehicleToUpdateForm = this.rentForm.get("vehicleId").value;
+        const vehicleToUpdateForm = this.rentForm.get("vehicle").value;
         if (vehicleToUpdateForm !== "") {
           const filteredVehicles = vehicle.filter(
             (v) => v._id !== vehicleToUpdateForm

@@ -65,7 +65,7 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-5">
             <label for="chassi">Chassi</label>
             <input
               type="text"
@@ -76,7 +76,7 @@
               name="chassi"
             />
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-5">
             <label for="year">Ano</label>
             <input
               type="number"
@@ -88,6 +88,19 @@
               formControlName="year"
               name="year"
             />
+          </div>
+          <div class="form-group col-md-2">
+            <label for="available" style="display: block">Manutenção</label>
+            <div style="padding-top: 6px">
+              <bSwitch
+                [switch-on-color]="'primary'"
+                [switch-off-text]="' '"
+                [switch-on-text]="' '"
+                (click)="isAvaible()"
+                formControlName="available"
+              >
+              </bSwitch>
+            </div>
           </div>
         </div>
         <div class="form-row">
@@ -121,7 +134,7 @@
               formControlName="observation"
             />
           </div>
-          <div class="form-group col-md-4" style="margin-top: 24px">
+          <div class="form-group col-md-2" style="margin-top: 24px">
             <button
               type="submit"
               class="btn btn-default btn-fill btn-wd"

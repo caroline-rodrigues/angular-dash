@@ -1,7 +1,7 @@
 interface RentDto {
   id?: string;
   clientId: string;
-  vehicleId: string;
+  vehicle: any;
   situation?: string;
   dailyValue?: number;
   freeKm?: number;

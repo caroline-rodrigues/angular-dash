@@ -116,12 +116,12 @@
           </ul>
         </div>
       </div>
-      <div class="col-lg-4">
+      <div class="col-lg-4" *ngIf="showChart">
         <lbd-chart
           [title]="'Carros'"
           [chartType]="graphType"
           [chartData]="dataGraph"
-          [legendItems]="emailChartLegendItems"
+          [legendItems]="dataGraphInfo"
           [withHr]="true"
           [footerIconClass]="'fa fa-clock-o'"
           [footerText]="'Campaign sent 2 days ago'"
