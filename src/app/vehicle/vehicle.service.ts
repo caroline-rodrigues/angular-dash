@@ -12,6 +12,14 @@ export class VehicleService {
     return this.http.get<any>(`${environment.api}/vehicle/findAll`);
   }
 
+  findAllVehicles() {
+    return this.http.get<any>(`${environment.api}/vehicle/findAllVehicles`);
+  }
+
+  vehiclesStatus() {
+    return this.http.get<any>(`${environment.api}/vehicle/vehicleStatus`);
+  }
+
   getVehicleById(id: string) {
     return this.http.get<any>(`${environment.api}/vehicle/findById/${id}`);
   }

@@ -32,7 +32,7 @@ export class NewVehicletComponent implements OnInit {
       plate: ["", Validators.required],
       chassi: ["", Validators.required],
       year: ["", Validators.required],
-      available: [false],
+      maintenance: [false],
       rented: [false],
     });
 
@@ -54,6 +54,7 @@ export class NewVehicletComponent implements OnInit {
     if (this.vehicleForm.valid && !this.vehicleId) {
       const vehicle = this.vehicleForm.value as VehicleDto;
       vehicle.occurrences = this.occurrenceList as OccurrenceDto[];
+      vehicle.available = true;
       this.occurrenceList.forEach((occurrence) => {
         this.occurrenceService.create(occurrence as OccurrenceDto).subscribe();
       });

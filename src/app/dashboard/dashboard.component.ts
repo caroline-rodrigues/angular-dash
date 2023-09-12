@@ -38,9 +38,12 @@ export class DashboardComponent {
   filteredRows: any[];
   totalPagesArray: any[] = [];
   rentList: any[] = [];
-  inProgress: any;
-  late: number;
+  available: any;
+  rented: number;
+  maintenance: number;
   showChart: boolean = false;
+  inProgress: number;
+  late: number;
 
   rows: Row[];
   headerRow: string[] = [
@@ -60,7 +63,8 @@ export class DashboardComponent {
   ngOnInit() {
     this.getAll(false);
     this.findAllClients();
-    this.rentalStatus();
+    this.vehiclesStatus();
+    this.allRentStatus();
 
     // this.graphType = ChartType.Pie;
     // this.dataGraph = {
@@ -72,7 +76,6 @@ export class DashboardComponent {
     //   { title: "Disponíveis", imageClass: "fa fa-circle text-danger" },
     //   { title: "Manutenção", imageClass: "fa fa-circle text-warning" },
     // ];
-    console.log(this.late);
   }
 
   getAll(event: boolean) {
@@ -130,21 +133,31 @@ export class DashboardComponent {
     return this.clients;
   }
 
-  rentalStatus() {
-    this.rentService.rentalStatus().subscribe((status) => {
-      this.late = status.late;
-      this.inProgress = status.inProgress;
+  vehiclesStatus() {
+    this.vehicleService.vehiclesStatus().subscribe((status) => {
+      this.rented = status.rented;
+      this.available = status.available;
+      this.maintenance = status.maintenance;
+      console.log(status);
+
       this.graphType = ChartType.Pie;
       this.dataGraph = {
-        labels: [`${this.inProgress}%`, `${this.late}%`, "13%"],
-        series: [this.inProgress, this.late],
+        labels: [`${this.available}`, `${this.rented}`, `${this.maintenance}`],
+        series: [this.available, this.rented, this.maintenance],
       };
       this.dataGraphInfo = [
-        { title: "Alugados", imageClass: "fa fa-circle text-info" },
-        { title: "Disponíveis", imageClass: "fa fa-circle text-danger" },
+        { title: "Alugados", imageClass: "fa fa-circle text-danger" },
+        { title: "Disponíveis", imageClass: "fa fa-circle text-info" },
         { title: "Manutenção", imageClass: "fa fa-circle text-warning" },
       ];
       this.showChart = true;
+    });
+  }
+
+  allRentStatus() {
+    this.rentService.allRentStatus().subscribe((status) => {
+      this.inProgress = status.inProgress;
+      this.late = status.late;
     });
   }
 }

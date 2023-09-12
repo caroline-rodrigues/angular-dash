@@ -32,7 +32,7 @@ export class VehicleComponent implements OnInit {
 
   getAll(event: boolean) {
     this.vehicleService
-      .getAll()
+      .findAllVehicles()
       .pipe(map((vehicleResponse) => vehicleResponse.results))
       .subscribe((vehicleList) => {
         this.vehicleList = vehicleList;

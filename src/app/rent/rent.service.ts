@@ -11,7 +11,7 @@ export class RentService {
   getAll() {
     return this.http.get<any>(`${environment.api}/rent/findAll`);
   }
-  rentalStatus() {
+  allRentStatus() {
     return this.http.get<any>(`${environment.api}/rent/rentalStatus`);
   }
 
