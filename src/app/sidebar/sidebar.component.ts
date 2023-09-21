@@ -99,12 +99,12 @@ export const ROUTES: RouteInfo[] = [
   //     { path: "vector", title: "Vector Map", ab: "VM" },
   //   ],
   // },
-  {
-    path: "/charts",
-    title: "Charts",
-    type: "link",
-    icontype: "pe-7s-graph1",
-  },
+  // {
+  //   path: "/charts",
+  //   title: "Charts",
+  //   type: "link",
+  //   icontype: "pe-7s-graph1",
+  // },
   // {
   //   path: "/calendar",
   //   title: "Calendar",

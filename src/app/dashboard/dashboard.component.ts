@@ -1,10 +1,9 @@
 import { Component } from "@angular/core";
-import { ChartType, LegendItem } from "../lbd/lbd-chart/lbd-chart.component";
-import { Task } from "../lbd/lbd-task-list/lbd-task-list.component";
 import { ClientService } from "app/client/client.service";
-import { map } from "rxjs/operators";
 import { RentService } from "app/rent/rent.service";
 import { VehicleService } from "app/vehicle/vehicle.service";
+import { map } from "rxjs/operators";
+import { ChartType, LegendItem } from "../lbd/lbd-chart/lbd-chart.component";
 
 interface Row {
   rent?: {
@@ -65,17 +64,6 @@ export class DashboardComponent {
     this.findAllClients();
     this.vehiclesStatus();
     this.allRentStatus();
-
-    // this.graphType = ChartType.Pie;
-    // this.dataGraph = {
-    //   labels: [`${this.late}`, "32%", "6%"],
-    //   series: [62, 32, 6],
-    // };
-    // this.dataGraphInfo = [
-    //   { title: "Alugados", imageClass: "fa fa-circle text-info" },
-    //   { title: "Disponíveis", imageClass: "fa fa-circle text-danger" },
-    //   { title: "Manutenção", imageClass: "fa fa-circle text-warning" },
-    // ];
   }
 
   getAll(event: boolean) {
