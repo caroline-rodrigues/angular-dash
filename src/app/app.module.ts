@@ -1,4 +1,4 @@
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
@@ -14,6 +14,7 @@ import { FixedPluginModule } from "./shared/fixedplugin/fixedplugin.module";
 import { NavbarModule } from "./shared/navbar/navbar.module";
 import { PagesnavbarModule } from "./shared/pagesnavbar/pagesnavbar.module";
 import { SidebarModule } from "./sidebar/sidebar.module";
+import { TokenInterceptor } from "./authentication/token.interceptor";
 
 @NgModule({
   imports: [
@@ -28,6 +29,13 @@ import { SidebarModule } from "./sidebar/sidebar.module";
     NavbarModule,
     FixedPluginModule,
     PagesnavbarModule,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   bootstrap: [AppComponent],

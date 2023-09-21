@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AuthenticationService } from "../../authentication/services/auth.service";
+import { Router } from "@angular/router";
 
 declare var $: any;
 
@@ -12,7 +14,11 @@ export class LoginComponent implements OnInit {
   test: Date = new Date();
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {}
   checkFullPageBackgroundImage() {
     var $page = $(".full-page");
     var image_src = $page.data("image");
@@ -40,6 +46,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
+    this.authenticationService.login({
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password,
+    });
   }
 }

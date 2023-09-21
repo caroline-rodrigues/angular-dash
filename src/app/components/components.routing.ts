@@ -10,10 +10,12 @@ import { TypographyComponent } from "./typography/typography.component";
 import { NewRentComponent } from "./new-rent/new-rent.component";
 import { NewClientComponent } from "./new-client/new-client.component";
 import { NewVehicletComponent } from "./new-vehicle/new-vehicle.component";
+import { AuthGuard } from "app/authentication/auth-guard.service";
 
 export const ComponentsRoutes: Routes = [
   {
     path: "",
+    canActivate: [AuthGuard],
     children: [
       {
         path: "buttons",
@@ -23,6 +25,7 @@ export const ComponentsRoutes: Routes = [
   },
   {
     path: "",
+    canActivate: [AuthGuard],
     children: [
       {
         path: "grid",
@@ -32,6 +35,7 @@ export const ComponentsRoutes: Routes = [
   },
   {
     path: "",
+    canActivate: [AuthGuard],
     children: [
       {
         path: "icons",
@@ -41,6 +45,7 @@ export const ComponentsRoutes: Routes = [
   },
   {
     path: "",
+    canActivate: [AuthGuard],
     children: [
       {
         path: "notifications",
@@ -50,6 +55,7 @@ export const ComponentsRoutes: Routes = [
   },
   {
     path: "",
+    canActivate: [AuthGuard],
     children: [
       {
         path: "panels",
@@ -59,6 +65,7 @@ export const ComponentsRoutes: Routes = [
   },
   {
     path: "",
+    canActivate: [AuthGuard],
     children: [
       {
         path: "sweet-alert",
@@ -68,6 +75,7 @@ export const ComponentsRoutes: Routes = [
   },
   {
     path: "",
+    canActivate: [AuthGuard],
     children: [
       {
         path: "typography",
@@ -77,6 +85,7 @@ export const ComponentsRoutes: Routes = [
   },
   {
     path: "",
+    canActivate: [AuthGuard],
     children: [
       {
         path: "new-rent",
@@ -86,6 +95,7 @@ export const ComponentsRoutes: Routes = [
   },
   {
     path: "",
+    canActivate: [AuthGuard],
     children: [
       {
         path: "new-client",
@@ -95,6 +105,7 @@ export const ComponentsRoutes: Routes = [
   },
   {
     path: "",
+    canActivate: [AuthGuard],
     children: [
       {
         path: "new-vehicle",
