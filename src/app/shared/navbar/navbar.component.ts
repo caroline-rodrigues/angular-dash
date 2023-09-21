@@ -7,6 +7,7 @@ import {
   ViewChild,
 } from "@angular/core";
 import { ROUTESrent } from "../.././sidebar/sidebar.component";
+import { AuthenticationService } from "app/authentication/services/auth.service";
 
 var misc: any = {
   navbar_menu_visible: 0,
@@ -32,6 +33,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     location: Location,
     private renderer: Renderer,
+    private authenticationService: AuthenticationService,
     private element: ElementRef
   ) {
     this.location = location;
@@ -130,5 +132,9 @@ export class NavbarComponent implements OnInit {
   getPath() {
     // console.log(this.location);
     return this.location.prepareExternalUrl(this.location.path());
+  }
+
+  logout() {
+    this.authenticationService.doLogout();
   }
 }

@@ -36,9 +36,7 @@ export class AuthenticationService {
   getToken() {
     return localStorage.getItem("access_token");
   }
-  test() {
-    console.log("opa");
-  }
+
   isLoggedIn(): boolean {
     let authToken = localStorage.getItem("access_token");
 
