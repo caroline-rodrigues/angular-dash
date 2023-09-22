@@ -79,11 +79,10 @@
           <div class="form-group col-md-5">
             <label for="year">Ano</label>
             <input
-              type="number"
-              min="0"
-              max="9999"
+              type="text"
               class="form-control"
               id="year"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
               placeholder="Ano modelo"
               formControlName="year"
               name="year"
@@ -123,7 +122,7 @@
               formControlName="createdAt"
             />
           </div>
-          <div class="form-group col-md-4">
+          <div class="form-group col-md-3">
             <label for="observation">Observação</label>
             <input
               type="observation"
@@ -133,6 +132,24 @@
               name="observation"
               formControlName="observation"
             />
+          </div>
+          <div class="form-group col-md-2">
+            <label for="observation">Tipo de ocorrência</label>
+            <select
+              id="occurrenceType"
+              class="form-control"
+              formControlName="type"
+            >
+              <option value="" disabled selected hidden>
+                Tipo de ocorrência
+              </option>
+              <option
+                *ngFor="let occurrence of occurrenceType"
+                [ngValue]="occurrence"
+              >
+                {{ occurrence }}
+              </option>
+            </select>
           </div>
           <div class="form-group col-md-2" style="margin-top: 24px">
             <button
@@ -145,6 +162,7 @@
           </div>
         </div>
       </form>
+
       <div class="form-row">
         <div class="content table-responsive table-full-width">
           <table class="table" (onDeleteRent)="onDeletedRent($event)">
@@ -153,13 +171,16 @@
                 <th class="text-center">{{ headerRow[0] }}</th>
                 <th class="text-center">{{ headerRow[1] }}</th>
                 <th class="text-center">{{ headerRow[2] }}</th>
+                <th class="text-center">{{ headerRow[3] }}</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let occurrence of occurrenceList; let i = index">
                 <td class="text-center">{{ occurrence?.createdAt }}</td>
-                <td class="text-center">{{ occurrence?.observation }}</td>
-                <td class="text-center">{{ i }}</td>
+                <td class="text-center">{{ occurrence?.type }}</td>
+                <td class="text-center">
+                  {{ occurrence?.observation }}
+                </td>
                 <td class="td-actions text-center">
                   <button
                     rel="tooltip"

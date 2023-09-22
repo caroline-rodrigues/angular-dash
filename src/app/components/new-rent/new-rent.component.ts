@@ -20,7 +20,7 @@ export class NewRentComponent implements OnInit {
   occurrenceList: any[] = [];
   rentId: string;
   headerRow: string[] = ["Data de entrega", "Tipo de ocorrência", "Observação"];
-  occurrenceType: string[] = ["TESTE", "TESTE2", "TESTE3", "TESTE4", "TESTE5"];
+  occurrenceType: string[] = ["Multas", "Avarias", "Combustível", "outros"];
   vehicleToUpdate: any;
 
   constructor(
@@ -73,9 +73,9 @@ export class NewRentComponent implements OnInit {
     });
 
     this.occurrenceForm = this.formBuilder.group({
-      createdAt: [""],
+      createdAt: ["", Validators.required],
       observation: [""],
-      type: [""],
+      type: ["", Validators.required],
     });
 
     this.rentForm.get("clientId").valueChanges.subscribe((selectedClient) => {

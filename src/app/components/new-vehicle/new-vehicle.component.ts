@@ -12,7 +12,8 @@ export class NewVehicletComponent implements OnInit {
   vehicleForm: FormGroup;
   occurrenceForm: FormGroup;
   occurrenceList: any[] = [];
-  headerRow: string[] = ["Data de entrega", "Observação", ""];
+  headerRow: string[] = ["Data de entrega", "Tipo de ocorrência", "Observação"];
+  occurrenceType: string[] = ["Avaria", "Atraso", "Outros"];
   vehicleId: string;
 
   constructor(
@@ -24,6 +25,10 @@ export class NewVehicletComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.createVehicleForm();
+  }
+
+  createVehicleForm() {
     this.vehicleForm = this.formBuilder.group({
       name: ["", Validators.required],
       purchaseDate: ["", Validators.required],
@@ -37,9 +42,9 @@ export class NewVehicletComponent implements OnInit {
     });
 
     this.occurrenceForm = this.formBuilder.group({
-      createdAt: [""],
+      createdAt: ["", Validators.required],
       observation: [""],
-      type: ["MANUNTENÇÃO"],
+      type: ["", Validators.required],
     });
 
     this.route.queryParams.subscribe((queryParams) => {
@@ -108,6 +113,5 @@ export class NewVehicletComponent implements OnInit {
 
   onAvaible(isAvaible: any) {
     this.vehicleForm.get("available").setValue(isAvaible);
-    console.log({ isAvaible });
   }
 }
