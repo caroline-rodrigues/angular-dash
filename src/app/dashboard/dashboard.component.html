@@ -84,8 +84,8 @@
             </thead>
             <tbody>
               <tr *ngFor="let row of filteredRows">
-                <td class="text-center">{{ row?.client?.name }}</td>
                 <td class="text-center">{{ row?.client?._id }}</td>
+                <td class="text-center">{{ row?.client?.name }}</td>
                 <td class="text-center">{{ row?.vehicle?.brand }}</td>
                 <td class="text-center">{{ row?.status }}</td>
                 <td class="text-center">{{ row?.rent?.endDate }}</td>

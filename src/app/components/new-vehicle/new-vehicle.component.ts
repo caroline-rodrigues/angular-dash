@@ -59,7 +59,7 @@ export class NewVehicletComponent implements OnInit {
     if (this.vehicleForm.valid && !this.vehicleId) {
       const vehicle = this.vehicleForm.value as VehicleDto;
       vehicle.occurrences = this.occurrenceList as OccurrenceDto[];
-      vehicle.available = true;
+      vehicle.maintenance = true;
       this.occurrenceList.forEach((occurrence) => {
         this.occurrenceService.create(occurrence as OccurrenceDto).subscribe();
       });
@@ -97,9 +97,24 @@ export class NewVehicletComponent implements OnInit {
   loadVehicle(vehicleId: string) {
     this.vehicleService.getVehicleById(vehicleId).subscribe((vehicle) => {
       console.log({ vehicle });
+      this.vehicleForm.get("maintenance").setValue(vehicle.maintenance);
       this.vehicleForm.patchValue(vehicle);
-      this.occurrenceList = vehicle.occurrences;
-      this.onAvaible(this.vehicleForm.value.available);
+      this.vehicleForm
+        .get("purchaseDate")
+        .setValue(
+          this.formatDateToISO(
+            new Date(vehicle.purchaseDate).toLocaleDateString(),
+            "-"
+          )
+        );
+      this.occurrenceList = vehicle.occurrences.map((ocorrence) => {
+        ocorrence.createdAt = this.formatDateToISO(
+          new Date(ocorrence.createdAt).toLocaleDateString(),
+          "/"
+        );
+        return ocorrence;
+      });
+      this.onAvaible(this.vehicleForm.value.maintenance);
     });
   }
 
@@ -108,10 +123,15 @@ export class NewVehicletComponent implements OnInit {
   }
 
   isAvaible() {
-    this.onAvaible(this.vehicleForm.value.available);
+    this.onAvaible(this.vehicleForm.value.maintenance);
   }
 
   onAvaible(isAvaible: any) {
-    this.vehicleForm.get("available").setValue(isAvaible);
+    this.vehicleForm.get("maintenance").setValue(isAvaible);
+  }
+
+  private formatDateToISO(dateStr: string, spliter: string) {
+    const [day, month, year] = dateStr.split("/");
+    return `${year}${spliter}${month}${spliter}${day}`;
   }
 }

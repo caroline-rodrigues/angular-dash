@@ -160,14 +160,15 @@ export class NewRentComponent implements OnInit {
               this.vehicleList = [vehicleResult, ...filteredVehicles];
             });
         } else {
+          console.log({ vehicle });
           this.vehicleList = vehicle;
         }
       });
   }
 
-  formatDateToISO(dateStr: string) {
+  private formatDateToISO(dateStr: string, spliter: string) {
     const [day, month, year] = dateStr.split("/");
-    return `${year}-${month}-${day}`;
+    return `${year}${spliter}${month}${spliter}${day}`;
   }
 
   onCreateOcuurence() {
@@ -189,23 +190,37 @@ export class NewRentComponent implements OnInit {
 
   loadRent(rentId: string) {
     this.rentService.getById(rentId).subscribe((rent) => {
+      console.log({ rent });
       this.rentForm.patchValue(rent);
       this.rentForm
         .get("startDate")
         .setValue(
-          this.formatDateToISO(new Date(rent.startDate).toLocaleDateString())
+          this.formatDateToISO(
+            new Date(rent.startDate).toLocaleDateString(),
+            "-"
+          )
         );
       this.rentForm
         .get("endDate")
         .setValue(
-          this.formatDateToISO(new Date(rent.endDate).toLocaleDateString())
+          this.formatDateToISO(new Date(rent.endDate).toLocaleDateString(), "-")
         );
       this.rentForm
         .get("validity")
         .setValue(
-          this.formatDateToISO(new Date(rent.validity).toLocaleDateString())
+          this.formatDateToISO(
+            new Date(rent.validity).toLocaleDateString(),
+            "-"
+          )
         );
-      this.occurrenceList = rent.occurrences;
+
+      this.occurrenceList = rent.occurrences.map((ocorrunce) => {
+        ocorrunce.createdAt = this.formatDateToISO(
+          new Date(ocorrunce.createdAt).toLocaleDateString(),
+          "/"
+        );
+        return ocorrunce;
+      });
       this.findAllVehicles();
       this.findAllClients();
     });

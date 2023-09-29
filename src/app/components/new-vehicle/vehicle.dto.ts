@@ -4,7 +4,7 @@ interface VehicleDto {
   year: number;
   brand: string;
   color: string;
-  available?: boolean;
+  maintenance?: boolean;
   chassi: string;
   occurrences: OccurrenceDto[];
   purchaseDate: string;

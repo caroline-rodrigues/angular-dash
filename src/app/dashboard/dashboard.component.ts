@@ -46,8 +46,8 @@ export class DashboardComponent {
 
   rows: Row[];
   headerRow: string[] = [
-    "Cliente",
     "ID Cliente",
+    "Cliente",
     "Carro",
     "STATUS",
     "Data Entrega",
@@ -71,7 +71,13 @@ export class DashboardComponent {
       .getAll()
       .pipe(map((rentResponse) => rentResponse.filteredEntityResults))
       .subscribe((rentList) => {
-        this.rentList = rentList;
+        this.rentList = rentList.map((rent) => {
+          rent.rent.endDate = this.formatDateToISO(
+            new Date(rent.rent.endDate).toLocaleDateString(),
+            "-"
+          );
+          return rent;
+        });
         this.totalPages = Math.ceil(this.rentList.length / this.itemsPerPage);
 
         if (event && this.filteredRows.length === 1 && this.currentPage !== 1) {
@@ -147,5 +153,10 @@ export class DashboardComponent {
       this.inProgress = status.inProgress;
       this.late = status.late;
     });
+  }
+
+  private formatDateToISO(dateStr: string, spliter: string) {
+    const [day, month, year] = dateStr.split("/");
+    return `${year}${spliter}${month}${spliter}${day}`;
   }
 }

@@ -21,6 +21,7 @@ interface Row {
   vehicle?: {
     brand: string;
   };
+  status: string;
 }
 
 @Component({
@@ -60,23 +61,34 @@ export class RentComponent implements OnInit {
     return data.slice(startIndex, endIndex);
   }
 
-  // findAllRent() {
-  //   this.rentService
-  //     .getAll()
-  //     .pipe(map((rentResponse) => rentResponse.filteredEntityResults))
-  //     .subscribe((rent) => {
-  //       this.rentList = rent;
-  //       this.filteredRows = this.paginate(this.rentList);
-  //       this.totalPages = Math.ceil(this.rentList.length / this.itemsPerPage);
-  //     });
-  // }
-
   getAll(event: boolean) {
     this.rentService
       .getAll()
       .pipe(map((rentResponse) => rentResponse.filteredEntityResults))
       .subscribe((rentList) => {
-        this.rentList = rentList;
+        this.rentList = rentList.map((rent) => {
+          const { _id, endDate } = rent.rent;
+          const { name, cpf } = rent.client;
+          const { brand } = rent.vehicle;
+          return {
+            rent: {
+              _id,
+              endDate: this.formatDateToISO(
+                new Date(endDate).toLocaleDateString(),
+                "-"
+              ),
+            },
+            client: {
+              name,
+              cpf,
+            },
+            vehicle: {
+              brand,
+            },
+            status: rent.status,
+          };
+        });
+        console.log(rentList);
         this.totalPages = Math.ceil(this.rentList.length / this.itemsPerPage);
 
         if (event && this.filteredRows.length === 1 && this.currentPage !== 1) {
@@ -137,5 +149,10 @@ export class RentComponent implements OnInit {
         .toLowerCase()
         .includes(this.searchQuery.toLowerCase());
     });
+  }
+
+  private formatDateToISO(dateStr: string, spliter: string) {
+    const [day, month, year] = dateStr.split("/");
+    return `${year}${spliter}${month}${spliter}${day}`;
   }
 }
