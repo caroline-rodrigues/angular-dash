@@ -39,6 +39,7 @@ export class RentComponent implements OnInit {
   totalPagesArray: any[] = [];
   rows: Row[];
   rentList: any[] = [];
+  loading: boolean = false;
   headerRow: string[] = [
     "ID",
     "Nome",
@@ -62,6 +63,7 @@ export class RentComponent implements OnInit {
   }
 
   getAll(event: boolean) {
+    this.loading = true;
     this.rentService
       .getAll()
       .pipe(map((rentResponse) => rentResponse.filteredEntityResults))
@@ -75,7 +77,7 @@ export class RentComponent implements OnInit {
               _id,
               endDate: this.formatDateToISO(
                 new Date(endDate).toLocaleDateString(),
-                "-"
+                "/"
               ),
             },
             client: {
@@ -100,6 +102,7 @@ export class RentComponent implements OnInit {
           this.currentPage,
           this.totalPages
         );
+        this.loading = false;
       });
   }
 

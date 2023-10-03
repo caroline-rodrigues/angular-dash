@@ -59,7 +59,6 @@ export class NewVehicletComponent implements OnInit {
     if (this.vehicleForm.valid && !this.vehicleId) {
       const vehicle = this.vehicleForm.value as VehicleDto;
       vehicle.occurrences = this.occurrenceList as OccurrenceDto[];
-      vehicle.maintenance = true;
       this.occurrenceList.forEach((occurrence) => {
         this.occurrenceService.create(occurrence as OccurrenceDto).subscribe();
       });

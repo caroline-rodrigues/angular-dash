@@ -16,6 +16,7 @@ export class VehicleComponent implements OnInit {
   itemsPerPage: number = 10;
   vehicleList: any[] = [];
   totalPages: number;
+  loading: boolean = false;
   headerRow: string[] = [
     "ID",
     "Modelo",
@@ -31,6 +32,7 @@ export class VehicleComponent implements OnInit {
   }
 
   getAll(event: boolean) {
+    this.loading = true;
     this.vehicleService
       .findAllVehicles()
       .pipe(map((vehicleResponse) => vehicleResponse.results))
@@ -49,6 +51,7 @@ export class VehicleComponent implements OnInit {
           this.currentPage,
           this.totalPages
         );
+        this.loading = false;
       });
   }
 

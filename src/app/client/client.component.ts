@@ -16,6 +16,7 @@ export class ClientComponent implements OnInit {
   totalPagesArray: any[] = [];
   totalPages: number;
   clientList: any[] = [];
+  loading: boolean = false;
   headerRow: string[] = [
     "ID",
     "Nome",
@@ -31,6 +32,7 @@ export class ClientComponent implements OnInit {
   }
 
   getAll(event: boolean) {
+    this.loading = true;
     this.clientService
       .getAll()
       .pipe(map((clientResponse) => clientResponse.results))
@@ -47,6 +49,7 @@ export class ClientComponent implements OnInit {
           this.currentPage,
           this.totalPages
         );
+        this.loading = false;
       });
   }
 

@@ -71,27 +71,32 @@
 
     <div class="row">
       <div class="col-lg-8">
-        <div class="content table-responsive table-full-width">
-          <table class="table">
-            <thead>
-              <tr>
-                <th class="text-center">{{ headerRow[0] }}</th>
-                <th class="text-center">{{ headerRow[1] }}</th>
-                <th class="text-center">{{ headerRow[2] }}</th>
-                <th class="text-center">{{ headerRow[3] }}</th>
-                <th class="text-center">{{ headerRow[4] }}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let row of filteredRows">
-                <td class="text-center">{{ row?.client?._id }}</td>
-                <td class="text-center">{{ row?.client?.name }}</td>
-                <td class="text-center">{{ row?.vehicle?.brand }}</td>
-                <td class="text-center">{{ row?.status }}</td>
-                <td class="text-center">{{ row?.rent?.endDate }}</td>
-              </tr>
-            </tbody>
-          </table>
+        <div id="loader" *ngIf="loading">
+          <img src="../../assets/img/loader-preview.svg" alt="loading" />
+        </div>
+        <div *ngIf="!loading">
+          <div class="content table-responsive table-full-width">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center">{{ headerRow[0] }}</th>
+                  <th class="text-center">{{ headerRow[1] }}</th>
+                  <th class="text-center">{{ headerRow[2] }}</th>
+                  <th class="text-center">{{ headerRow[3] }}</th>
+                  <th class="text-center">{{ headerRow[4] }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of filteredRows">
+                  <td class="text-center">{{ row?.client?._id }}</td>
+                  <td class="text-center">{{ row?.client?.name }}</td>
+                  <td class="text-center">{{ row?.vehicle?.brand }}</td>
+                  <td class="text-center">{{ row?.status }}</td>
+                  <td class="text-center">{{ row?.rent?.endDate }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div style="display: flex; justify-content: center">
           <ul class="pagination">
@@ -99,7 +104,7 @@
               [class.disabled]="currentPage === 1"
               (click)="changePage(currentPage - 1)"
             >
-              <a><<</a>
+              <a>«</a>
             </li>
             <li
               [class.active]="currentPage === page"
@@ -111,7 +116,7 @@
               [class.disabled]="currentPage === totalPages"
               (click)="changePage(currentPage + 1)"
             >
-              <a>>></a>
+              <a>»</a>
             </li>
           </ul>
         </div>

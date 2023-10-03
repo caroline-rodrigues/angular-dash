@@ -42,6 +42,7 @@ export class DashboardComponent {
   maintenance: number;
   showChart: boolean = false;
   inProgress: number;
+  loading: boolean = false;
   late: number;
 
   rows: Row[];
@@ -67,6 +68,7 @@ export class DashboardComponent {
   }
 
   getAll(event: boolean) {
+    this.loading = true;
     this.rentService
       .getAll()
       .pipe(map((rentResponse) => rentResponse.filteredEntityResults))
@@ -74,7 +76,7 @@ export class DashboardComponent {
         this.rentList = rentList.map((rent) => {
           rent.rent.endDate = this.formatDateToISO(
             new Date(rent.rent.endDate).toLocaleDateString(),
-            "-"
+            "/"
           );
           return rent;
         });
@@ -89,6 +91,7 @@ export class DashboardComponent {
           this.currentPage,
           this.totalPages
         );
+        this.loading = false;
       });
   }
 

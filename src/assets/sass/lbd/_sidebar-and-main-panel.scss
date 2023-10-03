@@ -104,7 +104,6 @@
 
     a.logo-normal {
       display: block;
-      opacity: 1;
       @include transform-translate-x(0px);
     }
 
@@ -458,8 +457,8 @@
         }
 
         a.logo-normal {
-          opacity: 0;
-          @include transform-translate-x(-25px);
+          @include transform-translate-x(4px);
+          @include transform-translate-y(60px);
         }
       }
 
@@ -486,7 +485,6 @@
 
       .logo {
         a.logo-normal {
-          opacity: 1;
           @include transform-translate-x(0px);
         }
       }

@@ -30,45 +30,50 @@
               </div>
             </form>
           </div>
-          <div class="content table-responsive table-full-width">
-            <table class="table" (onDeleteRent)="onDeletedRent($event)">
-              <thead>
-                <tr>
-                  <th class="text-center">{{ headerRow[0] }}</th>
-                  <th class="text-center">{{ headerRow[1] }}</th>
-                  <th class="text-center">{{ headerRow[2] }}</th>
-                  <th class="text-center">{{ headerRow[3] }}</th>
-                  <th class="text-center">{{ headerRow[4] }}</th>
-                  <th class="text-center">{{ headerRow[6] }}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let vehicle of filteredRows">
-                  <td class="text-center">{{ vehicle?._id }}</td>
-                  <td class="text-center">{{ vehicle?.name }}</td>
-                  <td class="text-center">{{ vehicle?.chassi }}</td>
-                  <td class="text-center">{{ vehicle?.year }}</td>
-                  <td class="td-actions text-center">
-                    <button
-                      rel="tooltip"
-                      title="Edit Profile"
-                      class="btn btn-success btn-simple btn-xs"
-                      (click)="editProfile(vehicle?._id)"
-                    >
-                      <i class="fa fa-edit"></i>
-                    </button>
-                    <button
-                      rel="tooltip"
-                      title="Remove"
-                      class="btn btn-danger btn-simple btn-xs"
-                      (click)="delete(vehicle?._id)"
-                    >
-                      <i class="fa fa-times"></i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div id="loader" *ngIf="loading">
+            <img src="../../assets/img/loader-preview.svg" alt="loading" />
+          </div>
+          <div *ngIf="!loading">
+            <div class="content table-responsive table-full-width">
+              <table class="table" (onDeleteRent)="onDeletedRent($event)">
+                <thead>
+                  <tr>
+                    <th class="text-center">{{ headerRow[0] }}</th>
+                    <th class="text-center">{{ headerRow[1] }}</th>
+                    <th class="text-center">{{ headerRow[2] }}</th>
+                    <th class="text-center">{{ headerRow[3] }}</th>
+                    <th class="text-center">{{ headerRow[4] }}</th>
+                    <th class="text-center">{{ headerRow[6] }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let vehicle of filteredRows">
+                    <td class="text-center">{{ vehicle?._id }}</td>
+                    <td class="text-center">{{ vehicle?.name }}</td>
+                    <td class="text-center">{{ vehicle?.chassi }}</td>
+                    <td class="text-center">{{ vehicle?.year }}</td>
+                    <td class="td-actions text-center">
+                      <button
+                        rel="tooltip"
+                        title="Edit Profile"
+                        class="btn btn-success btn-simple btn-xs"
+                        (click)="editProfile(vehicle?._id)"
+                      >
+                        <i class="fa fa-edit"></i>
+                      </button>
+                      <button
+                        rel="tooltip"
+                        title="Remove"
+                        class="btn btn-danger btn-simple btn-xs"
+                        (click)="delete(vehicle?._id)"
+                      >
+                        <i class="fa fa-times"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
           <div style="display: flex; justify-content: center">
             <ul class="pagination">
@@ -76,7 +81,7 @@
                 [class.disabled]="currentPage === 1"
                 (click)="changePage(currentPage - 1)"
               >
-                <a><<</a>
+                <a>«</a>
               </li>
               <li
                 [class.active]="currentPage === page"
@@ -88,7 +93,7 @@
                 [class.disabled]="currentPage === totalPages"
                 (click)="changePage(currentPage + 1)"
               >
-                <a>>></a>
+                <a>»</a>
               </li>
             </ul>
           </div>
