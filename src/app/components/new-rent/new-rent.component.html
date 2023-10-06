@@ -24,6 +24,14 @@
                 {{ client.name }}
               </option>
             </select>
+            <small
+              *ngIf="
+                rentForm.get('clientId').invalid &&
+                (rentForm.get('clientId').touched || submitted)
+              "
+              class="text-danger"
+              >Cliente é obrigatório!</small
+            >
           </div>
           <div class="form-group col-md-4">
             <label for="cpf">CPF</label>
@@ -35,6 +43,14 @@
               placeholder="000.000.000-00"
               formControlName="cpf"
             />
+            <small
+              *ngIf="
+                rentForm.get('cpf').invalid &&
+                (rentForm.get('cpf').touched || submitted)
+              "
+              class="text-danger"
+              >CPF é obrigatório!</small
+            >
           </div>
         </div>
 
@@ -53,6 +69,14 @@
                 {{ vehicle.name }}
               </option>
             </select>
+            <small
+              *ngIf="
+                rentForm.get('vehicle').invalid &&
+                (rentForm.get('vehicle').touched || submitted)
+              "
+              class="text-danger"
+              >Veículo é obrigatório!</small
+            >
           </div>
           <div class="form-group col-md-4">
             <label for="plate">Placa</label>

@@ -22,6 +22,7 @@ export class NewRentComponent implements OnInit {
   headerRow: string[] = ["Data de entrega", "Tipo de ocorrência", "Observação"];
   occurrenceType: string[] = ["Multas", "Avarias", "Combustível", "outros"];
   vehicleToUpdate: any;
+  submitted = false;
 
   constructor(
     private clientService: ClientService,
@@ -99,10 +100,13 @@ export class NewRentComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
     if (this.rentForm.valid && !this.rentId) {
       const rent = this.rentForm.value as RentDto;
       rent.occurrences = this.occurrenceList as OccurrenceDto[];
       rent.vehicle.rented = true;
+      rent.startDate = "";
+      rent.endDate = "";
       const vehicleUpdate = rent.vehicle;
       this.vehicleService.update(vehicleUpdate, vehicleUpdate._id).subscribe();
       this.occurrenceList.forEach((occurrence) => {

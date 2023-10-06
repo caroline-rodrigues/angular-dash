@@ -17,6 +17,14 @@
               formControlName="name"
               name="name"
             />
+            <small
+              *ngIf="
+                clienteForm.get('name').invalid &&
+                (clienteForm.get('name').touched || submitted)
+              "
+              class="text-danger"
+              >Nome é obrigatório!</small
+            >
           </div>
           <div class="form-group col-md-4">
             <label for="birthDate">Data Nascimento</label>
@@ -27,6 +35,14 @@
               formControlName="birthDate"
               name="birthDate"
             />
+            <small
+              *ngIf="
+                clienteForm.get('birthDate').invalid &&
+                (clienteForm.get('birthDate').touched || submitted)
+              "
+              class="text-danger"
+              >Data Nascimento é obrigatório!</small
+            >
           </div>
         </div>
         <div class="form-row">
@@ -40,6 +56,14 @@
               formControlName="cpf"
               name="cpf"
             />
+            <small
+              *ngIf="
+                clienteForm.get('cpf').invalid &&
+                (clienteForm.get('cpf').touched || submitted)
+              "
+              class="text-danger"
+              >CPF é obrigatório!</small
+            >
           </div>
           <div class="form-group col-md-4">
             <label for="rg">RG</label>
@@ -75,6 +99,14 @@
               formControlName="phone"
               name="phone"
             />
+            <small
+              *ngIf="
+                clienteForm.get('phone').invalid &&
+                (clienteForm.get('phone').touched || submitted)
+              "
+              class="text-danger"
+              >Telefone 1 é obrigatório!</small
+            >
           </div>
           <div class="form-group col-md-4">
             <label for="phone2">Telefone 2</label>
@@ -97,6 +129,14 @@
               formControlName="email"
               name="email"
             />
+            <small
+              *ngIf="
+                clienteForm.get('email').invalid &&
+                (clienteForm.get('email').touched || submitted)
+              "
+              class="text-danger"
+              >Email é obrigatório!</small
+            >
           </div>
         </div>
         <div class="form-row">
@@ -110,6 +150,14 @@
               formControlName="streetName"
               name="streetName"
             />
+            <small
+              *ngIf="
+                clienteForm.get('streetName').invalid &&
+                (clienteForm.get('streetName').touched || submitted)
+              "
+              class="text-danger"
+              >Endereço é obrigatório!</small
+            >
           </div>
           <div class="form-group col-md-4">
             <label for="driveLink">Detalhes Financeiros do Cliente</label>
@@ -132,6 +180,14 @@
               formControlName="complement"
               name="complement"
             />
+            <small
+              *ngIf="
+                clienteForm.get('complement').invalid &&
+                (clienteForm.get('complement').touched || submitted)
+              "
+              class="text-danger"
+              >Complemento é obrigatório!</small
+            >
           </div>
         </div>
         <div class="form-row">
@@ -145,6 +201,14 @@
               formControlName="city"
               name="city"
             />
+            <small
+              *ngIf="
+                clienteForm.get('city').invalid &&
+                (clienteForm.get('city').touched || submitted)
+              "
+              class="text-danger"
+              >Cidade é obrigatória!</small
+            >
           </div>
           <div class="form-group col-md-3">
             <label for="state">UF</label>
@@ -156,6 +220,14 @@
               formControlName="state"
               name="state"
             />
+            <small
+              *ngIf="
+                clienteForm.get('state').invalid &&
+                (clienteForm.get('state').touched || submitted)
+              "
+              class="text-danger"
+              >UF é obrigatório!</small
+            >
           </div>
           <div class="form-group col-md-3">
             <label for="cep">CEP</label>
@@ -167,6 +239,14 @@
               name="cep"
               formControlName="cep"
             />
+            <small
+              *ngIf="
+                clienteForm.get('cep').invalid &&
+                (clienteForm.get('cep').touched || submitted)
+              "
+              class="text-danger"
+              >CEP é obrigatória!</small
+            >
           </div>
           <div class="form-group col-md-3">
             <label for="observation">Observação</label>
@@ -193,6 +273,14 @@
               formControlName="plataform_user"
             >
             </bSwitch>
+            <small
+              *ngIf="
+                clienteForm.get('plataform_user').invalid &&
+                (clienteForm.get('plataform_user').touched || submitted)
+              "
+              class="text-danger"
+              >Tipo de usuário é obrigatório!</small
+            >
           </div>
         </div>
         <div class="form-row">

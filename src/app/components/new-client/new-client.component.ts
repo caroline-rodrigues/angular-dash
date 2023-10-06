@@ -9,6 +9,7 @@ import { Client, ClientService } from "app/client/client.service";
 })
 export class NewClientComponent implements OnInit {
   clienteForm: FormGroup;
+  submitted = false;
   clientId: string;
 
   constructor(
@@ -66,6 +67,7 @@ export class NewClientComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
     if (this.clienteForm.valid && !this.clientId) {
       this.clientService.create(this.clienteForm.value as Client).subscribe();
       this.router.navigate(["/client"]);

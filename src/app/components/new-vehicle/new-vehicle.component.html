@@ -12,11 +12,19 @@
             <input
               type="text"
               class="form-control"
-              placeholder="Informe o número do dispositivo legal"
+              placeholder="Informe o Modelo"
               id="name"
               formControlName="name"
               name="name"
             />
+            <small
+              *ngIf="
+                vehicleForm.get('name').invalid &&
+                (vehicleForm.get('name').touched || submitted)
+              "
+              class="text-danger"
+              >Modelo é obrigatório!</small
+            >
           </div>
           <div class="form-group col-md-4">
             <label for="purchaseDate">Data da Compra</label>
@@ -27,6 +35,14 @@
               formControlName="purchaseDate"
               name="purchaseDate"
             />
+            <small
+              *ngIf="
+                vehicleForm.get('purchaseDate').invalid &&
+                (vehicleForm.get('purchaseDate').touched || submitted)
+              "
+              class="text-danger"
+              >Data da Compra é obrigatória!</small
+            >
           </div>
         </div>
         <div class="form-row">
@@ -40,6 +56,14 @@
               formControlName="brand"
               name="brand"
             />
+            <small
+              *ngIf="
+                vehicleForm.get('brand').invalid &&
+                (vehicleForm.get('brand').touched || submitted)
+              "
+              class="text-danger"
+              >Marca obrigatório!</small
+            >
           </div>
           <div class="form-group col-md-4">
             <label for="color">Cor</label>
@@ -51,6 +75,14 @@
               formControlName="color"
               name="color"
             />
+            <small
+              *ngIf="
+                vehicleForm.get('color').invalid &&
+                (vehicleForm.get('color').touched || submitted)
+              "
+              class="text-danger"
+              >Cor é obrigatória!</small
+            >
           </div>
           <div class="form-group col-md-4">
             <label for="plate">Placa</label>
@@ -62,6 +94,14 @@
               formControlName="plate"
               name="plate"
             />
+            <small
+              *ngIf="
+                vehicleForm.get('plate').invalid &&
+                (vehicleForm.get('plate').touched || submitted)
+              "
+              class="text-danger"
+              >Placa é obrigatório!</small
+            >
           </div>
         </div>
         <div class="form-row">
@@ -75,6 +115,14 @@
               formControlName="chassi"
               name="chassi"
             />
+            <small
+              *ngIf="
+                vehicleForm.get('chassi').invalid &&
+                (vehicleForm.get('chassi').touched || submitted)
+              "
+              class="text-danger"
+              >Chassi é obrigatório!</small
+            >
           </div>
           <div class="form-group col-md-5">
             <label for="year">Ano</label>
@@ -87,6 +135,14 @@
               formControlName="year"
               name="year"
             />
+            <small
+              *ngIf="
+                vehicleForm.get('year').invalid &&
+                (vehicleForm.get('year').touched || submitted)
+              "
+              class="text-danger"
+              >Ano é obrigatório!</small
+            >
           </div>
           <div class="form-group col-md-2">
             <label for="maintenance" style="display: block">Manutenção</label>

@@ -15,6 +15,7 @@ export class NewVehicletComponent implements OnInit {
   headerRow: string[] = ["Data de entrega", "Tipo de ocorrência", "Observação"];
   occurrenceType: string[] = ["Avaria", "Atraso", "Outros"];
   vehicleId: string;
+  submitted = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -56,6 +57,7 @@ export class NewVehicletComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
     if (this.vehicleForm.valid && !this.vehicleId) {
       const vehicle = this.vehicleForm.value as VehicleDto;
       vehicle.occurrences = this.occurrenceList as OccurrenceDto[];
