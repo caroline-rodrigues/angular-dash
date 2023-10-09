@@ -7,7 +7,7 @@ RUN npm install
 
 COPY . .
 
-RUN ng build --prod
+RUN ng build
 
 FROM nginx
 COPY --from=build /app/dist /usr/share/nginx/html
