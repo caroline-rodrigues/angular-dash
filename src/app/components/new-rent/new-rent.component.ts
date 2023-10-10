@@ -52,10 +52,10 @@ export class NewRentComponent implements OnInit {
       cpf: ["", Validators.required],
       plate: ["", Validators.required],
       vehicle: ["", Validators.required],
-      startDate: [""],
+      startDate: [null],
       exitTime: [""],
       outputKm: [""],
-      endDate: [""],
+      endDate: [null],
       arrivalTime: [""],
       arrivalKM: [""],
       card: [""],
@@ -105,8 +105,6 @@ export class NewRentComponent implements OnInit {
       const rent = this.rentForm.value as RentDto;
       rent.occurrences = this.occurrenceList as OccurrenceDto[];
       rent.vehicle.rented = true;
-      rent.startDate = "";
-      rent.endDate = "";
       const vehicleUpdate = rent.vehicle;
       this.vehicleService.update(vehicleUpdate, vehicleUpdate._id).subscribe();
       this.occurrenceList.forEach((occurrence) => {
