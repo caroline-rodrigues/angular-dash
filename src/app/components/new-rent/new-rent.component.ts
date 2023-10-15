@@ -61,7 +61,7 @@ export class NewRentComponent implements OnInit {
       card: [""],
       cardNumber: [""],
       securityCode: [""],
-      validity: [""],
+      validity: [null],
       franchise: [""],
       aboutCard: [""],
       dailyValue: [""],
@@ -105,6 +105,16 @@ export class NewRentComponent implements OnInit {
       const rent = this.rentForm.value as RentDto;
       rent.occurrences = this.occurrenceList as OccurrenceDto[];
       rent.vehicle.rented = true;
+      rent.endDate = this.formatDateToISO(
+        new Date(this.rentForm.get("endDate").value).toLocaleDateString(),
+        "-",
+        "true"
+      );
+      rent.startDate = this.formatDateToISO(
+        new Date(this.rentForm.get("startDate").value).toLocaleDateString(),
+        "-",
+        "true"
+      );
       const vehicleUpdate = rent.vehicle;
       this.vehicleService.update(vehicleUpdate, vehicleUpdate._id).subscribe();
       this.occurrenceList.forEach((occurrence) => {
@@ -162,15 +172,15 @@ export class NewRentComponent implements OnInit {
               this.vehicleList = [vehicleResult, ...filteredVehicles];
             });
         } else {
-          console.log({ vehicle });
           this.vehicleList = vehicle;
         }
       });
   }
 
-  private formatDateToISO(dateStr: string, spliter: string) {
+  private formatDateToISO(dateStr: string, spliter: string, plus?: string) {
     const [day, month, year] = dateStr.split("/");
-    return `${year}${spliter}${month}${spliter}${day}`;
+    const dayPlus = plus ? Number(day) + 1 : Number(day);
+    return `${year}${spliter}${month}${spliter}${dayPlus}`;
   }
 
   onCreateOcuurence() {
@@ -192,29 +202,19 @@ export class NewRentComponent implements OnInit {
 
   loadRent(rentId: string) {
     this.rentService.getById(rentId).subscribe((rent) => {
-      console.log({ rent });
+      rent.startDate = this.formatDateToISO(
+        new Date(rent.startDate).toLocaleDateString(),
+        "-"
+      );
+      rent.endDate = this.formatDateToISO(
+        new Date(rent.endDate).toLocaleDateString(),
+        "-"
+      );
+      rent.validity = this.formatDateToISO(
+        new Date(rent.validity).toLocaleDateString(),
+        "-"
+      );
       this.rentForm.patchValue(rent);
-      this.rentForm
-        .get("startDate")
-        .setValue(
-          this.formatDateToISO(
-            new Date(rent.startDate).toLocaleDateString(),
-            "-"
-          )
-        );
-      this.rentForm
-        .get("endDate")
-        .setValue(
-          this.formatDateToISO(new Date(rent.endDate).toLocaleDateString(), "-")
-        );
-      this.rentForm
-        .get("validity")
-        .setValue(
-          this.formatDateToISO(
-            new Date(rent.validity).toLocaleDateString(),
-            "-"
-          )
-        );
 
       this.occurrenceList = rent.occurrences.map((ocorrunce) => {
         ocorrunce.createdAt = this.formatDateToISO(
