@@ -5,7 +5,7 @@
         <div class="form-row">
           <div class="form-group col-md-4">
             <label for="inputState">Id Veículo</label>
-            <input type="text" class="form-control" disabled />
+            <input type="text" class="form-control" value="{{ vehicleId }}" disabled />
           </div>
           <div class="form-group col-md-4">
             <label for="name">Modelo</label>
@@ -18,10 +18,7 @@
               name="name"
             />
             <small
-              *ngIf="
-                vehicleForm.get('name').invalid &&
-                (vehicleForm.get('name').touched || submitted)
-              "
+              *ngIf="vehicleForm.get('name').invalid && (vehicleForm.get('name').touched || submitted)"
               class="text-danger"
               >Modelo é obrigatório!</small
             >
@@ -36,10 +33,7 @@
               name="purchaseDate"
             />
             <small
-              *ngIf="
-                vehicleForm.get('purchaseDate').invalid &&
-                (vehicleForm.get('purchaseDate').touched || submitted)
-              "
+              *ngIf="vehicleForm.get('purchaseDate').invalid && (vehicleForm.get('purchaseDate').touched || submitted)"
               class="text-danger"
               >Data da Compra é obrigatória!</small
             >
@@ -57,29 +51,16 @@
               name="brand"
             />
             <small
-              *ngIf="
-                vehicleForm.get('brand').invalid &&
-                (vehicleForm.get('brand').touched || submitted)
-              "
+              *ngIf="vehicleForm.get('brand').invalid && (vehicleForm.get('brand').touched || submitted)"
               class="text-danger"
               >Marca obrigatório!</small
             >
           </div>
           <div class="form-group col-md-4">
             <label for="color">Cor</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Cor"
-              id="color"
-              formControlName="color"
-              name="color"
-            />
+            <input type="text" class="form-control" placeholder="Cor" id="color" formControlName="color" name="color" />
             <small
-              *ngIf="
-                vehicleForm.get('color').invalid &&
-                (vehicleForm.get('color').touched || submitted)
-              "
+              *ngIf="vehicleForm.get('color').invalid && (vehicleForm.get('color').touched || submitted)"
               class="text-danger"
               >Cor é obrigatória!</small
             >
@@ -95,10 +76,7 @@
               name="plate"
             />
             <small
-              *ngIf="
-                vehicleForm.get('plate').invalid &&
-                (vehicleForm.get('plate').touched || submitted)
-              "
+              *ngIf="vehicleForm.get('plate').invalid && (vehicleForm.get('plate').touched || submitted)"
               class="text-danger"
               >Placa é obrigatório!</small
             >
@@ -116,10 +94,7 @@
               name="chassi"
             />
             <small
-              *ngIf="
-                vehicleForm.get('chassi').invalid &&
-                (vehicleForm.get('chassi').touched || submitted)
-              "
+              *ngIf="vehicleForm.get('chassi').invalid && (vehicleForm.get('chassi').touched || submitted)"
               class="text-danger"
               >Chassi é obrigatório!</small
             >
@@ -136,10 +111,7 @@
               name="year"
             />
             <small
-              *ngIf="
-                vehicleForm.get('year').invalid &&
-                (vehicleForm.get('year').touched || submitted)
-              "
+              *ngIf="vehicleForm.get('year').invalid && (vehicleForm.get('year').touched || submitted)"
               class="text-danger"
               >Ano é obrigatório!</small
             >
@@ -160,9 +132,7 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-12">
-            <label for="plataform_user" style="display: block"
-              >Manuntenção</label
-            >
+            <label for="plataform_user" style="display: block">Manuntenção</label>
           </div>
         </div>
       </form>
@@ -170,13 +140,7 @@
         <div class="form-row">
           <div class="form-group col-md-4">
             <label for="createdAt">Data Manuntenção</label>
-            <input
-              type="date"
-              class="form-control"
-              id="createdAt"
-              name="createdAt"
-              formControlName="createdAt"
-            />
+            <input type="date" class="form-control" id="createdAt" name="createdAt" formControlName="createdAt" />
           </div>
           <div class="form-group col-md-3">
             <label for="observation">Observação</label>
@@ -191,28 +155,15 @@
           </div>
           <div class="form-group col-md-2">
             <label for="observation">Tipo de ocorrência</label>
-            <select
-              id="occurrenceType"
-              class="form-control"
-              formControlName="type"
-            >
-              <option value="" disabled selected hidden>
-                Tipo de ocorrência
-              </option>
-              <option
-                *ngFor="let occurrence of occurrenceType"
-                [ngValue]="occurrence"
-              >
+            <select id="occurrenceType" class="form-control" formControlName="type">
+              <option value="" disabled selected hidden>Tipo de ocorrência</option>
+              <option *ngFor="let occurrence of occurrenceType" [ngValue]="occurrence">
                 {{ occurrence }}
               </option>
             </select>
           </div>
           <div class="form-group col-md-2" style="margin-top: 24px">
-            <button
-              type="submit"
-              class="btn btn-default btn-fill btn-wd"
-              (click)="onCreateOcuurence()"
-            >
+            <button type="submit" class="btn btn-default btn-fill btn-wd" (click)="onCreateOcuurence()">
               ADICIONAR MANUNTENÇÃO
             </button>
           </div>
@@ -254,13 +205,9 @@
       </div>
       <div class="form-row">
         <div class="col-md-3" style="margin-bottom: 16px">
-          <button
-            type="submit"
-            class="btn btn-success btn-fill btn-wd"
-            (click)="onSubmit()"
-          >
-            CONFIRMAR
-          </button>
+          <p *ngIf="errorMessage" style="color: red">{{ errorMessage }}</p>
+          <p *ngIf="createErrorMessage" style="color: red">{{ createErrorMessage }}</p>
+          <button type="submit" class="btn btn-success btn-fill btn-wd" (click)="onSubmit()">CONFIRMAR</button>
         </div>
       </div>
     </div>

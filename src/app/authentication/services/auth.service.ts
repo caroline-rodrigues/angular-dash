@@ -1,30 +1,25 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { environment } from "environments/environment";
-import { throwError } from "rxjs";
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'environments/environment';
+import { throwError } from 'rxjs';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class AuthenticationService {
-  private readonly JWT_TOKEN = "JWT_TOKEN";
-  private readonly REFRESH_TOKEN = "REFRESH_TOKEN";
+  private readonly JWT_TOKEN = 'JWT_TOKEN';
+  private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
   private loggedUser: string;
 
   constructor(private http: HttpClient, private router: Router) {}
 
   login(user: { email: string; password: string }) {
-    return this.http
-      .post<any>(`${environment.api}/auth/login`, user)
-      .subscribe((result) => {
-        localStorage.setItem("access_token", result.access_token);
-        this.router.navigate(["/dashboard"]);
-      });
+    return this.http.post<any>(`${environment.api}/auth/login`, user);
   }
 
   handleError(error: HttpErrorResponse) {
-    let msg = "";
+    let msg = '';
     if (error.error instanceof ErrorEvent) {
       msg = error.error.message;
     } else {
@@ -34,19 +29,19 @@ export class AuthenticationService {
   }
 
   getToken() {
-    return localStorage.getItem("access_token");
+    return localStorage.getItem('access_token');
   }
 
   isLoggedIn(): boolean {
-    let authToken = localStorage.getItem("access_token");
+    let authToken = localStorage.getItem('access_token');
 
     const islogged = authToken !== null ? true : false;
     return islogged;
   }
   doLogout() {
-    let removeToken = localStorage.removeItem("access_token");
+    let removeToken = localStorage.removeItem('access_token');
     if (removeToken == null) {
-      this.router.navigate(["pages/login"]);
+      this.router.navigate(['pages/login']);
     }
   }
 }

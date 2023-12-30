@@ -6,12 +6,7 @@
           <div class="header">
             <div style="display: flex; justify-content: space-between">
               <h4 class="title">Aluguel</h4>
-              <button
-                class="btn btn-success btn-fill btn-wd"
-                routerLink="/components/new-rent"
-              >
-                Novo Aluguel
-              </button>
+              <button class="btn btn-success btn-fill btn-wd" routerLink="/components/new-rent">Novo Aluguel</button>
             </div>
             <form role="search" style="padding-top: 1rem">
               <div class="input-group">
@@ -52,7 +47,10 @@
                     <td class="text-center">{{ row?.rent?._id }}</td>
                     <td class="text-center">{{ row?.client?.name }}</td>
                     <td class="text-center">{{ row?.client?.cpf }}</td>
-                    <td class="text-center">{{ row?.rent?.endDate }}</td>
+                    <td class="text-center">
+                      <ng-container *ngIf="row?.rent?.endDate; else ocupado">{{ row?.rent?.endDate }}</ng-container>
+                      <ng-template #ocupado>Aguardando devolução</ng-template>
+                    </td>
                     <td class="text-center">{{ row?.vehicle?.brand }}</td>
                     <td class="text-center">
                       {{ row?.status }}
@@ -82,22 +80,13 @@
           </div>
           <div style="display: flex; justify-content: center">
             <ul class="pagination">
-              <li
-                [class.disabled]="currentPage === 1"
-                (click)="changePage(currentPage - 1)"
-              >
+              <li [class.disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">
                 <a>«</a>
               </li>
-              <li
-                [class.active]="currentPage === page"
-                *ngFor="let page of totalPagesArray"
-              >
+              <li [class.active]="currentPage === page" *ngFor="let page of totalPagesArray">
                 <a (click)="changePage(page)">{{ page }}</a>
               </li>
-              <li
-                [class.disabled]="currentPage === totalPages"
-                (click)="changePage(currentPage + 1)"
-              >
+              <li [class.disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">
                 <a>»</a>
               </li>
             </ul>

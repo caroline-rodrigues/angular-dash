@@ -1,24 +1,13 @@
-import {
-  Component,
-  OnInit,
-  Renderer,
-  ViewChild,
-  ElementRef,
-  Directive,
-} from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
-import {
-  Location,
-  LocationStrategy,
-  PathLocationStrategy,
-} from "@angular/common";
+import { Component, OnInit, Renderer, ViewChild, ElementRef, Directive } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 declare var $: any;
 
 @Component({
   moduleId: module.id,
-  selector: "pagesnavbar-cmp",
-  templateUrl: "pagesnavbar.component.html",
+  selector: 'pagesnavbar-cmp',
+  templateUrl: 'pagesnavbar.component.html',
 })
 export class PagesnavbarComponent implements OnInit {
   location: Location;
@@ -26,13 +15,9 @@ export class PagesnavbarComponent implements OnInit {
   private toggleButton;
   private sidebarVisible: boolean;
 
-  @ViewChild("pagesnavbar-cmp") button;
+  @ViewChild('pagesnavbar-cmp') button;
 
-  constructor(
-    location: Location,
-    private renderer: Renderer,
-    private element: ElementRef
-  ) {
+  constructor(location: Location, private renderer: Renderer, private element: ElementRef) {
     this.location = location;
     this.nativeElement = element.nativeElement;
     this.sidebarVisible = false;
@@ -40,26 +25,25 @@ export class PagesnavbarComponent implements OnInit {
 
   ngOnInit() {
     var navbar: HTMLElement = this.element.nativeElement;
-    this.toggleButton = navbar.getElementsByClassName("navbar-toggle")[0];
-    console.log(this.location.prepareExternalUrl(this.location.path()));
+    this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
   }
 
   sidebarOpen() {
     var toggleButton = this.toggleButton;
-    var body = document.getElementsByTagName("body")[0];
+    var body = document.getElementsByTagName('body')[0];
     setTimeout(function () {
-      toggleButton.classList.add("toggled");
+      toggleButton.classList.add('toggled');
     }, 500);
-    body.classList.add("nav-open");
+    body.classList.add('nav-open');
     this.sidebarVisible = true;
   }
   sidebarClose() {
-    var body = document.getElementsByTagName("body")[0];
+    var body = document.getElementsByTagName('body')[0];
     if (this.toggleButton) {
-      this.toggleButton.classList.remove("toggled");
+      this.toggleButton.classList.remove('toggled');
     }
     this.sidebarVisible = false;
-    body.classList.remove("nav-open");
+    body.classList.remove('nav-open');
   }
   sidebarToggle() {
     // var toggleButton = this.toggleButton;
@@ -72,28 +56,21 @@ export class PagesnavbarComponent implements OnInit {
   }
 
   isLogin() {
-    if (
-      this.location.prepareExternalUrl(this.location.path()) === "#/pages/login"
-    ) {
+    if (this.location.prepareExternalUrl(this.location.path()) === '#/pages/login') {
       return true;
     }
     return false;
   }
 
   isLock() {
-    if (
-      this.location.prepareExternalUrl(this.location.path()) === "#/pages/lock"
-    ) {
+    if (this.location.prepareExternalUrl(this.location.path()) === '#/pages/lock') {
       return true;
     }
     return false;
   }
 
   isRegister() {
-    if (
-      this.location.prepareExternalUrl(this.location.path()) ===
-      "#/pages/register"
-    ) {
+    if (this.location.prepareExternalUrl(this.location.path()) === '#/pages/register') {
       return true;
     }
     return false;

@@ -9,11 +9,7 @@
               <!--   if you want to have the card without animation please remove the ".card-hidden" class   -->
               <div class="card card-hidden">
                 <div class="header text-center">
-                  <img
-                    width="188px"
-                    height="75px"
-                    src="../../assets/img/eclipse.png"
-                  />
+                  <img width="188px" height="75px" src="../../assets/img/eclipse.png" />
                 </div>
                 <div class="content">
                   <div class="form-group">
@@ -26,7 +22,7 @@
                       name="email"
                     />
                   </div>
-                  <div class="form-group">
+                  <div class="form-group" style="display: flex; align-items: center; flex-direction: column">
                     <input
                       type="password"
                       placeholder="Senha"
@@ -35,16 +31,13 @@
                       formControlName="password"
                       name="password"
                     />
+                    <div *ngIf="loginError">
+                      <p style="color: red">{{ errorMessage }}</p>
+                    </div>
                   </div>
                 </div>
                 <div class="footer text-center">
-                  <button
-                    type="submit"
-                    class="btn btn-fill btn-danger btn-wd"
-                    (click)="onSubmit()"
-                  >
-                    Login
-                  </button>
+                  <button type="submit" class="btn btn-fill btn-danger btn-wd" (click)="onSubmit()">Login</button>
                 </div>
               </div>
             </form>
