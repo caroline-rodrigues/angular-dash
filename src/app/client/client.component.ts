@@ -1,14 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { map } from "rxjs/operators";
-import { ClientService } from "./client.service";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { ClientService } from './client.service';
+import swal from 'sweetalert2';
 
 @Component({
-  selector: "app-client-cmp",
-  templateUrl: "./client.component.html",
+  selector: 'app-client-cmp',
+  templateUrl: './client.component.html',
 })
 export class ClientComponent implements OnInit {
-  searchQuery: string = "";
+  searchQuery: string = '';
   currentPage: number = 1;
   itemsPerPage: number = 10;
   pagesToShow: number = 3;
@@ -17,14 +18,7 @@ export class ClientComponent implements OnInit {
   totalPages: number;
   clientList: any[] = [];
   loading: boolean = false;
-  headerRow: string[] = [
-    "ID",
-    "Nome",
-    "CPF",
-    "Data cadastro",
-    "Aniversário",
-    "Ações",
-  ];
+  headerRow: string[] = ['ID', 'Nome', 'CPF', 'Data cadastro', 'Aniversário', 'Ações'];
   constructor(private clientService: ClientService, private router: Router) {}
 
   ngOnInit() {
@@ -35,8 +29,8 @@ export class ClientComponent implements OnInit {
     this.loading = true;
     this.clientService
       .getAll()
-      .pipe(map((clientResponse) => clientResponse.results))
-      .subscribe((clientList) => {
+      .pipe(map(clientResponse => clientResponse.results))
+      .subscribe(clientList => {
         this.clientList = clientList;
         this.totalPages = Math.ceil(this.clientList.length / this.itemsPerPage);
 
@@ -45,34 +39,55 @@ export class ClientComponent implements OnInit {
         }
 
         this.filteredRows = this.paginate(this.clientList);
-        this.totalPagesArray = this.calculateTotalPagesArray(
-          this.currentPage,
-          this.totalPages
-        );
+        this.totalPagesArray = this.calculateTotalPagesArray(this.currentPage, this.totalPages);
         this.loading = false;
       });
   }
 
   filterItems() {
-    this.filteredRows = this.paginate(this.clientList).filter((client) => {
-      const clientValues = Object.keys(client).map(
-        (keyframes) => client[keyframes]
-      );
-      return clientValues
-        .toString()
-        .toLowerCase()
-        .includes(this.searchQuery.toLowerCase());
+    this.filteredRows = this.paginate(this.clientList).filter(client => {
+      const clientValues = Object.keys(client).map(keyframes => client[keyframes]);
+      return clientValues.toString().toLowerCase().includes(this.searchQuery.toLowerCase());
     });
   }
 
   delete(client: string) {
-    this.clientService.delete(client).subscribe(() => {
-      this.getAll(true);
+    swal({
+      title: 'Deseja deletar o cliente ?',
+      text: 'Esta ação não pode ser desfeita!',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sim, finalizar!',
+      cancelButtonText: 'Não, manter cliente.',
+      confirmButtonClass: 'btn btn-fill btn-success btn-mr-5',
+      cancelButtonClass: 'btn btn-fill btn-danger',
+      buttonsStyling: false,
+    }).then(result => {
+      if (result.value) {
+        swal({
+          title: 'Deletado !',
+          text: 'O cliente foi deletado.',
+          type: 'success',
+          confirmButtonClass: 'btn btn-fill btn-success',
+          buttonsStyling: false,
+        }).catch(swal.noop);
+        this.clientService.delete(client).subscribe(() => {
+          this.getAll(true);
+        });
+      } else {
+        swal({
+          title: 'Cancelado',
+          text: 'O cliente não foi deletado.',
+          type: 'error',
+          confirmButtonClass: 'btn btn-fill btn-info',
+          buttonsStyling: false,
+        }).catch(swal.noop);
+      }
     });
   }
 
   editProfile(clientId: string): void {
-    this.router.navigate(["/components/new-client"], {
+    this.router.navigate(['/components/new-client'], {
       queryParams: { id: clientId },
     });
   }
@@ -99,10 +114,7 @@ export class ClientComponent implements OnInit {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
       this.filteredRows = this.paginate(this.clientList);
-      this.totalPagesArray = this.calculateTotalPagesArray(
-        this.currentPage,
-        this.totalPages
-      );
+      this.totalPagesArray = this.calculateTotalPagesArray(this.currentPage, this.totalPages);
     }
   }
 }

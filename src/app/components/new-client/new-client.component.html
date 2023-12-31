@@ -5,41 +5,22 @@
         <div class="form-row">
           <div class="form-group col-md-4">
             <label for="inputState">Id Cliente</label>
-            <input type="text" class="form-control" disabled />
+            <input type="text" class="form-control" value="{{ clientId }}" disabled />
           </div>
           <div class="form-group col-md-4">
             <label for="name">Nome</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Nome"
-              id="name"
-              formControlName="name"
-              name="name"
-            />
+            <input type="text" class="form-control" placeholder="Nome" id="name" formControlName="name" name="name" />
             <small
-              *ngIf="
-                clienteForm.get('name').invalid &&
-                (clienteForm.get('name').touched || submitted)
-              "
+              *ngIf="clienteForm.get('name').invalid && (clienteForm.get('name').touched || submitted)"
               class="text-danger"
               >Nome é obrigatório!</small
             >
           </div>
           <div class="form-group col-md-4">
             <label for="birthDate">Data Nascimento</label>
-            <input
-              type="date"
-              class="form-control"
-              id="birthDate"
-              formControlName="birthDate"
-              name="birthDate"
-            />
+            <input type="date" class="form-control" id="birthDate" formControlName="birthDate" name="birthDate" />
             <small
-              *ngIf="
-                clienteForm.get('birthDate').invalid &&
-                (clienteForm.get('birthDate').touched || submitted)
-              "
+              *ngIf="clienteForm.get('birthDate').invalid && (clienteForm.get('birthDate').touched || submitted)"
               class="text-danger"
               >Data Nascimento é obrigatório!</small
             >
@@ -57,10 +38,7 @@
               name="cpf"
             />
             <small
-              *ngIf="
-                clienteForm.get('cpf').invalid &&
-                (clienteForm.get('cpf').touched || submitted)
-              "
+              *ngIf="clienteForm.get('cpf').invalid && (clienteForm.get('cpf').touched || submitted)"
               class="text-danger"
               >CPF é obrigatório!</small
             >
@@ -100,10 +78,7 @@
               name="phone"
             />
             <small
-              *ngIf="
-                clienteForm.get('phone').invalid &&
-                (clienteForm.get('phone').touched || submitted)
-              "
+              *ngIf="clienteForm.get('phone').invalid && (clienteForm.get('phone').touched || submitted)"
               class="text-danger"
               >Telefone 1 é obrigatório!</small
             >
@@ -130,10 +105,7 @@
               name="email"
             />
             <small
-              *ngIf="
-                clienteForm.get('email').invalid &&
-                (clienteForm.get('email').touched || submitted)
-              "
+              *ngIf="clienteForm.get('email').invalid && (clienteForm.get('email').touched || submitted)"
               class="text-danger"
               >Email é obrigatório!</small
             >
@@ -151,10 +123,7 @@
               name="streetName"
             />
             <small
-              *ngIf="
-                clienteForm.get('streetName').invalid &&
-                (clienteForm.get('streetName').touched || submitted)
-              "
+              *ngIf="clienteForm.get('streetName').invalid && (clienteForm.get('streetName').touched || submitted)"
               class="text-danger"
               >Endereço é obrigatório!</small
             >
@@ -181,10 +150,7 @@
               name="complement"
             />
             <small
-              *ngIf="
-                clienteForm.get('complement').invalid &&
-                (clienteForm.get('complement').touched || submitted)
-              "
+              *ngIf="clienteForm.get('complement').invalid && (clienteForm.get('complement').touched || submitted)"
               class="text-danger"
               >Complemento é obrigatório!</small
             >
@@ -202,10 +168,7 @@
               name="city"
             />
             <small
-              *ngIf="
-                clienteForm.get('city').invalid &&
-                (clienteForm.get('city').touched || submitted)
-              "
+              *ngIf="clienteForm.get('city').invalid && (clienteForm.get('city').touched || submitted)"
               class="text-danger"
               >Cidade é obrigatória!</small
             >
@@ -221,10 +184,7 @@
               name="state"
             />
             <small
-              *ngIf="
-                clienteForm.get('state').invalid &&
-                (clienteForm.get('state').touched || submitted)
-              "
+              *ngIf="clienteForm.get('state').invalid && (clienteForm.get('state').touched || submitted)"
               class="text-danger"
               >UF é obrigatório!</small
             >
@@ -240,10 +200,7 @@
               formControlName="cep"
             />
             <small
-              *ngIf="
-                clienteForm.get('cep').invalid &&
-                (clienteForm.get('cep').touched || submitted)
-              "
+              *ngIf="clienteForm.get('cep').invalid && (clienteForm.get('cep').touched || submitted)"
               class="text-danger"
               >CEP é obrigatória!</small
             >
@@ -262,9 +219,7 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-12">
-            <label for="plataform_user" style="display: block"
-              >Usuário admin</label
-            >
+            <label for="plataform_user" style="display: block">Usuário admin</label>
             <bSwitch
               [switch-on-color]="'primary'"
               [switch-off-text]="' '"
@@ -275,8 +230,7 @@
             </bSwitch>
             <small
               *ngIf="
-                clienteForm.get('plataform_user').invalid &&
-                (clienteForm.get('plataform_user').touched || submitted)
+                clienteForm.get('plataform_user').invalid && (clienteForm.get('plataform_user').touched || submitted)
               "
               class="text-danger"
               >Tipo de usuário é obrigatório!</small
@@ -299,9 +253,8 @@
       </form>
       <div class="form-row">
         <div class="col-md-3" style="margin-bottom: 16px">
-          <button type="submit" class="btn btn-primary" (click)="onSubmit()">
-            Confirmar
-          </button>
+          <p *ngIf="errorMessage" style="color: red">{{ errorMessage }}</p>
+          <button type="submit" class="btn btn-primary" (click)="onSubmit()">Confirmar</button>
         </div>
       </div>
     </div>
