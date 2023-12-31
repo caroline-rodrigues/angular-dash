@@ -70,15 +70,12 @@ export class VehicleComponent implements OnInit {
   }
 
   delete(vehicle: string) {
-    this.vehicleService.delete(vehicle).subscribe(() => {
-      this.getAll(true);
-    });
     swal({
       title: 'Deseja deletar o veículo ?',
       text: 'Esta ação não pode ser desfeita!',
       type: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Sim, finalizar!',
+      confirmButtonText: 'Sim, deletar!',
       cancelButtonText: 'Não, manter o veículo.',
       confirmButtonClass: 'btn btn-fill btn-success btn-mr-5',
       cancelButtonClass: 'btn btn-fill btn-danger',

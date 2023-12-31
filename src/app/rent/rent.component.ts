@@ -182,7 +182,7 @@ export class RentComponent implements OnInit {
   isEnableRent(rentId: string) {
     swal({
       title: 'Deseja finalizar o aluguel ?',
-      text: 'Esta ação permite manter esse manter esse aluguel no hisórico. Mas finaliza e remove o carro utilizado nesse aluguel.',
+      text: 'Esta ação permite manter esse aluguel no histórico, mas finaliza e remove o carro utilizado no mesmo.',
       type: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Sim, finalizar!',

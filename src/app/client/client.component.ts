@@ -57,7 +57,7 @@ export class ClientComponent implements OnInit {
       text: 'Esta ação não pode ser desfeita!',
       type: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Sim, finalizar!',
+      confirmButtonText: 'Sim, deletar!',
       cancelButtonText: 'Não, manter cliente.',
       confirmButtonClass: 'btn btn-fill btn-success btn-mr-5',
       cancelButtonClass: 'btn btn-fill btn-danger',
