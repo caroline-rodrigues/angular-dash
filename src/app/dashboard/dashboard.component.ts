@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { ClientService } from "app/client/client.service";
-import { RentService } from "app/rent/rent.service";
-import { VehicleService } from "app/vehicle/vehicle.service";
-import { map } from "rxjs/operators";
-import { ChartType, LegendItem } from "../lbd/lbd-chart/lbd-chart.component";
+import { Component } from '@angular/core';
+import { ClientService } from 'app/client/client.service';
+import { RentService } from 'app/rent/rent.service';
+import { VehicleService } from 'app/vehicle/vehicle.service';
+import { map } from 'rxjs/operators';
+import { ChartType, LegendItem } from '../lbd/lbd-chart/lbd-chart.component';
 
 interface Row {
   rent?: {
@@ -21,8 +21,8 @@ interface Row {
 }
 
 @Component({
-  selector: "dashboard-cmp",
-  templateUrl: "./dashboard.component.html",
+  selector: 'dashboard-cmp',
+  templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent {
   public graphType: ChartType;
@@ -46,18 +46,12 @@ export class DashboardComponent {
   late: number;
 
   rows: Row[];
-  headerRow: string[] = [
-    "ID Cliente",
-    "Cliente",
-    "Carro",
-    "STATUS",
-    "Data Entrega",
-  ];
+  headerRow: string[] = ['ID Cliente', 'Cliente', 'Carro', 'STATUS', 'Data Entrega'];
 
   constructor(
     private clientService: ClientService,
     private rentService: RentService,
-    private vehicleService: VehicleService
+    private vehicleService: VehicleService,
   ) {}
 
   ngOnInit() {
@@ -71,13 +65,12 @@ export class DashboardComponent {
     this.loading = true;
     this.rentService
       .getAll()
-      .pipe(map((rentResponse) => rentResponse.filteredEntityResults))
-      .subscribe((rentList) => {
-        this.rentList = rentList.map((rent) => {
-          rent.rent.endDate = this.formatDateToISO(
-            new Date(rent.rent.endDate).toLocaleDateString(),
-            "/"
-          );
+      .pipe(map(rentResponse => rentResponse.filteredEntityResults))
+      .subscribe(rentList => {
+        this.rentList = rentList.map(rent => {
+          rent.rent.endDate = rent.rent.endDate
+            ? this.formatDateToISO(new Date(rent.rent.endDate).toLocaleDateString(), '/')
+            : null;
           return rent;
         });
         this.totalPages = Math.ceil(this.rentList.length / this.itemsPerPage);
@@ -87,10 +80,7 @@ export class DashboardComponent {
         }
 
         this.filteredRows = this.paginate(this.rentList);
-        this.totalPagesArray = this.calculateTotalPagesArray(
-          this.currentPage,
-          this.totalPages
-        );
+        this.totalPagesArray = this.calculateTotalPagesArray(this.currentPage, this.totalPages);
         this.loading = false;
       });
   }
@@ -116,26 +106,22 @@ export class DashboardComponent {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
       this.filteredRows = this.paginate(this.rentList);
-      this.totalPagesArray = this.calculateTotalPagesArray(
-        this.currentPage,
-        this.totalPages
-      );
+      this.totalPagesArray = this.calculateTotalPagesArray(this.currentPage, this.totalPages);
     }
   }
 
   findAllClients() {
-    this.clientService.getAll().subscribe((client) => {
+    this.clientService.getAll().subscribe(client => {
       this.clients = client.count;
     });
     return this.clients;
   }
 
   vehiclesStatus() {
-    this.vehicleService.vehiclesStatus().subscribe((status) => {
+    this.vehicleService.vehiclesStatus().subscribe(status => {
       this.rented = status.rented;
       this.available = status.available;
       this.maintenance = status.maintenance;
-      console.log(status);
 
       this.graphType = ChartType.Pie;
       this.dataGraph = {
@@ -143,23 +129,23 @@ export class DashboardComponent {
         series: [this.available, this.rented, this.maintenance],
       };
       this.dataGraphInfo = [
-        { title: "Alugados", imageClass: "fa fa-circle text-danger" },
-        { title: "Disponíveis", imageClass: "fa fa-circle text-info" },
-        { title: "Manutenção", imageClass: "fa fa-circle text-warning" },
+        { title: 'Alugados', imageClass: 'fa fa-circle text-danger' },
+        { title: 'Disponíveis', imageClass: 'fa fa-circle text-info' },
+        { title: 'Manutenção', imageClass: 'fa fa-circle text-warning' },
       ];
       this.showChart = true;
     });
   }
 
   allRentStatus() {
-    this.rentService.allRentStatus().subscribe((status) => {
+    this.rentService.allRentStatus().subscribe(status => {
       this.inProgress = status.inProgress;
       this.late = status.late;
     });
   }
 
   private formatDateToISO(dateStr: string, spliter: string) {
-    const [day, month, year] = dateStr.split("/");
+    const [day, month, year] = dateStr.split('/');
     return `${year}${spliter}${month}${spliter}${day}`;
   }
 }

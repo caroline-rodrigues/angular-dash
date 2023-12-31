@@ -14,14 +14,14 @@
             <label for="clientId">Cliente</label>
             <ng-container *ngIf="hasClientList; else fallbackClient">
               <select id="clientId" class="form-control" formControlName="clientId">
-                <option value="" disabled selected hidden>Selecione o cliente</option>
+                <option value="" disabled selected hidden>{{ defaultMessageClient }}</option>
                 <option *ngFor="let client of clientList" [ngValue]="client">
                   {{ client.name }}
                 </option>
               </select>
             </ng-container>
             <ng-template #fallbackClient>
-              <input type="text" class="form-control" value="Clientes indisponíveis." disabled />
+              <input type="text" class="form-control" value="{{ defaultMessageClient }}" disabled />
             </ng-template>
             <small
               *ngIf="rentForm.get('clientId').invalid && (rentForm.get('clientId').touched || submitted)"
@@ -52,7 +52,7 @@
           </div>
           <div class="form-group col-md-4">
             <label for="vehicle">Veículo</label>
-            <ng-container *ngIf="hasVihiclelist; else fallback">
+            <ng-container *ngIf="isEnableVehicleList && vehicleList.length > 0; else fallback">
               <select id="vehicle" class="form-control" formControlName="vehicle">
                 <option value="" disabled selected hidden>{{ defaultMessageVehicle }}</option>
                 <option *ngFor="let vehicle of vehicleList" [ngValue]="vehicle">
@@ -61,12 +61,7 @@
               </select>
             </ng-container>
             <ng-template #fallback>
-              <input
-                type="text"
-                class="form-control"
-                value="Todos os veículos estão alugados ou em manuntenção."
-                disabled
-              />
+              <input type="text" class="form-control" value=" {{ defaultMessageVehicle }}" disabled />
             </ng-template>
             <small
               *ngIf="rentForm.get('vehicle').invalid && (rentForm.get('vehicle').touched || submitted)"

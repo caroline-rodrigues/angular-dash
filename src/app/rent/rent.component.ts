@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { RentService } from './rent.service';
-
-declare interface TableData {
-  headerRow: string[];
-  dataRows: string[][];
-}
+import { ClientService } from 'app/client/client.service';
+import swal from 'sweetalert2';
+import { VehicleService } from 'app/vehicle/vehicle.service';
 
 interface Row {
   rent?: {
@@ -41,8 +39,14 @@ export class RentComponent implements OnInit {
   rentList: any[] = [];
   loading: boolean = false;
   headerRow: string[] = ['ID', 'Nome', 'CPF', 'Data devolução', 'Modelo', 'Situação', 'Ações'];
+  disabled: boolean = false;
 
-  constructor(private rentService: RentService, private router: Router) {}
+  constructor(
+    private rentService: RentService,
+    private clientService: ClientService,
+    private router: Router,
+    private vehicleService: VehicleService,
+  ) {}
 
   ngOnInit() {
     this.getAll(false);
@@ -61,13 +65,14 @@ export class RentComponent implements OnInit {
       .pipe(map(rentResponse => rentResponse.filteredEntityResults))
       .subscribe(rentList => {
         this.rentList = rentList.map(rent => {
-          const { _id, endDate } = rent.rent;
+          const { _id, endDate, isEnable } = rent.rent;
           const { name, cpf } = rent.client;
           const { brand } = rent.vehicle;
           return {
             rent: {
               _id,
               endDate: endDate ? this.formatDateToISO(new Date(endDate).toLocaleDateString(), '/') : null,
+              isEnable,
             },
             client: {
               name,
@@ -75,6 +80,7 @@ export class RentComponent implements OnInit {
             },
             vehicle: {
               brand,
+              _id,
             },
             status: rent.status,
           };
@@ -111,8 +117,44 @@ export class RentComponent implements OnInit {
   }
 
   onDeletedRent(rentId: string) {
-    this.rentService.delete(rentId).subscribe(() => {
-      this.getAll(true);
+    swal({
+      title: 'Deseja deletar o aluguel ?',
+      text: 'Esta ação não pode ser desfeita!',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sim, finalizar!',
+      cancelButtonText: 'Não, manter aluguel.',
+      confirmButtonClass: 'btn btn-fill btn-success btn-mr-5',
+      cancelButtonClass: 'btn btn-fill btn-danger',
+      buttonsStyling: false,
+    }).then(result => {
+      if (result.value) {
+        swal({
+          title: 'Deletado !',
+          text: 'O aluguel foi deletado.',
+          type: 'success',
+          confirmButtonClass: 'btn btn-fill btn-success',
+          buttonsStyling: false,
+        }).catch(swal.noop);
+        this.rentService.delete(rentId).subscribe(() => {
+          this.getAll(true);
+        });
+        this.rentService.getById(rentId).subscribe(rent => {
+          this.clientService.getClientById(rent.clientId).subscribe(rentToRemove => {
+            const rentToRemoveIndex = rentToRemove.rentList.findIndex(rent => rent._id === rentId);
+            rentToRemove.rentList.splice(rentToRemoveIndex, 1);
+            this.clientService.update(rentToRemove, rentToRemove._id).subscribe();
+          });
+        });
+      } else {
+        swal({
+          title: 'Cancelado',
+          text: 'O aluguel não foi deletado.',
+          type: 'error',
+          confirmButtonClass: 'btn btn-fill btn-info',
+          buttonsStyling: false,
+        }).catch(swal.noop);
+      }
     });
   }
 
@@ -135,5 +177,42 @@ export class RentComponent implements OnInit {
   private formatDateToISO(dateStr: string, spliter: string) {
     const [day, month, year] = dateStr.split('/');
     return `${year}${spliter}${month}${spliter}${day}`;
+  }
+
+  isEnableRent(rentId: string) {
+    swal({
+      title: 'Deseja finalizar o aluguel ?',
+      text: 'Esta ação permite manter esse manter esse aluguel no hisórico. Mas finaliza e remove o carro utilizado nesse aluguel.',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sim, finalizar!',
+      cancelButtonText: 'Não, manter aluguel.',
+      confirmButtonClass: 'btn btn-fill btn-success btn-mr-5',
+      cancelButtonClass: 'btn btn-fill btn-danger',
+      buttonsStyling: false,
+    }).then(result => {
+      if (result.value) {
+        swal({
+          title: 'Finalizado!',
+          text: 'O aluguel foi finalizado.',
+          type: 'success',
+          confirmButtonClass: 'btn btn-fill btn-success',
+          buttonsStyling: false,
+        }).catch(swal.noop);
+        this.rentService.getById(rentId).subscribe(rent => {
+          const { vehicle } = rent;
+          this.rentService.update({ isEnable: false, status: 'Finalizado' }, rentId).subscribe(() => {});
+          this.vehicleService.update({ rented: false }, vehicle).subscribe(() => {});
+        });
+      } else {
+        swal({
+          title: 'Cancelado',
+          text: 'O aluguel não foi finalizado.',
+          type: 'error',
+          confirmButtonClass: 'btn btn-fill btn-info',
+          buttonsStyling: false,
+        }).catch(swal.noop);
+      }
+    });
   }
 }

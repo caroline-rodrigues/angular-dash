@@ -1,14 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { VehicleService } from "./vehicle.service";
-import { Router } from "@angular/router";
-import { map } from "rxjs/operators";
+import { Component, OnInit } from '@angular/core';
+import { VehicleService } from './vehicle.service';
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import swal from 'sweetalert2';
 
 @Component({
-  selector: "app-vehicle",
-  templateUrl: "./vehicle.component.html",
+  selector: 'app-vehicle',
+  templateUrl: './vehicle.component.html',
 })
 export class VehicleComponent implements OnInit {
-  searchQuery: string = "";
+  searchQuery: string = '';
   pagesToShow: number = 3;
   totalPagesArray: any[] = [];
   filteredRows: any[];
@@ -17,14 +18,7 @@ export class VehicleComponent implements OnInit {
   vehicleList: any[] = [];
   totalPages: number;
   loading: boolean = false;
-  headerRow: string[] = [
-    "ID",
-    "Modelo",
-    "Chassi",
-    "Data cadastro",
-    "Ano",
-    "Ações",
-  ];
+  headerRow: string[] = ['ID', 'Modelo', 'Chassi', 'Data cadastro', 'Ano', 'Ações'];
   constructor(private vehicleService: VehicleService, private router: Router) {}
 
   ngOnInit() {
@@ -35,22 +29,17 @@ export class VehicleComponent implements OnInit {
     this.loading = true;
     this.vehicleService
       .findAllVehicles()
-      .pipe(map((vehicleResponse) => vehicleResponse.results))
-      .subscribe((vehicleList) => {
+      .pipe(map(vehicleResponse => vehicleResponse.results))
+      .subscribe(vehicleList => {
         this.vehicleList = vehicleList;
-        this.totalPages = Math.ceil(
-          this.vehicleList.length / this.itemsPerPage
-        );
+        this.totalPages = Math.ceil(this.vehicleList.length / this.itemsPerPage);
 
         if (event && this.filteredRows.length === 1 && this.currentPage !== 1) {
           this.currentPage = this.totalPages;
         }
 
         this.filteredRows = this.paginate(this.vehicleList);
-        this.totalPagesArray = this.calculateTotalPagesArray(
-          this.currentPage,
-          this.totalPages
-        );
+        this.totalPagesArray = this.calculateTotalPagesArray(this.currentPage, this.totalPages);
         this.loading = false;
       });
   }
@@ -74,14 +63,9 @@ export class VehicleComponent implements OnInit {
   }
 
   filterItems() {
-    this.filteredRows = this.paginate(this.vehicleList).filter((vehicle) => {
-      const vehicleValues = Object.keys(vehicle).map(
-        (keyframes) => vehicle[keyframes]
-      );
-      return vehicleValues
-        .toString()
-        .toLowerCase()
-        .includes(this.searchQuery.toLowerCase());
+    this.filteredRows = this.paginate(this.vehicleList).filter(vehicle => {
+      const vehicleValues = Object.keys(vehicle).map(keyframes => vehicle[keyframes]);
+      return vehicleValues.toString().toLowerCase().includes(this.searchQuery.toLowerCase());
     });
   }
 
@@ -89,10 +73,42 @@ export class VehicleComponent implements OnInit {
     this.vehicleService.delete(vehicle).subscribe(() => {
       this.getAll(true);
     });
+    swal({
+      title: 'Deseja deletar o veículo ?',
+      text: 'Esta ação não pode ser desfeita!',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sim, finalizar!',
+      cancelButtonText: 'Não, manter o veículo.',
+      confirmButtonClass: 'btn btn-fill btn-success btn-mr-5',
+      cancelButtonClass: 'btn btn-fill btn-danger',
+      buttonsStyling: false,
+    }).then(result => {
+      if (result.value) {
+        swal({
+          title: 'Deletado !',
+          text: 'O veículo foi deletado.',
+          type: 'success',
+          confirmButtonClass: 'btn btn-fill btn-success',
+          buttonsStyling: false,
+        }).catch(swal.noop);
+        this.vehicleService.delete(vehicle).subscribe(() => {
+          this.getAll(true);
+        });
+      } else {
+        swal({
+          title: 'Cancelado',
+          text: 'O veículo não foi deletado.',
+          type: 'error',
+          confirmButtonClass: 'btn btn-fill btn-info',
+          buttonsStyling: false,
+        }).catch(swal.noop);
+      }
+    });
   }
 
   editProfile(vehicleId: string): void {
-    this.router.navigate(["/components/new-vehicle"], {
+    this.router.navigate(['/components/new-vehicle'], {
       queryParams: { id: vehicleId },
     });
   }
@@ -101,10 +117,7 @@ export class VehicleComponent implements OnInit {
     if (page >= 1 && page <= this.totalPages) {
       this.currentPage = page;
       this.filteredRows = this.paginate(this.vehicleList);
-      this.totalPagesArray = this.calculateTotalPagesArray(
-        this.currentPage,
-        this.totalPages
-      );
+      this.totalPagesArray = this.calculateTotalPagesArray(this.currentPage, this.totalPages);
     }
   }
 }

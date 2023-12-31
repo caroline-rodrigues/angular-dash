@@ -71,7 +71,6 @@ export class NewVehicletComponent implements OnInit {
       this.router.navigate(['/vehicle']);
     } else if (this.vehicleForm.valid && this.vehicleId) {
       const vehicle = this.vehicleForm.value as VehicleDto;
-      console.log({ vehicle });
       vehicle.occurrences = this.occurrenceList as OccurrenceDto[];
       this.onUpdateClient(vehicle, this.vehicleId);
       this.router.navigate(['/vehicle']);

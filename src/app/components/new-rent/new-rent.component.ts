@@ -26,8 +26,10 @@ export class NewRentComponent implements OnInit {
   errorMessages: string;
   createErrorMessage: string;
   defaultMessageVehicle: string = 'Selecione um veículo';
+  defaultMessageClient: string = 'Selecione um cliente';
   hasVihiclelist: boolean = false;
   hasClientList: boolean = false;
+  isEnableVehicleList: boolean = true;
 
   constructor(
     private clientService: ClientService,
@@ -76,6 +78,8 @@ export class NewRentComponent implements OnInit {
       discounts: [''],
       totalReceivable: [''],
       aboutRent: [''],
+      isEnable: [true, Validators.required],
+      lastRentedVehicle: [''],
     });
 
     this.occurrenceForm = this.formBuilder.group({
@@ -117,11 +121,23 @@ export class NewRentComponent implements OnInit {
       this.occurrenceList.forEach(occurrence => {
         this.occurrenceService.create(occurrence as OccurrenceDto).subscribe();
       });
-      this.rentService.create(rent).subscribe();
+      rent.lastRentedVehicle = rent.vehicle.name;
+
+      this.rentService.create(rent).subscribe(rentSaved => {
+        const rentToSaveInClient = rentSaved;
+        this.clientService.getClientById(rent.clientId._id).subscribe(client => {
+          client.rentList.push(rentToSaveInClient);
+          this.clientService.update(client, client._id).subscribe();
+        });
+      });
       this.router.navigate(['/rent']);
     } else if (this.rentForm.valid && this.rentId) {
       const rent = this.rentForm.value as RentDto;
       rent.occurrences = this.occurrenceList as OccurrenceDto[];
+      rent.isEnable = true;
+      rent.status = '';
+      this.vehicleService.update({ rented: true }, rent.vehicle._id).subscribe();
+      rent.lastRentedVehicle = rent.vehicle.name;
       this.onUpdateRent(rent, this.rentId);
       this.router.navigate(['/rent']);
     } else {
@@ -141,12 +157,15 @@ export class NewRentComponent implements OnInit {
             this.clientList.unshift(clientResult);
             this.rentForm.get('cpf').setValue(clientResult.cpf);
             this.clientList = [clientResult, ...filteredClients];
+            this.defaultMessageClient = clientResult.name;
           });
         } else {
           this.clientList = client.filter(clientToFilter => !clientToFilter.plataform_user);
+          if (this.clientList.length > 0) {
+            this.hasClientList = true;
+          }
         }
       });
-    this.clientList.length > 0 ? (this.hasClientList = true) : (this.hasClientList = false);
   }
   findAllVehicles() {
     this.vehicleService
@@ -160,14 +179,20 @@ export class NewRentComponent implements OnInit {
             this.vehicleList.unshift(vehicleResult);
             this.rentForm.get('plate').setValue(vehicleResult.plate);
             this.vehicleList = [vehicleResult, ...filteredVehicles];
+            this.defaultMessageVehicle = vehicleResult.name;
           });
         } else {
           const list = vehicle.filter(vehicle => !vehicle.rented);
-          console.log({ list });
           this.vehicleList = list;
+          if (this.vehicleList.length > 0) {
+            this.hasVihiclelist = true;
+          }
         }
+        this.defaultMessageVehicle =
+          this.isEnableVehicleList && this.vehicleList.length > 0
+            ? 'Selecione um veículo'
+            : 'Não há veículos disponíveis';
       });
-    this.vehicleList.length > 0 ? (this.hasVihiclelist = true) : (this.hasVihiclelist = false);
   }
 
   private formatDateToISO(dateStr: string, spliter: string, plus?: string) {
@@ -206,6 +231,8 @@ export class NewRentComponent implements OnInit {
       });
       this.findAllVehicles();
       this.findAllClients();
+      this.defaultMessageVehicle = !rent.isEnable ? rent.lastRentedVehicle : 'Selecione um veículo';
+      this.isEnableVehicleList = !rent.isEnable;
     });
   }
 

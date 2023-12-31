@@ -51,7 +51,6 @@ export class LoginComponent implements OnInit {
       })
       .subscribe(
         result => {
-          console.log(result);
           if (result) {
             localStorage.setItem('access_token', result.access_token);
             this.router.navigate(['/dashboard']);

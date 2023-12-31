@@ -1,6 +1,6 @@
 interface RentDto {
   id?: string;
-  clientId: string;
+  clientId: any;
   vehicle: any;
   situation?: string;
   dailyValue?: number;
@@ -23,4 +23,7 @@ interface RentDto {
   exitTime?: string;
   arrivalTime?: string;
   occurrences?: OccurrenceDto[];
+  status?: string;
+  isEnable?: boolean;
+  lastRentedVehicle?: string;
 }

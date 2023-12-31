@@ -8,14 +8,7 @@
               <div class="header">
                 <h4 class="title">Aluguéis ativos</h4>
               </div>
-              <div
-                class="content"
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                "
-              >
+              <div class="content" style="display: flex; justify-content: space-between; align-items: center">
                 <p>{{ inProgress }}</p>
                 <i class="pe-7s-note2" style="font-size: 3rem"></i>
               </div>
@@ -30,14 +23,7 @@
               <div class="header">
                 <h4 class="title">Aluguéis em atraso</h4>
               </div>
-              <div
-                class="content"
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                "
-              >
+              <div class="content" style="display: flex; justify-content: space-between; align-items: center">
                 <p>{{ late }}</p>
                 <i class="pe-7s-diskette" style="font-size: 3rem"></i>
               </div>
@@ -52,14 +38,7 @@
               <div class="header">
                 <h4 class="title">Clientes cadastrados</h4>
               </div>
-              <div
-                class="content"
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                "
-              >
+              <div class="content" style="display: flex; justify-content: space-between; align-items: center">
                 <p>{{ clients }}</p>
                 <i class="pe-7s-users" style="font-size: 3rem"></i>
               </div>
@@ -92,7 +71,10 @@
                   <td class="text-center">{{ row?.client?.name }}</td>
                   <td class="text-center">{{ row?.vehicle?.brand }}</td>
                   <td class="text-center">{{ row?.status }}</td>
-                  <td class="text-center">{{ row?.rent?.endDate }}</td>
+                  <td class="text-center">
+                    <ng-container *ngIf="row?.rent?.endDate; else ocupado">{{ row?.rent?.endDate }}</ng-container>
+                    <ng-template #ocupado>Aguardando devolução</ng-template>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -100,22 +82,13 @@
         </div>
         <div style="display: flex; justify-content: center">
           <ul class="pagination">
-            <li
-              [class.disabled]="currentPage === 1"
-              (click)="changePage(currentPage - 1)"
-            >
+            <li [class.disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">
               <a>«</a>
             </li>
-            <li
-              [class.active]="currentPage === page"
-              *ngFor="let page of totalPagesArray"
-            >
+            <li [class.active]="currentPage === page" *ngFor="let page of totalPagesArray">
               <a (click)="changePage(page)">{{ page }}</a>
             </li>
-            <li
-              [class.disabled]="currentPage === totalPages"
-              (click)="changePage(currentPage + 1)"
-            >
+            <li [class.disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">
               <a>»</a>
             </li>
           </ul>
