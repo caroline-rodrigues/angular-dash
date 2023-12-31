@@ -59,16 +59,16 @@ export class NewRentComponent implements OnInit {
       cpf: ['', Validators.required],
       plate: ['', Validators.required],
       vehicle: ['', Validators.required],
-      startDate: [null],
+      startDate: [''],
       exitTime: [''],
       outputKm: [''],
-      endDate: [null],
+      endDate: [''],
       arrivalTime: [''],
       arrivalKM: [''],
       card: [''],
       cardNumber: [''],
       securityCode: [''],
-      validity: [null],
+      validity: [''],
       franchise: [''],
       aboutCard: [''],
       dailyValue: [''],
@@ -220,6 +220,7 @@ export class NewRentComponent implements OnInit {
 
   loadRent(rentId: string) {
     this.rentService.getById(rentId).subscribe(rent => {
+      this.formatDateToISO(new Date(rent.startDate).toLocaleDateString(), '-');
       rent.startDate = rent.startDate ? this.formatDateToISO(new Date(rent.startDate).toLocaleDateString(), '-') : null;
       rent.endDate = rent.endDate ? this.formatDateToISO(new Date(rent.endDate).toLocaleDateString(), '-') : null;
       rent.validity = rent.validity ? this.formatDateToISO(new Date(rent.validity).toLocaleDateString(), '-') : null;
